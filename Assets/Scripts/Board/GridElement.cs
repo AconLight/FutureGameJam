@@ -47,4 +47,14 @@ public class GridElement : MonoBehaviour
         if (z+1 < temp.Count) return this.transform.parent.GetComponent<GridScript>().GridElements[z+1][x];
         else return null;
     }
+
+    public GameObject getByXZ(int bx, int bz) {
+        List<List<GameObject>> temp = this.transform.parent.GetComponent<GridScript>().GridElements;
+        if (z+bz < temp.Count && z+bz >= 0) {
+            if (x+bx < temp[z+bz].Count && x+bx >= 0) {
+                return this.transform.parent.GetComponent<GridScript>().GridElements[z+bz][x+bx];
+            }
+        } 
+        return null;
+    }
 }
