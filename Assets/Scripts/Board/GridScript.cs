@@ -18,13 +18,14 @@ public class GridScript : MonoBehaviour
             List<GameObject> temp = new List<GameObject>();
             for (int x = -size/2; x < size/2; x++) {
                 GameObject go = Instantiate (gridElementPrefab, new Vector3(transform.position.x + x,transform.position.y, transform.position.z + z) , Quaternion.identity, this.transform);
-                go.GetComponent<GridElement>().x = x;
-                go.GetComponent<GridElement>().z = z;
+                go.GetComponent<GridElement>().x = x+size/2;
+                go.GetComponent<GridElement>().z = z+size/2;
                 temp.Add(go);
             }
             GridElements.Add(temp);
         }
-        GridElements[size/2][size/2].GetComponent<GridElement>().spawnUnit(unitPrefab);
+        GridElements[0][0].GetComponent<GridElement>().spawnUnit(unitPrefab);
+        GridElements[0][0].GetComponent<GridElement>().unit.GetComponent<UnitBase>().Move(1, 0);
     }
 
     // Update is called once per frame

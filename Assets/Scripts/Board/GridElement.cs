@@ -49,6 +49,7 @@ public class GridElement : MonoBehaviour
     }
 
     public GameObject getByXZ(int bx, int bz) {
+        UnityEngine.Debug.Log("Get " + (z+bz) + ", " + (x+bx));
         List<List<GameObject>> temp = this.transform.parent.GetComponent<GridScript>().GridElements;
         if (z+bz < temp.Count && z+bz >= 0) {
             if (x+bx < temp[z+bz].Count && x+bx >= 0) {

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Diagnostics;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,11 +25,16 @@ public class UnitBase : MonoBehaviour
     }
 
     public void Move(int x, int z) {
+        UnityEngine.Debug.Log("Move");
         GameObject gridElement = this.transform.parent.GetComponent<GridElement>().getByXZ(x, z);
         if (gridElement != null && gridElement.GetComponent<GridElement>().unit == null) {
             this.transform.SetParent(gridElement.transform);
             gridElement.GetComponent<GridElement>().unit = this.gameObject;
+            this.transform.position = gridElement.transform.position;
             // TODO animation goes brrrrrr
+
+            UnityEngine.Debug.Log("Move Done");
         }
+
     }
 }
