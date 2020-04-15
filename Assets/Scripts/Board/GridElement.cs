@@ -6,12 +6,12 @@ using UnityEngine;
 public class GridElement : MonoBehaviour
 {
     public int x, z;
-    private Grid grid;
+    private GridScript grid;
     public GameObject unit;
     // Start is called before the first frame update
     void Start()
     {
-        grid = this.transform.parent.GetComponent<Grid>();
+        grid = this.transform.parent.GetComponent<GridScript>();
     }
 
     public void spawnUnit(GameObject unitPrefab) {

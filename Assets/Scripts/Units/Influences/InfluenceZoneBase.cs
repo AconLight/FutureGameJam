@@ -5,11 +5,11 @@ using UnityEngine;
 public class InfluenceZoneBase : MonoBehaviour
 {
     protected GameObject Parent;
-    protected 
+    protected int[,] zoneValues = new int[11,11];
     // Start is called before the first frame update
-    void Start(GameObject parent)
+    void Start()
     {
-        Parent = parent;
+
     }
 
     // Update is called once per frame
