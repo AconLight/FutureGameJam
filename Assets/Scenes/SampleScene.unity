@@ -274,7 +274,7 @@ GameObject:
   - component: {fileID: 1339197566}
   - component: {fileID: 1339197565}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -292,6 +292,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 194fc3012573e76429adc2869f506e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridElementPrefab: {fileID: 2733823833753757337, guid: b8ef8438b5fb94248ab061311eee29d6,
+    type: 3}
+  size: 10
 --- !u!4 &1339197566
 Transform:
   m_ObjectHideFlags: 0
