@@ -294,7 +294,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridElementPrefab: {fileID: 2733823833753757337, guid: b8ef8438b5fb94248ab061311eee29d6,
     type: 3}
-  size: 10
+  size: 3
+  unitPrefab: {fileID: 4785586136032220841, guid: 383207c6b8deb6e43b760383209ce116,
+    type: 3}
 --- !u!4 &1339197566
 Transform:
   m_ObjectHideFlags: 0

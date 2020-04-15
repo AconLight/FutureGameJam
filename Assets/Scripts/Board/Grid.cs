@@ -7,7 +7,7 @@ public class Grid : MonoBehaviour
     public GameObject gridElementPrefab;
     public int size = 10;
     List<List<GameObject>> GridElements;
-
+    public GameObject unitPrefab;
 
 
     // Start is called before the first frame update
@@ -24,6 +24,7 @@ public class Grid : MonoBehaviour
             }
             GridElements.Add(temp);
         }
+        GridElements[size/2][size/2].GetComponent<GridElement>().spawnUnit(unitPrefab);
     }
 
     // Update is called once per frame
