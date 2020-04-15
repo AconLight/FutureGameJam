@@ -6,7 +6,7 @@ public class GridScript : MonoBehaviour
 {
     public GameObject gridElementPrefab;
     public int size = 10;
-    List<List<GameObject>> GridElements;
+    public List<List<GameObject>> GridElements;
     public GameObject unitPrefab;
 
 
