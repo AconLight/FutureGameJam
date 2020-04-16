@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ public class GridScript : MonoBehaviour
 {
     public GameObject gridElementPrefab;
     public int size = 10;
+
+    public int spawnSpotX = 0, spawnSpotZ = 0;
     public List<List<GameObject>> GridElements;
     public GameObject unitPrefab;
 
@@ -24,9 +27,14 @@ public class GridScript : MonoBehaviour
             }
             GridElements.Add(temp);
         }
+    }
 
-        GridElements[size/2][size/2].GetComponent<GridElement>().spawnUnit(unitPrefab);
-        //GridElements[size/2][size/2].GetComponent<GridElement>().unit.GetComponent<UnitBase>().Move(1, 0);
+    public Boolean spawnNextWave(GameObject enemy) {
+        if (GridElements[spawnSpotZ][spawnSpotX].GetComponent<GridElement>().unit == null) {
+            GridElements[spawnSpotZ][spawnSpotX].GetComponent<GridElement>().spawnUnit(enemy);
+            return true;
+        }
+        return false;
     }
 
     // Update is called once per frame

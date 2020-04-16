@@ -13,6 +13,8 @@ public class UnitBase : MonoBehaviour
     private int currentIniative;
     public List<InfluenceZoneBase> influenceZones;
 
+    public GameObject animation;
+
     // Start is called before the first frame update
     void Start()
     {
