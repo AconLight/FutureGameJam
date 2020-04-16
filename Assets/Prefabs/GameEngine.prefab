@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  gridManagerScript: {fileID: 6639701391185190899, guid: 1d746db279bfcc64e9e4476fccb8d455,
+  gridManagerPrefab: {fileID: 6639701391185190899, guid: 1d746db279bfcc64e9e4476fccb8d455,
     type: 3}

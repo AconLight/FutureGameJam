@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Runtime.CompilerServices;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,16 +7,34 @@ public enum GameState { START, PLAYER1TURN, PLAYER2TURN, BATTLETURN, LOST }
 public class GameEngine : MonoBehaviour
 {
     public GameState state;
-    public GameObject gridManagerScript;
-    private List<GameObject> allUnits;
+    public GameObject gridManagerPrefab;
+    private GameObject gridManager; 
+    private List<UnitBase> allUnits;
+    private int counter;
     // Start is called before the first frame update
     void Start()
     {
         state = GameState.START;
+        gridManager = Instantiate(gridManagerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
     }
 
     void detectUnits()
     {
-         
+        foreach( var x in gridManager.GetComponent<GridScript>().GridElements)
+        {
+            Debug.Log(x.ToString() + " DUPAX");
+            foreach( var y in x)
+            {
+                var Unit = y.GetComponent<GridElement>();
+                Debug.Log(Unit.x + ", " + Unit.z + " dupa");
+            }
+        }
+    }
+    void Update(){
+        if(counter % 50 == 0){
+            detectUnits();
+        }
+        counter ++;
+        
     }
 }
