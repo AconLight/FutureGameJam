@@ -17,23 +17,33 @@ public class GameEngine : MonoBehaviour
     {
         state = GameState.START;
         gridManager = Instantiate(gridManagerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        sapwnNextWave();
+        UnityEngine.Debug.Log("nextWaveCount: " + nextWave.Count);
     }
 
     void detectUnits()
     {
         foreach( var x in gridManager.GetComponent<GridScript>().GridElements)
         {
-            Debug.Log(x.ToString() + " DUPAX");
+            //Debug.Log(x.ToString() + " DUPAX");
             foreach( var y in x)
             {
                 var Unit = y.GetComponent<GridElement>();
-                Debug.Log(Unit.x + ", " + Unit.z + " dupa");
+                //Debug.Log(Unit.x + ", " + Unit.z + " dupa");
             }
         }
     }
     void Update(){
         if(counter % 50 == 0){
             detectUnits();
+        }
+        if(counter % 50 == 10){
+            if (gridManager.GetComponent<GridScript>().spawnEnemy(nextWave[0])) {
+                nextWave.RemoveAt(0);
+            }
+        }
+        if(counter % 50 == 20){
+            // all units makes turn
         }
         counter ++;
         

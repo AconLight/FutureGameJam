@@ -29,7 +29,7 @@ public class GridScript : MonoBehaviour
         }
     }
 
-    public Boolean spawnNextWave(GameObject enemy) {
+    public Boolean spawnEnemy(GameObject enemy) {
         if (GridElements[spawnSpotZ][spawnSpotX].GetComponent<GridElement>().unit == null) {
             GridElements[spawnSpotZ][spawnSpotX].GetComponent<GridElement>().spawnUnit(enemy);
             return true;

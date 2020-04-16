@@ -18,6 +18,7 @@ public class GridElement : MonoBehaviour
     }
 
     public void spawnUnit(GameObject unitPrefab) {
+        UnityEngine.Debug.Log("spawn " + (unitPrefab != null) + " x: " + x + ", z:" + z);
         this.unit = Instantiate (unitPrefab, new Vector3(transform.position.x,transform.position.y, transform.position.z) , Quaternion.identity, this.transform);
     }
 

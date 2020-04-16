@@ -16,7 +16,7 @@ public class UnitBase : MonoBehaviour
     public GameObject animation;
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         Instantiate (animation, new Vector3(transform.position.x,transform.position.y, transform.position.z) , Quaternion.identity, this.transform);
     }
