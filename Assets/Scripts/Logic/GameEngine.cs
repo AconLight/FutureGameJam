@@ -42,7 +42,7 @@ public class GameEngine : MonoBehaviour
         }
     }
     void Update(){
-        if(counter % 50 == 0){
+        if(counter % 500 == 0){
             detectUnits();
             if(allUnits != null)
             {
@@ -53,12 +53,12 @@ public class GameEngine : MonoBehaviour
             }
             
         }
-        if(counter % 50 == 10){
-            if (gridManager.GetComponent<GridScript>().spawnEnemy(nextWave[0])) {
+        if(counter % 500 == 100){
+            if (nextWave.Count > 0 && gridManager.GetComponent<GridScript>().spawnEnemy(nextWave[0])) {
                 nextWave.RemoveAt(0);
             }
         }
-        if(counter % 50 == 20){
+        if(counter % 500 == 200){
             if(allUnits != null)
             {
                 foreach(GameObject unit in allUnits)
