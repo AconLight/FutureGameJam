@@ -27,6 +27,7 @@ public class GameEngine : MonoBehaviour
 
     void detectUnits()
     {
+        allUnits.Clear();
         foreach( var x in gridManager.GetComponent<GridScript>().GridElements)
         {
             //Debug.Log(x.ToString() + " DUPAX");
@@ -55,6 +56,7 @@ public class GameEngine : MonoBehaviour
         }
         if(counter % 500 == 100){
             if (nextWave.Count > 0 && gridManager.GetComponent<GridScript>().spawnEnemy(nextWave[0])) {
+                Debug.Log("spawn");
                 nextWave.RemoveAt(0);
             }
         }
