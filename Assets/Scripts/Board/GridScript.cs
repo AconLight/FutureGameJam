@@ -24,8 +24,9 @@ public class GridScript : MonoBehaviour
             }
             GridElements.Add(temp);
         }
-        GridElements[0][0].GetComponent<GridElement>().spawnUnit(unitPrefab);
-        GridElements[0][0].GetComponent<GridElement>().unit.GetComponent<UnitBase>().Move(1, 0);
+
+        GridElements[size/2][size/2].GetComponent<GridElement>().spawnUnit(unitPrefab);
+        //GridElements[size/2][size/2].GetComponent<GridElement>().unit.GetComponent<UnitBase>().Move(1, 0);
     }
 
     // Update is called once per frame

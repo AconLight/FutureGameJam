@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class GridElement : MonoBehaviour
 {
+    public Dictionary<string, int> earthCounters;
     public int x, z;
     private GridScript grid;
     public GameObject unit;
     // Start is called before the first frame update
     void Start()
     {
+        earthCounters = new Dictionary<string, int>();
+        earthCounters.Add("influence", 0);
         grid = this.transform.parent.GetComponent<GridScript>();
     }
 
@@ -49,7 +52,7 @@ public class GridElement : MonoBehaviour
     }
 
     public GameObject getByXZ(int bx, int bz) {
-        UnityEngine.Debug.Log("Get " + (z+bz) + ", " + (x+bx));
+        //UnityEngine.Debug.Log("Get " + (x+bx) + ", " + (z+bz));
         List<List<GameObject>> temp = this.transform.parent.GetComponent<GridScript>().GridElements;
         if (z+bz < temp.Count && z+bz >= 0) {
             if (x+bx < temp[z+bz].Count && x+bx >= 0) {
