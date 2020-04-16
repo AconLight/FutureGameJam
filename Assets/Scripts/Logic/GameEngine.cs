@@ -12,6 +12,7 @@ public class GameEngine : MonoBehaviour
     private GameObject unitLoader;
     private GameObject gridManager; 
     private List<GameObject> allUnits;
+    private List<GameObject> nextWave = new List<GameObject>();
     private int counter;
     // Start is called before the first frame update
     void Start()
@@ -80,8 +81,6 @@ public class GameEngine : MonoBehaviour
         counter ++;
         
     }
-
-    private List<GameObject> nextWave = new List<GameObject>();
     public void sapwnNextWave() {
         nextWave.AddRange(unitLoader.GetComponent<UnitLoader>().getWave(0));
     }
