@@ -46,3 +46,5 @@ MonoBehaviour:
   state: 0
   gridManagerPrefab: {fileID: 6639701391185190899, guid: 1d746db279bfcc64e9e4476fccb8d455,
     type: 3}
+  unitLoaderPrefab: {fileID: 5742015579073133173, guid: 2e68c7547b905da4ea5004a2ecae3a02,
+    type: 3}

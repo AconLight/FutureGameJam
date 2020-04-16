@@ -33,7 +33,7 @@ public class UnitBase : MonoBehaviour
         mz = (int)(Math.Cos(time)*1.2);
         if (time2 > Math.PI/2) {
             time2 -= (float) Math.PI/2;
-            UnityEngine.Debug.Log(mx + ", " + mz);
+            //UnityEngine.Debug.Log(mx + ", " + mz);
             //Move(mx, mz);
         }
     }
