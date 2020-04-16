@@ -18,7 +18,7 @@ public class UnitBase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Instantiate (animation, new Vector3(transform.position.x,transform.position.y, transform.position.z) , Quaternion.identity, this.transform);
     }
 
     // Update is called once per frame
