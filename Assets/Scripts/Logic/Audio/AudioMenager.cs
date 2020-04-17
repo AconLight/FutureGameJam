@@ -5,18 +5,17 @@ using UnityEngine;
 
 public class AudioMenager : MonoBehaviour
 {
-
-    public GameObject bgMusicPrefab;
-    private GameObject bgMusic;
+    public AudioSource _bgMusic;
+    //public GameObject bgMusicPrefab;
+    private AudioSource bgMusic;
 
     // Start is called before the first frame update
     void Start()
     {
-        bgMusic = Instantiate(bgMusicPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        bgMusic.GetComponent<AudioSource>().Play((ulong)0.2);
-
-        //bgMusic.Play(0.5);
-       // audio.clip = otherClip;
+        bgMusic = Instantiate(_bgMusic, new Vector3(0, 0, 0), Quaternion.identity);
+        //bgMusic.GetComponent<AudioSource>().Play();
+        bgMusic.volume = 0.5F;
+        bgMusic.Play();
     }
 
     // Update is called once per frame
