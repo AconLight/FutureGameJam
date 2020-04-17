@@ -25,6 +25,29 @@ public class GameEngine : MonoBehaviour
         UnityEngine.Debug.Log("nextWaveCount: " + nextWave.Count);
     }
 
+    void Update(){
+        if(counter % 250 == 0){ // once for five
+            // players spawn buildings
+        }
+        if(counter % 50 == 10) { // once
+            spawnOne();
+            detectUnits();
+            computeEarthCounters();
+            computeUnitCounters();
+            sortUnits();
+            allMakeTurn();
+        }
+        counter ++;
+    }
+
+    private void computeEarthCounters() {
+
+    }
+
+    private void computeUnitCounters() {
+        
+    }
+
     void detectUnits()
     {
         allUnits.Clear();
@@ -42,47 +65,26 @@ public class GameEngine : MonoBehaviour
             }
         }
     }
-    void Update(){
-        if(counter % 500 == 0){
-            detectUnits();
-            if(allUnits != null)
-            {
-                Debug.Log("Detected U: " + allUnits.ToString());
-            }else
-            {
-                Debug.Log("KUWA");
-            }
-            
-        }
-        if(counter % 500 == 100){
-            if (nextWave.Count > 0 && gridManager.GetComponent<GridScript>().spawnEnemy(nextWave[0])) {
-                Debug.Log("spawn");
-                nextWave.RemoveAt(0);
-            }
-        }
-        if(counter % 500 == 200){
-            if(allUnits != null)
-            {
-                foreach(GameObject unit in allUnits)
-                {
-                    if(unit.GetComponent<UnitBase>())
-                    {
-                        unit.GetComponent<UnitBase>().Move(1,1);
-                    }else
-                    {
-                        Debug.Log("Kurwa dopiero drugi dzień a tu już syf że ja pierdolę");
-                    } 
-                }
-                
-            }else
-            {
-                Debug.Log("Zdrowy to ty jesteś człowieku");
-            }
-            // all units makes turn
-        }
-        counter ++;
-        
+
+    private void sortUnits() {
+        allUnits.Sort((GameObject a, GameObject b) => 
+            a.GetComponent<UnitBase>().unitCounters["iniciative"] - 
+            b.GetComponent<UnitBase>().unitCounters["iniciative"]
+        );
     }
+
+    private void allMakeTurn() {
+        for (int i = 0; i < allUnits.Count; i++) { // not foreach -> order matters
+            allUnits[i].GetComponent<UnitBase>().makeTurn();
+        }
+    }
+
+    private void spawnOne() {
+        if (nextWave.Count > 0 && gridManager.GetComponent<GridScript>().spawnEnemy(nextWave[0])) {
+            nextWave.RemoveAt(0);
+        } 
+    }
+
     public void sapwnNextWave() {
         nextWave.AddRange(unitLoader.GetComponent<UnitLoader>().getWave(0));
     }

@@ -9,15 +9,16 @@ public class UnitBase : MonoBehaviour
     public int maxHP;
     private int currentHP;
     [Range(1,10)]
-    public int basicIniative;
-    private int currentIniative;
     public List<InfluenceZoneBase> influenceZones;
+    public Dictionary<string, int> unitCounters;
 
     public GameObject animation;
 
     // Start is called before the first frame update
     public void Start()
     {
+        unitCounters = new Dictionary<string, int>();
+        unitCounters.Add("iniciative", 1);
         Instantiate (animation, new Vector3(transform.position.x,transform.position.y, transform.position.z) , Quaternion.identity, this.transform);
     }
 
@@ -36,6 +37,10 @@ public class UnitBase : MonoBehaviour
             //UnityEngine.Debug.Log(mx + ", " + mz);
             //Move(mx, mz);
         }
+    }
+
+    public void makeTurn() {
+        Move(1,0);
     }
 
     public void Move(int x, int z) {
