@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6255779378791482327
+--- !u!1 &1555338495644362068
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 900010801480049184}
-  - component: {fileID: 4531333299291247538}
+  - component: {fileID: 4471663627847479335}
+  - component: {fileID: 1454527372696692452}
   m_Layer: 0
-  m_Name: GameEngine
-  m_TagString: GameController
+  m_Name: AudioMenager
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &900010801480049184
+--- !u!4 &4471663627847479335
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6255779378791482327}
+  m_GameObject: {fileID: 1555338495644362068}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.3057723, y: -1.454571, z: -0.45867658}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4531333299291247538
+--- !u!114 &1454527372696692452
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6255779378791482327}
+  m_GameObject: {fileID: 1555338495644362068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72fb4c85aed5cb94499777f589623759, type: 3}
+  m_Script: {fileID: 11500000, guid: ae59015ff7e4b594fbdadb823645717e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
-  gridManagerPrefab: {fileID: 6639701391185190899, guid: 1d746db279bfcc64e9e4476fccb8d455,
-    type: 3}
-  unitLoaderPrefab: {fileID: 5742015579073133173, guid: 2e68c7547b905da4ea5004a2ecae3a02,
-    type: 3}
-  audioMenagerPrefab: {fileID: 1555338495644362068, guid: 3b5779a094c7c1548a45cb6284c43ab4,
+  bgMusicPrefab: {fileID: 1541459147108804359, guid: a1fddc8529e097e49bc7882c6a4e71d8,
     type: 3}

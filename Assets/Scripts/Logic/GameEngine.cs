@@ -9,6 +9,8 @@ public class GameEngine : MonoBehaviour
     public GameState state;
     public GameObject gridManagerPrefab;
     public GameObject unitLoaderPrefab;
+    public GameObject audioMenagerPrefab;
+    private GameObject audioMenager;
     private GameObject unitLoader;
     private GameObject gridManager; 
     private List<GameObject> allUnits;
@@ -21,6 +23,7 @@ public class GameEngine : MonoBehaviour
         state = GameState.START;
         gridManager = Instantiate(gridManagerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         unitLoader = Instantiate(unitLoaderPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        audioMenager = Instantiate(audioMenagerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         sapwnNextWave();
         UnityEngine.Debug.Log("nextWaveCount: " + nextWave.Count);
     }
