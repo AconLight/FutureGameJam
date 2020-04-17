@@ -29,11 +29,14 @@ public class GameEngine : MonoBehaviour
     }
 
     void Update(){
+        //TODO wiktor plz zrób porządnie, żeby się czekało na ruch gracza przy budowaniu i żeby tura walki/chodzenia trwała x milisekund np 1000
         if(counter % 250 == 0){ // once for five
             // players spawn buildings
         }
         if(counter % 50 == 10) { // once
             spawnOne();
+        }
+        if(counter % 50 == 20) { // once
             detectUnits();
             computeEarthCounters();
             computeUnitCounters();
@@ -44,11 +47,15 @@ public class GameEngine : MonoBehaviour
     }
 
     private void computeEarthCounters() {
-
+        foreach(GameObject unit in allUnits) {
+            unit.GetComponent<UnitBase>().addEarthCounters();
+        }
     }
 
     private void computeUnitCounters() {
-        
+        foreach(GameObject unit in allUnits) {
+            unit.GetComponent<UnitBase>().computeUnitCounters();
+        }
     }
 
     void detectUnits()
@@ -56,11 +63,13 @@ public class GameEngine : MonoBehaviour
         allUnits.Clear();
         foreach( var x in gridManager.GetComponent<GridScript>().GridElements)
         {
-            //Debug.Log(x.ToString() + " DUPAX");
             foreach( var y in x)
             {
                 var gridElement = y.GetComponent<GridElement>();
-                //Debug.Log(Unit.x + ", " + Unit.z + " dupa");
+                List<string> keys = new List<string>(gridElement.earthCounters.Keys);
+                foreach(string key in keys) {
+                    gridElement.earthCounters[key] = 0;
+                }
                 if(gridElement.unit != null)
                 {
                     allUnits.Add(gridElement.unit);
