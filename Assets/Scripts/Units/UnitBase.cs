@@ -24,6 +24,7 @@ public class UnitBase : MonoBehaviour
         unitCounters.Add("iniciative", 1);
         unitEffects = new List<Effect>();
         earthEffects = new List<Effect>();
+        earthEffects.Add(new InfluenceEffect(this, Zone.frame(1)));
         Instantiate (animationObject, new Vector3(transform.position.x,transform.position.y, transform.position.z) , Quaternion.identity, this.transform);
     }
 
