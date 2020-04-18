@@ -12,7 +12,7 @@ public class AudioMenager : MonoBehaviour
     void Start()
     {
         bgMusic = Instantiate(_bgMusic, new Vector3(0, 0, 0), Quaternion.identity);
-        bgMusic.volume = 0F;
+        bgMusic.volume = 0.2F;
         bgMusic.Play();
         
     }
