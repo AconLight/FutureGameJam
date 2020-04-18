@@ -9,7 +9,7 @@ public class UnitBase : MonoBehaviour
     public List<Effect> beforeEffects;
     public List<Effect> afterEffects;
     public Dictionary<string, int> unitCounters;
-
+    public UnitDescription unitDescription;
     public GameObject animationObject;
 
     private UnitBase main;
@@ -23,6 +23,7 @@ public class UnitBase : MonoBehaviour
         unitCounters = new Dictionary<string, int>();
         afterEffects = new List<Effect>();
         beforeEffects = new List<Effect>();
+        unitDescription = new UnitDescription();
         Instantiate (animationObject, new Vector3(transform.position.x,transform.position.y, transform.position.z) , Quaternion.identity, this.transform);
     }
 
