@@ -9,6 +9,7 @@ public class GridScript : MonoBehaviour
     public int size = 10;
 
     public int spawnSpotX = 0, spawnSpotZ = 0;
+    public int mainSpotX = 0, mainSpotZ = 9;
     public List<List<GameObject>> GridElements;
     public GameObject unitPrefab;
 
@@ -32,6 +33,14 @@ public class GridScript : MonoBehaviour
     public Boolean spawnEnemy(GameObject enemy) {
         if (GridElements[spawnSpotZ][spawnSpotX].GetComponent<GridElement>().unit == null) {
             GridElements[spawnSpotZ][spawnSpotX].GetComponent<GridElement>().spawnUnit(enemy);
+            return true;
+        }
+        return false;
+    }
+
+    public Boolean spawnMain(GameObject main) {
+        if (GridElements[mainSpotZ][mainSpotX].GetComponent<GridElement>().unit == null) {
+            GridElements[mainSpotZ][mainSpotX].GetComponent<GridElement>().spawnUnit(main);
             return true;
         }
         return false;

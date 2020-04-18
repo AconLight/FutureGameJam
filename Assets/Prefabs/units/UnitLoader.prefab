@@ -48,4 +48,5 @@ MonoBehaviour:
   - {fileID: 6421811375583619976, guid: a52520989ce7b10468ed30830c3271ff, type: 3}
   - {fileID: 6421811375583619976, guid: a52520989ce7b10468ed30830c3271ff, type: 3}
   - {fileID: 6421811375583619976, guid: a52520989ce7b10468ed30830c3271ff, type: 3}
-  alliesPrefabs: []
+  alliesPrefabs:
+  - {fileID: 1719677629484138560, guid: f52a2bc7e609fee4699ae4a3df8e8cb1, type: 3}

@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System.Threading;
+using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,12 +20,13 @@ public class GridElement : MonoBehaviour
 
     public void spawnUnit(GameObject unitPrefab) {
         this.unit = Instantiate (unitPrefab, new Vector3(transform.position.x,transform.position.y, transform.position.z) , Quaternion.identity, this.transform);
+        GameEngine.dels.Add(() => EnemyFactory.BasicEnemy(this.unit.GetComponent<UnitBase>()));
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public GameObject getLeft() {

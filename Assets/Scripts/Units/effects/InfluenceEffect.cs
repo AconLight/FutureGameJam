@@ -8,7 +8,10 @@ public class InfluenceEffect : Effect
 
     }
 
-    protected override void performOne(GridElement gridElement, int value) {
+    protected override void computeOne(GridElement gridElement, int value) {
         gridElement.earthCounters["influence"] += value;
+    }
+    protected override void performOne(GridElement gridElement, int value) {
+        
     }
 }

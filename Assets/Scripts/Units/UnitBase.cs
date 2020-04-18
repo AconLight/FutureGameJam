@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class UnitBase : MonoBehaviour
 {  
-    public List<Effect> earthEffects;
-    public List<Effect> unitEffects;
+    public List<Effect> beforeEffects;
+    public List<Effect> afterEffects;
     public Dictionary<string, int> unitCounters;
 
     public GameObject animationObject;
@@ -21,10 +21,8 @@ public class UnitBase : MonoBehaviour
     public void Start()
     {
         unitCounters = new Dictionary<string, int>();
-        unitCounters.Add("iniciative", 1);
-        unitEffects = new List<Effect>();
-        earthEffects = new List<Effect>();
-        earthEffects.Add(new InfluenceEffect(this, Zone.frame(1)));
+        afterEffects = new List<Effect>();
+        beforeEffects = new List<Effect>();
         Instantiate (animationObject, new Vector3(transform.position.x,transform.position.y, transform.position.z) , Quaternion.identity, this.transform);
     }
 
@@ -34,38 +32,25 @@ public class UnitBase : MonoBehaviour
 
     }
 
-    public void addEarthCounters() {
-        foreach(Effect effect in earthEffects){
+    public void performBeforeEffects() {
+        foreach(Effect effect in beforeEffects){
+            effect.compute();
+        }
+        foreach(Effect effect in beforeEffects){
             effect.perform();
         }
     }
 
-    public void computeUnitCounters() {
-        foreach(Effect effect in unitEffects){
+    public void performAfterEffects() {
+        foreach(Effect effect in afterEffects){
+            effect.compute();
+        }
+        foreach(Effect effect in afterEffects){
             effect.perform();
         }
     }
 
-    public void makeTurn() {
-        Move(1,0);
-    }
-
-    public void Move(int x, int z) {
-        GameObject gridElement = this.transform.parent.GetComponent<GridElement>().getByXZ(x, z);
-        if (gridElement != null && gridElement.GetComponent<GridElement>().unit == null) {
-            GridElement oldGridElement = this.transform.parent.gameObject.GetComponent<GridElement>();
-            this.transform.SetParent(gridElement.transform);
-            gridElement.GetComponent<GridElement>().unit = this.gameObject;
-            this.transform.position = gridElement.transform.position;
-            oldGridElement.unit = null;
-            // TODO animation goes brrrrrr
-        } else {
-            UnityEngine.Debug.Log("dupa");
-        }
-
-    }
-
-    public void Attack() {
-
+    public void destroyMe() {
+        Destroy(gameObject);
     }
 }

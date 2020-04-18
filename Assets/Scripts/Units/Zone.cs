@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Zone
 {
-    private static int size = 11;
+    public static int size = 5;
     public int[,] zoneValues = new int[size,size];
 
     public Zone() {
@@ -22,7 +22,19 @@ public class Zone
                 zone.zoneValues[z+(size-1)/2-radius,x+(size-1)/2-radius] = 1;
             } 
         } 
-        zone.zoneValues[5, 5] = 0;
+        zone.zoneValues[(size-1)/2, (size-1)/2] = 0;
+        return zone;
+    }
+
+    public static Zone one() {
+        Zone zone = new Zone();
+        for(int x = 0; x < size; x++) {
+            for(int z = 0; z < size; z++) {
+                zone.zoneValues[z,x] = 0;
+            } 
+        }
+        zone.zoneValues[(size-1)/2, (size-1)/2] = 1;
+        Debug.Log((size-1)/2);
         return zone;
     }
 }

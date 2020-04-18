@@ -24,9 +24,13 @@ public class GameEngine : MonoBehaviour
         gridManager = Instantiate(gridManagerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         unitLoader = Instantiate(unitLoaderPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         audioMenager = Instantiate(audioMenagerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        sapwnNextWave();
+        //spawnMain();
+        spawnNextWave();
         UnityEngine.Debug.Log("nextWaveCount: " + nextWave.Count);
     }
+
+    public delegate void Del();
+    public static List<Del> dels = new List<Del>();
 
     void Update(){
         //TODO wiktor plz zrób porządnie, żeby się czekało na ruch gracza przy budowaniu i żeby tura walki/chodzenia trwała x milisekund np 1000
@@ -36,25 +40,30 @@ public class GameEngine : MonoBehaviour
         if(counter % 50 == 10) { // once
             spawnOne();
         }
+        if(counter % 50 == 15) {
+            if (dels.Count > 0) {
+                dels[0]();
+                dels.RemoveAt(0);
+            }
+        }
         if(counter % 50 == 20) { // once
             detectUnits();
-            computeEarthCounters();
-            computeUnitCounters();
+            performBeforeEffects();
             sortUnits();
-            allMakeTurn();
+            performAfterEffects();
         }
         counter ++;
     }
 
-    private void computeEarthCounters() {
+    private void performBeforeEffects() {
         foreach(GameObject unit in allUnits) {
-            unit.GetComponent<UnitBase>().addEarthCounters();
+            unit.GetComponent<UnitBase>().performBeforeEffects();
         }
     }
 
-    private void computeUnitCounters() {
+    private void performAfterEffects() {
         foreach(GameObject unit in allUnits) {
-            unit.GetComponent<UnitBase>().computeUnitCounters();
+            unit.GetComponent<UnitBase>().performAfterEffects();
         }
     }
 
@@ -85,19 +94,17 @@ public class GameEngine : MonoBehaviour
         );
     }
 
-    private void allMakeTurn() {
-        for (int i = 0; i < allUnits.Count; i++) { // not foreach -> order matters
-            allUnits[i].GetComponent<UnitBase>().makeTurn();
-        }
-    }
-
     private void spawnOne() {
         if (nextWave.Count > 0 && gridManager.GetComponent<GridScript>().spawnEnemy(nextWave[0])) {
             nextWave.RemoveAt(0);
         } 
     }
 
-    public void sapwnNextWave() {
+    public void spawnNextWave() {
         nextWave.AddRange(unitLoader.GetComponent<UnitLoader>().getWave(0));
+    }
+
+    public void spawnMain() {
+        gridManager.GetComponent<GridScript>().spawnMain(unitLoader.GetComponent<UnitLoader>().getMain());
     }
 }
