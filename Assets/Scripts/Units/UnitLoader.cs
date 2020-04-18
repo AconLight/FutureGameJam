@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UnitLoader : MonoBehaviour
 {
-    public List<GameObject> enemiesPrefabs;
+    
 
     public List<GameObject> alliesPrefabs;
     // Start is called before the first frame update
