@@ -18,12 +18,4 @@ public class UnitLoader : MonoBehaviour
     {
         
     }
-
-    public List<GameObject> getWave(int level) {
-        return enemiesPrefabs;
-    }
-
-        public GameObject getMain() {
-        return alliesPrefabs[0];
-    }
 }

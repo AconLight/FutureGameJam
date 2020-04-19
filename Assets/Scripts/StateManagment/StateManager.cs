@@ -4,12 +4,12 @@ using UnityEngine;
 
 
 public enum GameState { PLAYER1TURN, PLAYER2TURN, BATTLETURN, LOST }
-public abstract class StateManager
+public class StateManager
 {
     GameState gameState;
     GameEngine gameEngine;
     public StateManager(GameEngine gameEngine) {
-        this.gameState = GameState.PLAYER1TURN;
+        this.gameState = GameState.PLAYER2TURN;
         this.gameEngine = gameEngine;
     }
 
@@ -25,11 +25,13 @@ public abstract class StateManager
                 break;
             }
             case GameState.BATTLETURN: {
-                gameEngine.spawnOne();
-                gameEngine.detectUnits();
-                gameEngine.performBeforeEffects();
-                gameEngine.sortUnits();
-                gameEngine.performAfterEffects();
+                for (int i = 0; i < 2; i++) {
+                    gameEngine.spawnOne();
+                    gameEngine.detectUnits();
+                    gameEngine.performBeforeEffects();
+                    gameEngine.sortUnits();
+                    gameEngine.performAfterEffects();
+                }
                 break;
             }
         }

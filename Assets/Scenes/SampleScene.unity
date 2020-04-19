@@ -341,5 +341,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1555338495644362068, guid: 3b5779a094c7c1548a45cb6284c43ab4,
         type: 3}
+    - target: {fileID: 4531333299291247538, guid: a1a32633b63097e4c8610739069d4f50,
+        type: 3}
+      propertyPath: enemyFactoryPrefab
+      value: 
+      objectReference: {fileID: 6065962748132851802, guid: 2151974b212197144a1ad358762d8e3b,
+        type: 3}
+    - target: {fileID: 4531333299291247538, guid: a1a32633b63097e4c8610739069d4f50,
+        type: 3}
+      propertyPath: buildingFactoryPrefab
+      value: 
+      objectReference: {fileID: 8158473800568419945, guid: 0fd33e73401c3e940a23f920c81a169d,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a32633b63097e4c8610739069d4f50, type: 3}

@@ -10,7 +10,7 @@ public class MoveEffect : Effect
 
     protected override void computeOne(GridElement gridElement, int value) {
         if (value != 1) return;
-        UnityEngine.Debug.Log("value: " + value);
+        //UnityEngine.Debug.Log("value: " + value);
         
         int x = 0;
         int z = 1;
@@ -24,7 +24,7 @@ public class MoveEffect : Effect
             oldGridElement.unit = null;
             // TODO animation goes brrrrrr
         } else {
-            UnityEngine.Debug.Log("dupa");
+            //UnityEngine.Debug.Log("dupa");
         }
     }
 

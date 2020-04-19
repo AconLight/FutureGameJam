@@ -6,11 +6,14 @@ public class GameEngine : MonoBehaviour
 {
     public GameState state;
     public GameObject gridManagerPrefab;
-    public GameObject unitLoaderPrefab;
+    public GameObject enemyFactoryPrefab;
+    public GameObject buildingFactoryPrefab;
     public GameObject audioMenagerPrefab;
     private GameObject audioMenager;
-    private GameObject unitLoader;
+    private GameObject enemyFactory, buildingFactory;
     private GameObject gridManager; 
+
+    private StateManager stateManager;
     private List<GameObject> allUnits;
     private List<GameObject> nextWave = new List<GameObject>();
     private int counter;
@@ -18,22 +21,23 @@ public class GameEngine : MonoBehaviour
     void Start()
     {
         allUnits = new List<GameObject>();
+        stateManager = new StateManager(this);
         gridManager = Instantiate(gridManagerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        unitLoader = Instantiate(unitLoaderPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        enemyFactory = Instantiate(enemyFactoryPrefab, new Vector3(-9999999, 0, 0), Quaternion.identity);
+        buildingFactory = Instantiate(buildingFactoryPrefab, new Vector3(-9999999, 0, 0), Quaternion.identity);
         audioMenager = Instantiate(audioMenagerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        spawnMain();
-        spawnNextWave();
-        UnityEngine.Debug.Log("nextWaveCount: " + nextWave.Count);
     }
 
-    public delegate void Del();
-    public static List<Del> dels = new List<Del>();
-
+    int ctr = 0;
     void Update() {
-        if (dels.Count > 0) {
-            dels[0]();
-            dels.RemoveAt(0);
+        if (ctr == 10) {
+            spawnMain();
+            spawnNextWave();
         }
+        if (ctr == 20) {
+            stateManager.setState(GameState.BATTLETURN);
+        }
+        ctr++;
     }
 
     public void performBeforeEffects() {
@@ -50,6 +54,7 @@ public class GameEngine : MonoBehaviour
 
     public void detectUnits()
     {
+        Debug.Log("detectUnits");
         allUnits.Clear();
         foreach( var x in gridManager.GetComponent<GridScript>().GridElements)
         {
@@ -66,26 +71,29 @@ public class GameEngine : MonoBehaviour
                 }
             }
         }
+        Debug.Log(allUnits.Count);
+
     }
 
     public void sortUnits() {
-        allUnits.Sort((GameObject a, GameObject b) => 
-            a.GetComponent<UnitBase>().unitCounters["iniciative"] - 
-            b.GetComponent<UnitBase>().unitCounters["iniciative"]
-        );
+        // allUnits.Sort((GameObject a, GameObject b) => 
+        //     a.GetComponent<UnitBase>().unitCounters["iniciative"] - 
+        //     b.GetComponent<UnitBase>().unitCounters["iniciative"]
+        // );
     }
 
     public void spawnOne() {
         if (nextWave.Count > 0 && gridManager.GetComponent<GridScript>().spawnEnemy(nextWave[0])) {
             nextWave.RemoveAt(0);
+            Debug.Log("spawnOne");
         } 
     }
 
     public void spawnNextWave() {
-        nextWave.AddRange(unitLoader.GetComponent<UnitLoader>().getWave(0));
+        nextWave.AddRange(enemyFactory.GetComponent<EnemyFactory>().getWave(0));
     }
 
     public void spawnMain() {
-        gridManager.GetComponent<GridScript>().spawnMain(unitLoader.GetComponent<UnitLoader>().getMain());
+        gridManager.GetComponent<GridScript>().spawnMain(buildingFactory.GetComponent<BuildingsFactory>().getMain());
     }
 }

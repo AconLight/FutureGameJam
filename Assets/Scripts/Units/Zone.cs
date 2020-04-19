@@ -34,7 +34,7 @@ public class Zone
             } 
         }
         zone.zoneValues[(size-1)/2, (size-1)/2] = 1;
-        Debug.Log((size-1)/2);
+        //Debug.Log((size-1)/2);
         return zone;
     }
 }

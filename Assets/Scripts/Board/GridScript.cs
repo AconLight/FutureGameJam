@@ -6,10 +6,10 @@ using UnityEngine;
 public class GridScript : MonoBehaviour
 {
     public GameObject gridElementPrefab;
-    public int size = 10;
+    public static int size = 10;
 
     public int spawnSpotX = 0, spawnSpotZ = 0;
-    public int mainSpotX = 0, mainSpotZ = 9;
+    public int mainSpotX = 0, mainSpotZ = size-1;
     public List<List<GameObject>> GridElements;
     public GameObject unitPrefab;
 

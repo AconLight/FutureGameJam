@@ -19,8 +19,9 @@ public class GridElement : MonoBehaviour
     }
 
     public void spawnUnit(GameObject unitPrefab) {
-        this.unit = Instantiate (unitPrefab, new Vector3(transform.position.x,transform.position.y, transform.position.z) , Quaternion.identity, this.transform);
-        GameEngine.dels.Add(() => EnemyFactory.BasicEnemy(this.unit.GetComponent<UnitBase>()));
+        this.unit = unitPrefab;
+        this.unit.transform.position = new Vector3(transform.position.x,transform.position.y, transform.position.z);
+        this.unit.transform.SetParent(this.transform);
     }
 
 

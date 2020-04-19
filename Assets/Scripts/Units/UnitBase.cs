@@ -6,10 +6,6 @@ using UnityEngine;
 
 public class UnitBase : MonoBehaviour
 {  
-    public List<Effect> beforeEffects;
-    public List<Effect> afterEffects;
-    public Dictionary<string, int> unitCounters;
-    public UnitDescription unitDescription;
     public GameObject animationObject;
 
     private UnitBase main;
@@ -17,13 +13,14 @@ public class UnitBase : MonoBehaviour
         this.main = main;
     }
 
+    public Dictionary<string, int> unitCounters = new Dictionary<string, int>();
+    public List<Effect> afterEffects = new List<Effect>();
+    public List<Effect> beforeEffects = new List<Effect>();
+    public UnitDescription unitDescription = new UnitDescription();
     // Start is called before the first frame update
     public void Start()
     {
-        unitCounters = new Dictionary<string, int>();
-        afterEffects = new List<Effect>();
-        beforeEffects = new List<Effect>();
-        unitDescription = new UnitDescription();
+        //UnityEngine.Debug.Log(animationObject == null);
         Instantiate (animationObject, new Vector3(transform.position.x,transform.position.y, transform.position.z) , Quaternion.identity, this.transform);
     }
 

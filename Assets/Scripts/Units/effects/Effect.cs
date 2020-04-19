@@ -29,7 +29,7 @@ public abstract class Effect
         for(int x = 0; x < Zone.size; x++) {
             for(int z = 0; z < Zone.size; z++) {
                 GameObject myGridElementObject = gridElement.getByXZ(x-(Zone.size-1)/2, z-(Zone.size-1)/2);
-                Debug.Log(x + ", " + z + "=" + zone.zoneValues[z,x]);
+                //Debug.Log(x + ", " + z + "=" + zone.zoneValues[z,x]);
                 if (myGridElementObject != null && zone.zoneValues[z,x] != 0) {
                     computeOne(myGridElementObject.GetComponent<GridElement>(), zone.zoneValues[z,x]);
                 }
