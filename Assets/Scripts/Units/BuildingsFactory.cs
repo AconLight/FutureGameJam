@@ -6,6 +6,7 @@ using UnityEngine;
 public class BuildingsFactory: MonoBehaviour
 {
     public GameObject basicBuildingPrefab;
+    public GameObject card;
     //public GameObject basicBuilding;
     void Start() {
         //basicBuilding = Instantiate (basicBuildingPrefab, new Vector3(transform.position.x,transform.position.y, transform.position.z) , Quaternion.identity, this.transform);
@@ -37,6 +38,12 @@ public class BuildingsFactory: MonoBehaviour
     public GameObject getMain() {
         GameObject ret = Instantiate(basicBuildingPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
         BasicBuilding(ret.GetComponent<UnitBase>());
+
+        // Tu se dodałem tworzenie karty
+        GameObject r = Instantiate(card, new Vector2(100, 100), Quaternion.identity) as GameObject;
+        r.transform.parent = GameObject.Find("Canvas").transform;
+        r.GetComponent<CardContent>().SetContent(ret);
+
         Debug.Log("load size: " + ret.GetComponent<UnitBase>().afterEffects.Count);
         return ret;
     }

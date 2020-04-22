@@ -45,4 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basicBuildingPrefab: {fileID: 7133544350437758839, guid: 3f12133bda6c5c1458885f07527a74fa,
     type: 3}
-  basicBuilding: {fileID: 0}
+  card: {fileID: 8797268477134530620, guid: cdf0bb8aacdbbd24faf1ca232f984384, type: 3}
