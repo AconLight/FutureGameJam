@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,7 +42,16 @@ public class GameEngine : MonoBehaviour
         if (ctr == 20) {
             stateManager.setState(GameState.BATTLETURN);
         }
+        if (ctr > 50 && ctr%60 == 0) {
+            stateManager.update();
+        }
         ctr++;
+    }
+
+    public void startBattle() {
+        foreach(GameObject unit in allUnits) {
+            unit.GetComponent<UnitBase>().unitCounters["ap"] = unit.GetComponent<UnitBase>().unitCounters["apMax"];
+        }
     }
 
     public void performBeforeEffects() {
@@ -50,11 +60,19 @@ public class GameEngine : MonoBehaviour
         }
     }
 
-    public void performAfterEffects() {
+    public Boolean performAfterEffects() {
         Debug.Log("perform after effects");
+        Boolean isEnd = true;
         foreach(GameObject unit in allUnits) {
-            unit.GetComponent<UnitBase>().performAfterEffects();
+            if (unit.GetComponent<UnitBase>().unitCounters["ap"] > 0 || unit.GetComponent<UnitBase>().unitCounters["isEnemy"] == 0) {
+                unit.GetComponent<UnitBase>().performAfterEffects();
+                unit.GetComponent<UnitBase>().unitCounters["ap"]--;
+                if (unit.GetComponent<UnitBase>().unitCounters["isEnemy"] == 1) {
+                    isEnd = false;
+                }
+            }
         }
+        return isEnd;
     }
 
     public void detectUnits()
@@ -73,7 +91,8 @@ public class GameEngine : MonoBehaviour
                 if(gridElement.unit != null)
                 {
                     allUnits.Add(gridElement.unit);
-                    Debug.Log("detedted one, after effects size: " + gridElement.unit.GetComponent<UnitBase>().afterEffects.Count);
+                    
+                    //Debug.Log("detedted one, after effects size: " + gridElement.unit.GetComponent<UnitBase>().afterEffects.Count);
                 }
             }
         }
@@ -88,11 +107,13 @@ public class GameEngine : MonoBehaviour
         // );
     }
 
-    public void spawnOne() {
+    public Boolean spawnOne() {
         if (nextWave.Count > 0 && gridManager.GetComponent<GridScript>().spawnEnemy(nextWave[0])) {
             nextWave.RemoveAt(0);
             Debug.Log("spawnOne");
+            return true;
         } 
+        return false;
     }
 
     public void spawnNextWave() {

@@ -31,7 +31,7 @@ public class GridElement : MonoBehaviour
     void Update()
     {
         if (unit != null){
-            UnityEngine.Debug.Log("update count: " + unit.GetComponent<UnitBase>().afterEffects.Count);
+            //UnityEngine.Debug.Log("update count: " + unit.GetComponent<UnitBase>().afterEffects.Count);
         }
     }
 

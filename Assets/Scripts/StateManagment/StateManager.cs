@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,29 @@ public class StateManager
         this.gameEngine = gameEngine;
     }
 
+    public void update() {
+        switch(this.gameState) {
+            case GameState.PLAYER1TURN: {
+
+                break;
+            }
+            case GameState.PLAYER2TURN: {
+
+                break;
+            }
+            case GameState.BATTLETURN: {
+                gameEngine.spawnOne();
+                gameEngine.detectUnits();
+                gameEngine.performBeforeEffects();
+                gameEngine.sortUnits();
+                if (gameEngine.performAfterEffects()) {
+                    setState(GameState.BATTLETURN);
+                }
+                break;
+            }
+        }
+    }
+
     public void setState(GameState gameState) {
         this.gameState = gameState;
         switch(this.gameState) {
@@ -25,13 +49,7 @@ public class StateManager
                 break;
             }
             case GameState.BATTLETURN: {
-                for (int i = 0; i < 5; i++) {
-                    gameEngine.spawnOne();
-                    gameEngine.detectUnits();
-                    gameEngine.performBeforeEffects();
-                    gameEngine.sortUnits();
-                    gameEngine.performAfterEffects();
-                }
+                gameEngine.startBattle();
                 break;
             }
         }

@@ -20,6 +20,8 @@ public class BuildingsFactory: MonoBehaviour
     }
     public static void BasicBuilding(UnitBase unit) {
         Debug.Log("building load");
+        unit.unitCounters.Add("ap", 1);
+        unit.unitCounters.Add("apMax", 1);
         unit.unitCounters.Add("iniciative", 1);
         unit.unitCounters.Add("hp", 3);
         unit.unitCounters.Add("speed", 2);

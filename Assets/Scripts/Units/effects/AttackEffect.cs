@@ -15,8 +15,9 @@ public class AttackEffect : Effect
     protected override void performOne(GridElement gridElement, int value) {
         if (gridElement.unit != null && unitBase.unitCounters["isEnemy"] != gridElement.unit.GetComponent<UnitBase>().unitCounters["isEnemy"]) {
             gridElement.unit.GetComponent<UnitBase>().unitCounters["hp"] -= value;
+            Debug.Log("attack");
             if (gridElement.unit.GetComponent<UnitBase>().unitCounters["hp"] <= 0) {
-                //gridElement.unit.GetComponent<UnitBase>().destroyMe();
+                gridElement.unit.GetComponent<UnitBase>().destroyMe();
             }
         }
     }

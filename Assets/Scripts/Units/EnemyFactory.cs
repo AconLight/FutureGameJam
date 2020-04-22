@@ -21,6 +21,8 @@ public class EnemyFactory: MonoBehaviour
 
     public void BasicEnemy(UnitBase unit) {
         Debug.Log("enemy load");
+        unit.unitCounters.Add("ap", 2);
+        unit.unitCounters.Add("apMax", 2);
         unit.unitCounters.Add("iniciative", 1);
         unit.unitCounters.Add("hp", 3);
         unit.unitCounters.Add("speed", 2);
