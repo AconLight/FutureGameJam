@@ -32,7 +32,7 @@ public class GameEngine : MonoBehaviour
     void Update() {
         if(ctr == 5)
         {
-            audioMenager.GetComponent<AudioMenager>().initAudio("menu");
+           audioMenager.GetComponent<AudioMenager>().initAudio("menu");
         }
         if (ctr == 10) {
             spawnMain();
