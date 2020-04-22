@@ -6,9 +6,9 @@ using UnityEngine;
 public class BuildingsFactory: MonoBehaviour
 {
     public GameObject basicBuildingPrefab;
-    public GameObject basicBuilding;
+    //public GameObject basicBuilding;
     void Start() {
-        basicBuilding = Instantiate (basicBuildingPrefab, new Vector3(transform.position.x,transform.position.y, transform.position.z) , Quaternion.identity, this.transform);
+        //basicBuilding = Instantiate (basicBuildingPrefab, new Vector3(transform.position.x,transform.position.y, transform.position.z) , Quaternion.identity, this.transform);
     }
 
     int ctr = 0;
@@ -32,8 +32,9 @@ public class BuildingsFactory: MonoBehaviour
     }
 
     public GameObject getMain() {
-        GameObject ret = Instantiate(basicBuilding, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+        GameObject ret = Instantiate(basicBuildingPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
         BasicBuilding(ret.GetComponent<UnitBase>());
+        Debug.Log("load size: " + ret.GetComponent<UnitBase>().afterEffects.Count);
         return ret;
     }
 }

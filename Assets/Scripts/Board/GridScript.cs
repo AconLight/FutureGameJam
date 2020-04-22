@@ -39,6 +39,7 @@ public class GridScript : MonoBehaviour
     }
 
     public Boolean spawnMain(GameObject main) {
+        Debug.Log("grid script size: " + main.GetComponent<UnitBase>().afterEffects.Count);
         if (GridElements[mainSpotZ][mainSpotX].GetComponent<GridElement>().unit == null) {
             GridElements[mainSpotZ][mainSpotX].GetComponent<GridElement>().spawnUnit(main);
             return true;
