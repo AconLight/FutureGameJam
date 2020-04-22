@@ -26,7 +26,7 @@ public class EnemyFactory: MonoBehaviour
         unit.unitCounters.Add("speed", 2);
         unit.unitCounters.Add("maxSpeed", 2);
         unit.unitCounters.Add("isEnemy", 1);
-        //unit.audioMenager.initAudio("enemy");
+        //unit.audioMenager.GetComponent<AudioMenager>().initAudio("menu");
         unit.unitDescription.setCardDescription("Nieumarly alien", "Jeden z pierwszych odkrytych nieumarłych lecz nieżywych ocalałych");
         unit.afterEffects.Add(new MoveEffect(unit, Zone.one()));
         unit.afterEffects.Add(new AttackEffect(unit, Zone.frame(1)));

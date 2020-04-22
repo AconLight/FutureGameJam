@@ -45,6 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationObject: {fileID: 6587038856122991658, guid: 7cfbf883a922c444f9f81d2aba614042,
     type: 3}
-  _audioMenager: {fileID: 1454527372696692452, guid: 3b5779a094c7c1548a45cb6284c43ab4,
+  _audioMenager: {fileID: 1555338495644362068, guid: 3b5779a094c7c1548a45cb6284c43ab4,
     type: 3}
   audioMenager: {fileID: 0}

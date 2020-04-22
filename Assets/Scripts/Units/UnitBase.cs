@@ -16,8 +16,8 @@ public class UnitBase : MonoBehaviour
     public List<Effect> afterEffects = new List<Effect>();
     public List<Effect> beforeEffects = new List<Effect>();
     public UnitDescription unitDescription = new UnitDescription();
-    public AudioMenager _audioMenager;
-    public AudioMenager audioMenager;
+    public GameObject _audioMenager;
+    public GameObject audioMenager;
     // Start is called before the first frame update
     public void Start()
     {

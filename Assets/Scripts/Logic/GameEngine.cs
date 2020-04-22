@@ -8,8 +8,8 @@ public class GameEngine : MonoBehaviour
     public GameObject gridManagerPrefab;
     public GameObject enemyFactoryPrefab;
     public GameObject buildingFactoryPrefab;
-    public AudioMenager audioMenagerPrefab;
-    private AudioMenager audioMenager;
+    public GameObject audioMenagerPrefab;
+    private GameObject audioMenager;
     private GameObject enemyFactory, buildingFactory;
     private GameObject gridManager; 
 
@@ -32,7 +32,7 @@ public class GameEngine : MonoBehaviour
     void Update() {
         if(ctr == 5)
         {
-            audioMenager.initAudio("menu");
+            audioMenager.GetComponent<AudioMenager>().initAudio("menu");
         }
         if (ctr == 10) {
             spawnMain();
