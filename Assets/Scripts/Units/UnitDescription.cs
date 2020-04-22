@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UnitDescription
 {
-    string cardDescription;
-    string cardName;
+    public string cardDescription;
+    public string cardName;
 
     public UnitDescription()
     {
