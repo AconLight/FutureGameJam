@@ -21,7 +21,6 @@ public class UnitBase : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        audioMenager = Instantiate(_audioMenager, new Vector3(0, 0, 0), Quaternion.identity);
         Instantiate (animationObject, new Vector3(transform.position.x,transform.position.y, transform.position.z) , Quaternion.identity, this.transform);
     }
     //dupa

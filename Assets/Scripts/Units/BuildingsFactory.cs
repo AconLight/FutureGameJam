@@ -25,7 +25,8 @@ public class BuildingsFactory: MonoBehaviour
         unit.unitCounters.Add("speed", 2);
         unit.unitCounters.Add("maxSpeed", 2);
         unit.unitCounters.Add("isEnemy", 0);
-        unit.audioMenager.GetComponent<AudioMenager>().initAudio("menu");
+        unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
         unit.unitDescription.setCardDescription("Super Karciora", "Karciora zrodzona z głębi odchłani kibla publicznego");
         unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1)));
         unit.afterEffects.Add(new AttackEffect(unit, Zone.frame(1)));

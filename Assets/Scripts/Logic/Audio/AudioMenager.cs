@@ -63,7 +63,8 @@ public class AudioMenager : MonoBehaviour
 
     void building()
     {
-        spawn = Instantiate(_buildingSpawn);
+        spawn = Instantiate(_buildingSpawn, new Vector3(-9999999, 0, 0), Quaternion.identity);
+        //spawn.Play();
     }
 
     void menu()
