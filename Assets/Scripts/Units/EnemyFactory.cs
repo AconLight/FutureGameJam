@@ -32,8 +32,12 @@ public class EnemyFactory: MonoBehaviour
 
     public List<GameObject> getWave(int level) {
         List<GameObject> wave = new List<GameObject>();
-        wave.Add(Instantiate(basicEnemy, new Vector3(-99999, 0, 0), Quaternion.identity));
-        wave.Add(Instantiate(basicEnemy, new Vector3(-99999, 0, 0), Quaternion.identity));
+        for (int i = 0; i < 3; i++) {
+            GameObject obj = Instantiate(basicEnemy, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+            BasicEnemy(obj.GetComponent<UnitBase>());
+            wave.Add(obj);
+        }
+        
         return wave;
     }
 }

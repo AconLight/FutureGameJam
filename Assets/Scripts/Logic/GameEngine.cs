@@ -47,6 +47,7 @@ public class GameEngine : MonoBehaviour
     }
 
     public void performAfterEffects() {
+        Debug.Log("perform after effects");
         foreach(GameObject unit in allUnits) {
             unit.GetComponent<UnitBase>().performAfterEffects();
         }
@@ -68,6 +69,7 @@ public class GameEngine : MonoBehaviour
                 if(gridElement.unit != null)
                 {
                     allUnits.Add(gridElement.unit);
+                    Debug.Log("detedted one, after effects size: " + gridElement.unit.GetComponent<UnitBase>().afterEffects.Count);
                 }
             }
         }

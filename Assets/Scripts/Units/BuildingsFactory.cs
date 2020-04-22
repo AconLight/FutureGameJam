@@ -14,7 +14,7 @@ public class BuildingsFactory: MonoBehaviour
     int ctr = 0;
     void Update() {
         if (ctr == 5){
-            BasicBuilding(basicBuilding.GetComponent<UnitBase>());
+            //BasicBuilding(basicBuilding.GetComponent<UnitBase>());
         }
         ctr++;
     }
@@ -31,6 +31,8 @@ public class BuildingsFactory: MonoBehaviour
     }
 
     public GameObject getMain() {
-        return Instantiate(basicBuilding, new Vector3(-99999, 0, 0), Quaternion.identity);
+        GameObject ret = Instantiate(basicBuilding, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+        BasicBuilding(ret.GetComponent<UnitBase>());
+        return ret;
     }
 }

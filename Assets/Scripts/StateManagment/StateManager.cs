@@ -25,7 +25,7 @@ public class StateManager
                 break;
             }
             case GameState.BATTLETURN: {
-                for (int i = 0; i < 2; i++) {
+                for (int i = 0; i < 5; i++) {
                     gameEngine.spawnOne();
                     gameEngine.detectUnits();
                     gameEngine.performBeforeEffects();
