@@ -46,7 +46,9 @@ MonoBehaviour:
   state: 0
   gridManagerPrefab: {fileID: 6639701391185190899, guid: 1d746db279bfcc64e9e4476fccb8d455,
     type: 3}
-  unitLoaderPrefab: {fileID: 5742015579073133173, guid: 2e68c7547b905da4ea5004a2ecae3a02,
+  enemyFactoryPrefab: {fileID: 6065962748132851802, guid: 2151974b212197144a1ad358762d8e3b,
     type: 3}
-  audioMenagerPrefab: {fileID: 1555338495644362068, guid: 3b5779a094c7c1548a45cb6284c43ab4,
+  buildingFactoryPrefab: {fileID: 8158473800568419945, guid: 0fd33e73401c3e940a23f920c81a169d,
+    type: 3}
+  audioMenagerPrefab: {fileID: 1454527372696692452, guid: 3b5779a094c7c1548a45cb6284c43ab4,
     type: 3}

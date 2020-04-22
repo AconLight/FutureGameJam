@@ -45,3 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bgMusic: {fileID: 1541459147108804356, guid: a1fddc8529e097e49bc7882c6a4e71d8,
     type: 3}
+  _enemySpawn: {fileID: 4695544271716423703, guid: f3646bc650d78954f96d1d0dbb3a3014,
+    type: 3}
+  _buildingSpawn: {fileID: 2480484074938743590, guid: 8be524a0c1510554a9280f5188cba65b,
+    type: 3}

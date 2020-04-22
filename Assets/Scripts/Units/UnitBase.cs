@@ -7,7 +7,6 @@ using UnityEngine;
 public class UnitBase : MonoBehaviour
 {  
     public GameObject animationObject;
-
     private UnitBase main;
     public void setMain(UnitBase main) {
         this.main = main;
@@ -17,10 +16,16 @@ public class UnitBase : MonoBehaviour
     public List<Effect> afterEffects = new List<Effect>();
     public List<Effect> beforeEffects = new List<Effect>();
     public UnitDescription unitDescription = new UnitDescription();
+    public AudioMenager _audioMenager;
+    public AudioMenager audioMenager;
     // Start is called before the first frame update
     public void Start()
     {
-        //UnityEngine.Debug.Log(animationObject == null);
+        unitCounters = new Dictionary<string, int>();
+        afterEffects = new List<Effect>();
+        beforeEffects = new List<Effect>();
+        unitDescription = new UnitDescription();
+        audioMenager = Instantiate(_audioMenager, new Vector3(0, 0, 0), Quaternion.identity);
         Instantiate (animationObject, new Vector3(transform.position.x,transform.position.y, transform.position.z) , Quaternion.identity, this.transform);
     }
 
