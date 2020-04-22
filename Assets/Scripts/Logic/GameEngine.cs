@@ -101,10 +101,10 @@ public class GameEngine : MonoBehaviour
     }
 
     public void sortUnits() {
-        // allUnits.Sort((GameObject a, GameObject b) => 
-        //     a.GetComponent<UnitBase>().unitCounters["iniciative"] - 
-        //     b.GetComponent<UnitBase>().unitCounters["iniciative"]
-        // );
+        allUnits.Sort((GameObject a, GameObject b) => 
+            a.GetComponent<UnitBase>().unitCounters["iniciative"] - 
+            b.GetComponent<UnitBase>().unitCounters["iniciative"]
+        );
     }
 
     public Boolean spawnOne() {
