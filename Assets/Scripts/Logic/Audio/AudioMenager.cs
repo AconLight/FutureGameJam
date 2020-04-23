@@ -14,6 +14,7 @@ public class AudioMenager : MonoBehaviour
     
     AudioSource spawn;
     AudioSource attack;
+    AudioSource dead;
 
 
     ArrayList basicEnemySounds;
@@ -64,7 +65,7 @@ public class AudioMenager : MonoBehaviour
     void building()
     {
         spawn = Instantiate(_buildingSpawn, new Vector3(-9999999, 0, 0), Quaternion.identity);
-        //spawn.Play();
+        spawn.Play();
     }
 
     void menu()
@@ -74,4 +75,20 @@ public class AudioMenager : MonoBehaviour
         bgMusic.Play();
         
     }
+
+    public void playSpawn()
+    {
+        spawn.Play();
+    }
+
+    public void playAttack()
+    {
+        attack.Play();
+    }
+
+    public void playDead()
+    {
+        dead.Play();
+    }
+
 }

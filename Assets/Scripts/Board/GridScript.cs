@@ -33,6 +33,7 @@ public class GridScript : MonoBehaviour
     public Boolean spawnEnemy(GameObject enemy) {
         if (GridElements[spawnSpotZ][spawnSpotX].GetComponent<GridElement>().unit == null) {
             GridElements[spawnSpotZ][spawnSpotX].GetComponent<GridElement>().spawnUnit(enemy);
+            enemy.GetComponent<UnitBase>().audioMenager.GetComponent<AudioMenager>().playSpawn();
             return true;
         }
         return false;
