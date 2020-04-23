@@ -20,7 +20,7 @@ public class BuildingsFactory: MonoBehaviour
         ctr++;
     }
     public static void BasicBuilding(UnitBase unit) {
-        Debug.Log("building load");
+        //Debug.Log("building load");
         unit.unitCounters.Add("ap", 1);
         unit.unitCounters.Add("apMax", 1);
         unit.unitCounters.Add("iniciative", 1);
@@ -38,13 +38,27 @@ public class BuildingsFactory: MonoBehaviour
     public GameObject getMain() {
         GameObject ret = Instantiate(basicBuildingPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
         BasicBuilding(ret.GetComponent<UnitBase>());
-
-        // Tu se dodałem tworzenie karty
-        GameObject r = Instantiate(card, new Vector2(100, 100), Quaternion.identity) as GameObject;
-        r.transform.parent = GameObject.Find("Canvas").transform;
-        r.GetComponent<CardContent>().SetContent(ret);
-
-        Debug.Log("load size: " + ret.GetComponent<UnitBase>().afterEffects.Count);
+        //Debug.Log("load size: " + ret.GetComponent<UnitBase>().afterEffects.Count);
         return ret;
+    }
+
+    private void addCardToHand(GameObject unit, float posX) {
+        // Tu se dodałem tworzenie karty
+        GameObject r = Instantiate(card, new Vector2(posX + 100, 100), Quaternion.identity) as GameObject;
+        r.transform.parent = GameObject.Find("Canvas").transform;
+        r.GetComponent<CardContent>().SetContent(unit);
+    }
+
+    private List<GameObject> deck = new List<GameObject>();
+    public void createDeck() {
+        deck.Add(getMain());
+    }
+
+    private int handSize = 3;
+    public void createHand() {
+        System.Random rand = new System.Random();
+        for (int i = 0; i < handSize; i++) {
+            addCardToHand(deck[rand.Next(deck.Count)], i*200);
+        }
     }
 }

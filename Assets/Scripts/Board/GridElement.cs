@@ -10,20 +10,24 @@ public class GridElement : MonoBehaviour
     public int x, z;
     private GridScript grid;
     public GameObject unit;
+
+    public GameObject cube;
     // Start is called before the first frame update
     void Start()
     {
         earthCounters = new Dictionary<string, int>();
         earthCounters.Add("influence", 0);
         grid = this.transform.parent.GetComponent<GridScript>();
+        GameObject cb = Instantiate(cube, transform.position, Quaternion.identity, transform) as GameObject;
+        cb.GetComponent<Click>().canvas = FindObjectOfType<GameEngine>().GetComponent<GameEngine>().canvas;
     }
 
     public void spawnUnit(GameObject unitPrefab) {
-        UnityEngine.Debug.Log("grid element size: " + unitPrefab.GetComponent<UnitBase>().afterEffects.Count);
+        //UnityEngine.Debug.Log("grid element size: " + unitPrefab.GetComponent<UnitBase>().afterEffects.Count);
         this.unit = unitPrefab;
         this.unit.transform.position = new Vector3(transform.position.x,transform.position.y, transform.position.z);
         this.unit.transform.SetParent(this.transform);
-        UnityEngine.Debug.Log("grid element unit size: " + unit.GetComponent<UnitBase>().afterEffects.Count);
+        //UnityEngine.Debug.Log("grid element unit size: " + unit.GetComponent<UnitBase>().afterEffects.Count);
     }
 
 

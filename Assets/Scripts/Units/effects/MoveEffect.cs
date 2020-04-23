@@ -9,9 +9,9 @@ public class MoveEffect : Effect
     }
 
     protected override void computeOne(GridElement gridElement, int value) {
-        UnityEngine.Debug.Log("move: try");
+        //UnityEngine.Debug.Log("move: try");
         if (value != 1) return;
-        UnityEngine.Debug.Log("move: compute");
+        //UnityEngine.Debug.Log("move: compute");
         
         int x = 0;
         int z = 1;

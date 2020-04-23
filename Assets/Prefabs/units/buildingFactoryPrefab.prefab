@@ -46,3 +46,5 @@ MonoBehaviour:
   basicBuildingPrefab: {fileID: 7133544350437758839, guid: 3f12133bda6c5c1458885f07527a74fa,
     type: 3}
   card: {fileID: 8797268477134530620, guid: cdf0bb8aacdbbd24faf1ca232f984384, type: 3}
+  cardPlace: {fileID: 3297936289333669818, guid: 8a114bf3d2b9c4049806085e2a2f89cc,
+    type: 3}

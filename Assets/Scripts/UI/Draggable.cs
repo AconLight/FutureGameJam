@@ -22,13 +22,19 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public void OnDrag(PointerEventData eventData)
     {
         this.transform.position = eventData.position + dragOffset;
+        //Debug.Log(eventData.position);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+
+        if (eventData.position.x > 150 && eventData.position.x < 250 &&
+            eventData.position.y > 850 && eventData.position.y < 950) {
+                transform.parent.GetComponentInChildren<CardPlaceContent>().SetContent(gameObject);
+            }
+
         if(false)
         {
-            // TODO place over some object
         }
         else
         {

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class GameEngine : MonoBehaviour
 {
+    public GameObject canvas;
     public GameState state;
     public GameObject gridManagerPrefab;
     public GameObject enemyFactoryPrefab;
@@ -38,6 +39,8 @@ public class GameEngine : MonoBehaviour
         if (ctr == 10) {
             spawnMain();
             spawnNextWave();
+            buildingFactory.GetComponent<BuildingsFactory>().createDeck();
+            buildingFactory.GetComponent<BuildingsFactory>().createHand();
         }
         if (ctr == 20) {
             stateManager.setState(GameState.BATTLETURN);
@@ -61,7 +64,7 @@ public class GameEngine : MonoBehaviour
     }
 
     public Boolean performAfterEffects() {
-        Debug.Log("perform after effects");
+        //Debug.Log("perform after effects");
         Boolean isEnd = true;
         foreach(GameObject unit in allUnits) {
             if (unit.GetComponent<UnitBase>().unitCounters["ap"] > 0 || unit.GetComponent<UnitBase>().unitCounters["isEnemy"] == 0) {
@@ -77,7 +80,7 @@ public class GameEngine : MonoBehaviour
 
     public void detectUnits()
     {
-        Debug.Log("detectUnits");
+        //Debug.Log("detectUnits");
         allUnits.Clear();
         foreach( var x in gridManager.GetComponent<GridScript>().GridElements)
         {
@@ -96,7 +99,7 @@ public class GameEngine : MonoBehaviour
                 }
             }
         }
-        Debug.Log(allUnits.Count);
+        //Debug.Log(allUnits.Count);
 
     }
 
@@ -110,7 +113,7 @@ public class GameEngine : MonoBehaviour
     public Boolean spawnOne() {
         if (nextWave.Count > 0 && gridManager.GetComponent<GridScript>().spawnEnemy(nextWave[0])) {
             nextWave.RemoveAt(0);
-            Debug.Log("spawnOne");
+            //Debug.Log("spawnOne");
             return true;
         } 
         return false;
@@ -122,5 +125,9 @@ public class GameEngine : MonoBehaviour
 
     public void spawnMain() {
         gridManager.GetComponent<GridScript>().spawnMain(buildingFactory.GetComponent<BuildingsFactory>().getMain());
+    }
+
+    public void spawn(GameObject unit, GameObject gridElement) {
+        gridElement.GetComponent<GridElement>().spawnUnit(unit);
     }
 }

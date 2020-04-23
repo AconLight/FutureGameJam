@@ -36,7 +36,7 @@ public class AudioMenager : MonoBehaviour
                 menu();
                 break;
             default:
-                UnityEngine.Debug.LogWarning("INIT AUDIO Z DUPY ARGUMENT: " + unitType);
+                //UnityEngine.Debug.LogWarning("INIT AUDIO Z DUPY ARGUMENT: " + unitType);
                 break;
         }
     }

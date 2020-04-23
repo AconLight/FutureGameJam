@@ -20,7 +20,7 @@ public class EnemyFactory: MonoBehaviour
     }
 
     public void BasicEnemy(UnitBase unit) {
-        Debug.Log("enemy load");
+        //Debug.Log("enemy load");
         unit.unitCounters.Add("ap", 2);
         unit.unitCounters.Add("apMax", 2);
         unit.unitCounters.Add("iniciative", 1);
@@ -41,7 +41,7 @@ public class EnemyFactory: MonoBehaviour
             GameObject obj = Instantiate(basicEnemyPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
             BasicEnemy(obj.GetComponent<UnitBase>());
             wave.Add(obj);
-            Debug.Log(obj.GetComponent<UnitBase>().afterEffects.Count);
+            //Debug.Log(obj.GetComponent<UnitBase>().afterEffects.Count);
         }
         
         return wave;

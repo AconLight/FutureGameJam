@@ -7,6 +7,8 @@ using UnityEngine;
 public class UnitBase : MonoBehaviour
 {  
     public GameObject animationObject;
+
+    public Sprite sprite;
     private UnitBase main;
     public void setMain(UnitBase main) {
         this.main = main;
@@ -40,13 +42,13 @@ public class UnitBase : MonoBehaviour
     }
 
     public void performAfterEffects() {
-        UnityEngine.Debug.Log("perform after effects unit base");
+        //UnityEngine.Debug.Log("perform after effects unit base");
         foreach(Effect effect in afterEffects){
-            UnityEngine.Debug.Log("compute one after effects unit base");
+            //UnityEngine.Debug.Log("compute one after effects unit base");
             effect.compute();
         }
         foreach(Effect effect in afterEffects){
-            UnityEngine.Debug.Log("perform one after effects unit base");
+            //UnityEngine.Debug.Log("perform one after effects unit base");
             effect.perform();
         }
     }
