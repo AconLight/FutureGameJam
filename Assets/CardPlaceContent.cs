@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CardPlaceContent : MonoBehaviour
 {
-    private GameObject unit, cardContent;
+    public GameObject unit, cardContent;
 
     public Sprite missingSprite;
     public GameObject gridElement;
@@ -43,11 +43,38 @@ public class CardPlaceContent : MonoBehaviour
         sprite.GetComponent<RawImage>().texture = unit.GetComponent<UnitBase>().sprite.texture;
     }
 
+        public void SetByGridElement(GameObject elem)
+    {
+        this.unit = elem.GetComponent<GridElement>().unit;
+
+        if (unit != null) {
+            var unitDescription = unit.GetComponent<UnitBase>().unitDescription;
+
+            Text title = gameObject.GetComponentsInChildren<Text>()[0];
+            title.text = unitDescription.cardName;
+
+            Text description = gameObject.GetComponentsInChildren<Text>()[1];
+            description.text = unitDescription.cardDescription;
+
+            RawImage sprite = gameObject.GetComponentsInChildren<RawImage>()[0];
+            sprite.GetComponent<RawImage>().texture = unit.GetComponent<UnitBase>().sprite.texture;
+        } else {
+            Text title = gameObject.GetComponentsInChildren<Text>()[0];
+            Text description = gameObject.GetComponentsInChildren<Text>()[1];
+            title.text = "Drag a card here";
+            description.text = "";
+            RawImage sprite = gameObject.GetComponentsInChildren<RawImage>()[0];
+            sprite.GetComponent<RawImage>().texture = missingSprite.texture;
+        }
+    }
+
     public void acceptCard() {
         GameEngine.GetComponent<GameEngine>().spawn(unit, gridElement);
         GameEngine.GetComponent<GameEngine>().endTurn();
         cardContent.GetComponent<CardContent>().DestroyMe();
-        RawImage sprite = gameObject.GetComponentsInChildren<RawImage>()[0];
-        sprite.GetComponent<RawImage>().texture = missingSprite.texture;
+        transform.position = new Vector3(-9999, transform.position.y, transform.position.z);
+        cardContent = null;
+        gridElement = null;
+        unit = null;
     }
 }

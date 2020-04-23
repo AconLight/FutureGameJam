@@ -26,6 +26,7 @@ public class Click : MonoBehaviour
         }
         else {
             rc.gridElement = transform.parent.gameObject;
+            rc.SetByGridElement(transform.parent.gameObject);
             rc.transform.position = new Vector3(200, rc.transform.position.y, rc.transform.position.z);
         }
     }
