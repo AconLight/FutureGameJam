@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BuildingsFactory: MonoBehaviour
 {
-    public GameObject basicBuildingPrefab;
+    public GameObject basicBuildingPrefab, bishopPrefab;
     public GameObject card;
     //public GameObject basicBuilding;
     void Start() {
@@ -35,9 +35,32 @@ public class BuildingsFactory: MonoBehaviour
         unit.afterEffects.Add(new AttackEffect(unit, Zone.frame(1)));
     }
 
+    public static void Bishop(UnitBase unit) {
+        //Debug.Log("building load");
+        unit.unitCounters.Add("ap", 1);
+        unit.unitCounters.Add("apMax", 1);
+        unit.unitCounters.Add("iniciative", 1);
+        unit.unitCounters.Add("hp", 3);
+        unit.unitCounters.Add("speed", 2);
+        unit.unitCounters.Add("maxSpeed", 2);
+        unit.unitCounters.Add("isEnemy", 0);
+        unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
+        unit.unitDescription.setCardDescription("Średnia Karciora", "Karciora zrodzona z najtwardszych gołębi po tej stronie Retkini");
+        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1)));
+        unit.afterEffects.Add(new AttackEffect(unit, Zone.frame(1)));
+    }
+
     public GameObject getMain() {
         GameObject ret = Instantiate(basicBuildingPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
         BasicBuilding(ret.GetComponent<UnitBase>());
+        //Debug.Log("load size: " + ret.GetComponent<UnitBase>().afterEffects.Count);
+        return ret;
+    }
+
+    public GameObject getBishop() {
+        GameObject ret = Instantiate(bishopPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+        Bishop(ret.GetComponent<UnitBase>());
         //Debug.Log("load size: " + ret.GetComponent<UnitBase>().afterEffects.Count);
         return ret;
     }
@@ -52,8 +75,8 @@ public class BuildingsFactory: MonoBehaviour
     private List<GameObject> deck = new List<GameObject>();
     public void createDeck() {
         deck.Add(getMain());
-        deck.Add(getMain());
-        deck.Add(getMain());
+        deck.Add(getBishop());
+        deck.Add(getBishop());
     }
 
     private int handSize = 3;

@@ -13,7 +13,7 @@ public class GridScript : MonoBehaviour
     public List<List<GameObject>> GridElements;
     public GameObject unitPrefab;
 
-
+    float scale = 1.1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +21,7 @@ public class GridScript : MonoBehaviour
         for (int z = -size/2; z < size/2; z++) {
             List<GameObject> temp = new List<GameObject>();
             for (int x = -size/2; x < size/2; x++) {
-                GameObject go = Instantiate (gridElementPrefab, new Vector3(transform.position.x + x,transform.position.y, transform.position.z + z) , Quaternion.identity, this.transform);
+                GameObject go = Instantiate (gridElementPrefab, new Vector3(transform.position.x + x*scale,transform.position.y, transform.position.z + z*scale) , Quaternion.identity, this.transform);
                 go.GetComponent<GridElement>().x = x+size/2;
                 go.GetComponent<GridElement>().z = z+size/2;
                 temp.Add(go);

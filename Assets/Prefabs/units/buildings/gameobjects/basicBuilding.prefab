@@ -43,9 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e40029b91dbecf54cbb342333f219b7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationObject: {fileID: 6587038856122991658, guid: 7cfbf883a922c444f9f81d2aba614042,
+  animationObject: {fileID: 8047809556171748526, guid: 3f76f3ad7ba33a843b36d9d0873795a6,
     type: 3}
-  sprite: {fileID: 21300000, guid: a6378817d7dc279419110379568e11f3, type: 3}
+  sprite: {fileID: 21300000, guid: 062fe265b2bc5e34b8935795be24d34e, type: 3}
   _audioMenager: {fileID: 1555338495644362068, guid: 3b5779a094c7c1548a45cb6284c43ab4,
     type: 3}
   audioMenager: {fileID: 0}
