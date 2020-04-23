@@ -7,6 +7,7 @@ public class CardPlaceContent : MonoBehaviour
 {
     private GameObject unit, cardContent;
 
+    public Sprite missingSprite;
     public GameObject gridElement;
     public GameObject GameEngine;
 
@@ -15,6 +16,8 @@ public class CardPlaceContent : MonoBehaviour
     {
         Button button = gameObject.GetComponentsInChildren<Button>()[0];
         button.onClick.AddListener(acceptCard);
+        RawImage sprite = gameObject.GetComponentsInChildren<RawImage>()[0];
+        sprite.GetComponent<RawImage>().texture = missingSprite.texture;
     }
     // Update is called once per frame
     void Update()
@@ -42,6 +45,9 @@ public class CardPlaceContent : MonoBehaviour
 
     public void acceptCard() {
         GameEngine.GetComponent<GameEngine>().spawn(unit, gridElement);
+        GameEngine.GetComponent<GameEngine>().endTurn();
         cardContent.GetComponent<CardContent>().DestroyMe();
+        RawImage sprite = gameObject.GetComponentsInChildren<RawImage>()[0];
+        sprite.GetComponent<RawImage>().texture = missingSprite.texture;
     }
 }

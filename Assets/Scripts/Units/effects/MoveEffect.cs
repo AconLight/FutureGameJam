@@ -5,7 +5,8 @@ using UnityEngine;
 public class MoveEffect : Effect
 {
     public MoveEffect(UnitBase unitBase, Zone zone): base(unitBase, zone) {
-
+        name = "Move";
+        description = "Moves a unit toward its enemies";
     }
 
     protected override void computeOne(GridElement gridElement, int value) {

@@ -151,7 +151,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -350}
+  m_AnchoredPosition: {x: -200, y: -350}
   m_SizeDelta: {x: 300, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &17960005
@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 379a86d531d93a342a6ce76b1c6260de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  missingSprite: {fileID: 21300000, guid: 51a53c1e148c3da4085a23d2a1db97be, type: 3}
   gridElement: {fileID: 0}
   GameEngine: {fileID: 902091650}
 --- !u!114 &17960006

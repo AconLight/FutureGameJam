@@ -5,7 +5,8 @@ using UnityEngine;
 public class AttackEffect : Effect
 {
     public AttackEffect(UnitBase unitBase, Zone zone): base(unitBase, zone) {
-
+        name = "Attack";
+        description = "Damages enemies by given value";
     }
 
     protected override void computeOne(GridElement gridElement, int value) {

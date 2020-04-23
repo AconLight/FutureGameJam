@@ -52,13 +52,17 @@ public class BuildingsFactory: MonoBehaviour
     private List<GameObject> deck = new List<GameObject>();
     public void createDeck() {
         deck.Add(getMain());
+        deck.Add(getMain());
+        deck.Add(getMain());
     }
 
     private int handSize = 3;
     public void createHand() {
         System.Random rand = new System.Random();
         for (int i = 0; i < handSize; i++) {
-            addCardToHand(deck[rand.Next(deck.Count)], i*200);
+            int id = rand.Next(deck.Count);
+            addCardToHand(deck[id], i*200);
+            deck.RemoveAt(id);
         }
     }
 }

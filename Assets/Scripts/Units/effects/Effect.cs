@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Effect
 {
+    public string name, description;
     protected Zone zone;
     protected UnitBase unitBase;
     public Effect(UnitBase unitBase, Zone zone) {

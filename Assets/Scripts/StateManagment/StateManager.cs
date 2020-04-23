@@ -30,7 +30,7 @@ public class StateManager
                 gameEngine.performBeforeEffects();
                 gameEngine.sortUnits();
                 if (gameEngine.performAfterEffects()) {
-                    setState(GameState.BATTLETURN);
+                    setState(GameState.PLAYER1TURN);
                 }
                 break;
             }

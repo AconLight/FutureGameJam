@@ -43,12 +43,16 @@ public class GameEngine : MonoBehaviour
             buildingFactory.GetComponent<BuildingsFactory>().createHand();
         }
         if (ctr == 20) {
-            stateManager.setState(GameState.BATTLETURN);
+            stateManager.setState(GameState.PLAYER1TURN);
         }
         if (ctr > 50 && ctr%60 == 0) {
             stateManager.update();
         }
         ctr++;
+    }
+
+    public void endTurn() {
+        stateManager.setState(GameState.BATTLETURN);
     }
 
     public void startBattle() {
@@ -129,5 +133,9 @@ public class GameEngine : MonoBehaviour
 
     public void spawn(GameObject unit, GameObject gridElement) {
         gridElement.GetComponent<GridElement>().spawnUnit(unit);
+    }
+
+    public void spawnById(int unitId, int gridElementX, int gridElementZ) {
+        // TODO
     }
 }
