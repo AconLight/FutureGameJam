@@ -23,13 +23,14 @@ public class UnitBase : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        Instantiate (animationObject, new Vector3(transform.position.x,transform.position.y, transform.position.z) , Quaternion.identity, this.transform);
+        Quaternion q = Quaternion.Euler(23, 135, 0);
+        Instantiate (animationObject, new Vector3(transform.position.x,transform.position.y, transform.position.z) , q, this.transform);
     }
     //dupa
     // Update is called once per frame
     void Update()
     {
-        
+        //transform.LookAt();
     }
 
     public void performBeforeEffects() {
