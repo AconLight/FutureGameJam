@@ -42,5 +42,6 @@ public class CardPlaceContent : MonoBehaviour
 
     public void acceptCard() {
         GameEngine.GetComponent<GameEngine>().spawn(unit, gridElement);
+        cardContent.GetComponent<CardContent>().DestroyMe();
     }
 }

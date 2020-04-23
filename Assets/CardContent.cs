@@ -23,6 +23,10 @@ public class CardContent : MonoBehaviour
         
     }
 
+    public void DestroyMe() {
+        Destroy(gameObject);
+    }
+
     public void SetContent(GameObject unit)
     {
         this.unit = unit;
