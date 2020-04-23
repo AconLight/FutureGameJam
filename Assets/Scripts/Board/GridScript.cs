@@ -6,7 +6,7 @@ using UnityEngine;
 public class GridScript : MonoBehaviour
 {
     public GameObject gridElementPrefab;
-    public static int size = 10;
+    public static int size = 6;
 
     public int spawnSpotX = 0, spawnSpotZ = 0;
     public int mainSpotX = 0, mainSpotZ = size-1;
@@ -40,7 +40,7 @@ public class GridScript : MonoBehaviour
     }
 
     public Boolean spawnMain(GameObject main) {
-        //Debug.Log("grid script size: " + main.GetComponent<UnitBase>().afterEffects.Count);
+        Debug.Log("mainSpotX: " + mainSpotX + ", " + mainSpotZ);
         if (GridElements[mainSpotZ][mainSpotX].GetComponent<GridElement>().unit == null) {
             GridElements[mainSpotZ][mainSpotX].GetComponent<GridElement>().spawnUnit(main);
             return true;
