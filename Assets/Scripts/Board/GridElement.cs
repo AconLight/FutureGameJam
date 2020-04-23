@@ -18,7 +18,7 @@ public class GridElement : MonoBehaviour
         earthCounters = new Dictionary<string, int>();
         earthCounters.Add("influence", 0);
         grid = this.transform.parent.GetComponent<GridScript>();
-        GameObject cb = Instantiate(cube, new Vector3(transform.position.x,transform.position.y-0.7f, transform.position.z), Quaternion.identity, transform) as GameObject;
+        GameObject cb = Instantiate(cube, new Vector3(transform.position.x,transform.position.y-0.9f, transform.position.z), Quaternion.identity, transform) as GameObject;
         cb.GetComponent<Click>().canvas = FindObjectOfType<GameEngine>().GetComponent<GameEngine>().canvas;
     }
 
