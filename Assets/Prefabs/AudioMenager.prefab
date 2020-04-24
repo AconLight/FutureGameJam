@@ -47,5 +47,15 @@ MonoBehaviour:
     type: 3}
   _enemySpawn: {fileID: 4695544271716423703, guid: f3646bc650d78954f96d1d0dbb3a3014,
     type: 3}
+  _enemyAttack1: {fileID: 6964443172646506622, guid: e051ce1f011d0b64b95d514b33ff1c89,
+    type: 3}
+  _enemyAttack2: {fileID: 4186994650832380381, guid: 8af3e93a3c6a95242b5415f6348bbfae,
+    type: 3}
   _buildingSpawn: {fileID: 2480484074938743590, guid: 8be524a0c1510554a9280f5188cba65b,
+    type: 3}
+  _buildingAttack1: {fileID: 704521152680386278, guid: 3804b94f522bb3b46835aabea25a7214,
+    type: 3}
+  _buildingAttack2: {fileID: 1737800886003252919, guid: d4c00e56afc5a8d46911c60233d22e96,
+    type: 3}
+  _buildingAttack3: {fileID: 7897622996614434137, guid: 664e62894bc153c4c9420735d0a1d25a,
     type: 3}

@@ -1,23 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 
 public class AudioMenager : MonoBehaviour
 {
     public AudioSource _bgMusic;
+
     public AudioSource _enemySpawn;
+    public AudioSource _enemyAttack1;
+    public AudioSource _enemyAttack2;
+
     public AudioSource _buildingSpawn;
+    public AudioSource _buildingAttack1;
+    public AudioSource _buildingAttack2;
+    public AudioSource _buildingAttack3;
+    
 
     private AudioSource bgMusic;
+    private AudioSource spawn;
+    private List<AudioSource> attack; 
 
-    
-    AudioSource spawn;
-    AudioSource attack;
     AudioSource dead;
 
-
-    ArrayList basicEnemySounds;
 
     public AudioMenager()
     {
@@ -60,18 +64,24 @@ public class AudioMenager : MonoBehaviour
    void enemy()
     {
         spawn = Instantiate(_enemySpawn);
+        attack = new List<AudioSource>();
+        attack.Add(Instantiate(_enemyAttack2));
+        attack.Add(Instantiate(_enemyAttack1));
     }
 
     void building()
     {
-        spawn = Instantiate(_buildingSpawn, new Vector3(-9999999, 0, 0), Quaternion.identity);
-        spawn.Play();
+        spawn = Instantiate(_buildingSpawn);
+        attack = new List<AudioSource>();
+        attack.Add(Instantiate(_buildingAttack1));
+        attack.Add(Instantiate(_buildingAttack2));
+        attack.Add(Instantiate(_buildingAttack3));
     }
 
     void menu()
     {
         bgMusic = Instantiate(_bgMusic);
-        bgMusic.volume = 1F;
+        bgMusic.volume = 0.2F;
         bgMusic.Play();
         
     }
@@ -83,7 +93,9 @@ public class AudioMenager : MonoBehaviour
 
     public void playAttack()
     {
-        attack.Play();
+        int jebacTenRandom = Random.Range(0, attack.Count);
+        attack[jebacTenRandom].Play();
+
     }
 
     public void playDead()
