@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Zone
 {
-    public static int size = 5;
+    public static int size = 7;
     public int[,] zoneValues = new int[size,size];
 
     public Zone() {
@@ -13,6 +13,10 @@ public class Zone
                 zoneValues[z,x] = 0;
             } 
         }
+    }
+
+    public Zone(int[,] zone){
+        zoneValues = zone;
     }
 
     public static Zone frame(int radius) {

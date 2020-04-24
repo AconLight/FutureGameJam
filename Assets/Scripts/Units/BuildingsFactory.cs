@@ -19,37 +19,6 @@ public class BuildingsFactory: MonoBehaviour
         }
         ctr++;
     }
-    public static void BasicBuilding(UnitBase unit) {
-        //Debug.Log("building load");
-        unit.unitCounters.Add("ap", 1);
-        unit.unitCounters.Add("apMax", 1);
-        unit.unitCounters.Add("iniciative", 1);
-        unit.unitCounters.Add("hp", 3);
-        unit.unitCounters.Add("speed", 2);
-        unit.unitCounters.Add("maxSpeed", 2);
-        unit.unitCounters.Add("isEnemy", 0);
-        unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-        unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
-        unit.unitDescription.setCardDescription("Super Karciora", "Karciora zrodzona z głębi odchłani kibla publicznego");
-        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1)));
-        unit.afterEffects.Add(new AttackEffect(unit, Zone.frame(1)));
-    }
-
-    public static void Bishop(UnitBase unit) {
-        //Debug.Log("building load");
-        unit.unitCounters.Add("ap", 1);
-        unit.unitCounters.Add("apMax", 1);
-        unit.unitCounters.Add("iniciative", 1);
-        unit.unitCounters.Add("hp", 3);
-        unit.unitCounters.Add("speed", 2);
-        unit.unitCounters.Add("maxSpeed", 2);
-        unit.unitCounters.Add("isEnemy", 0);
-        unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-        unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
-        unit.unitDescription.setCardDescription("Średnia Karciora", "Karciora zrodzona z najtwardszych gołębi po tej stronie Retkini");
-        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1)));
-        unit.afterEffects.Add(new AttackEffect(unit, Zone.frame(1)));
-    }
 
     public GameObject getMain() {
         GameObject ret = Instantiate(basicBuildingPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
@@ -88,4 +57,139 @@ public class BuildingsFactory: MonoBehaviour
             deck.RemoveAt(id);
         }
     }
+
+    public static void BasicBuilding(UnitBase unit) {
+        //Debug.Log("building load");
+        unit.unitCounters.Add("ap", 1);
+        unit.unitCounters.Add("apMax", 1);
+        unit.unitCounters.Add("iniciative", 1);
+        unit.unitCounters.Add("hp", 3);
+        unit.unitCounters.Add("speed", 2);
+        unit.unitCounters.Add("maxSpeed", 2);
+        unit.unitCounters.Add("isEnemy", 0);
+        unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
+        unit.unitDescription.setCardDescription("Super Karciora", "Karciora zrodzona z głębi odchłani kibla publicznego");
+        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1)));
+        unit.afterEffects.Add(new AttackEffect(unit, Zone.frame(1)));
+    }
+
+    public static void Bishop(UnitBase unit) {
+        //Debug.Log("building load");
+        unit.unitCounters.Add("ap", 1);
+        unit.unitCounters.Add("apMax", 1);
+        unit.unitCounters.Add("iniciative", 1);
+        unit.unitCounters.Add("hp", 3);
+        unit.unitCounters.Add("speed", 2);
+        unit.unitCounters.Add("maxSpeed", 2);
+        unit.unitCounters.Add("isEnemy", 0);
+        unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
+        unit.unitDescription.setCardDescription("Średnia Karciora", "Karciora zrodzona z najtwardszych gołębi po tej stronie Retkini");
+        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1)));
+        unit.afterEffects.Add(new AttackEffect(unit, Zone.frame(1)));
+    }
+    public static void Turtle(UnitBase unit)
+    {
+        unit.unitCounters.Add("ap", 1);
+        unit.unitCounters.Add("apMax", 1);
+        unit.unitCounters.Add("iniciative", 1);
+        unit.unitCounters.Add("hp", 3);
+        unit.unitCounters.Add("speed", 2);
+        unit.unitCounters.Add("maxSpeed", 2);
+        unit.unitCounters.Add("isEnemy", 0);
+        unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
+        unit.unitDescription.setCardDescription("Umocniony Budynek", "Stworzona do walki na krótkim dystansie");
+        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1)));
+        int[,] zone = 
+        {
+            {0,0,0,0,0,0,0},
+            {0,2,0,0,0,2,0},
+            {0,0,2,1,2,0,0},
+            {0,0,1,0,1,0,0},
+            {0,0,2,1,2,0,0},
+            {0,2,0,0,0,2,0},
+            {0,0,0,0,0,0,0},
+        };
+        unit.afterEffects.Add(new AttackEffect(unit, new Zone(zone)));
+    }
+    public static void Mortar(UnitBase unit)
+    {
+        unit.unitCounters.Add("ap", 1);
+        unit.unitCounters.Add("apMax", 1);
+        unit.unitCounters.Add("iniciative", 1);
+        unit.unitCounters.Add("hp", 3);
+        unit.unitCounters.Add("speed", 2);
+        unit.unitCounters.Add("maxSpeed", 2);
+        unit.unitCounters.Add("isEnemy", 0);
+        unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
+        unit.unitDescription.setCardDescription("Moździeż", "Nieskuteczna na bliskim dystanicie");
+        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1)));
+        int[,] zone = 
+        {
+            {2,2,3,3,3,2,2},
+            {2,3,0,0,0,3,2},
+            {3,0,0,0,0,0,3},
+            {3,0,0,0,0,0,3},
+            {3,0,0,0,0,0,3},
+            {2,3,0,0,0,3,2},
+            {2,2,3,3,3,2,2},
+        };
+        unit.afterEffects.Add(new AttackEffect(unit, new Zone(zone)));
+    }
+    public static void SniperTower(UnitBase unit)
+    {
+        unit.unitCounters.Add("ap", 1);
+        unit.unitCounters.Add("apMax", 1);
+        unit.unitCounters.Add("iniciative", 1);
+        unit.unitCounters.Add("hp", 3);
+        unit.unitCounters.Add("speed", 2);
+        unit.unitCounters.Add("maxSpeed", 2);
+        unit.unitCounters.Add("isEnemy", 0);
+        unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
+        unit.unitDescription.setCardDescription("Strzelec wyborowy", "Sprzątnie zombiaka z odległości 3 klocków");
+        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1)));
+        int[,] zone = 
+        {
+            {0,0,0,2,0,0,0},
+            {0,0,0,2,0,0,0},
+            {0,0,0,2,0,0,0},
+            {2,2,2,0,2,2,2},
+            {0,0,0,2,0,0,0},
+            {0,0,0,2,0,0,0},
+            {0,0,0,2,0,0,0},
+        };
+        unit.afterEffects.Add(new AttackEffect(unit, new Zone(zone)));
+    }
+    public static void SniperTowerExploAmmo(UnitBase unit)
+    {
+        unit.unitCounters.Add("ap", 1);
+        unit.unitCounters.Add("apMax", 1);
+        unit.unitCounters.Add("iniciative", 1);
+        unit.unitCounters.Add("hp", 3);
+        unit.unitCounters.Add("speed", 2);
+        unit.unitCounters.Add("maxSpeed", 2);
+        unit.unitCounters.Add("isEnemy", 0);
+        unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
+        unit.unitDescription.setCardDescription("Strzelec wyborowy z amunicją wybuchową", "Zasięg niby taki sam ale obrażenia inne");
+        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1)));
+        int[,] zone = 
+        {
+            {0,0,1,1,1,0,0},
+            {0,0,0,1,0,0,0},
+            {1,0,0,2,0,0,1},
+            {1,1,2,0,2,1,1},
+            {1,0,0,2,0,0,1},
+            {0,0,0,1,0,0,0},
+            {0,0,1,1,1,0,0},
+        };
+        unit.afterEffects.Add(new AttackEffect(unit, new Zone(zone)));
+    }
+
+
+
 }
