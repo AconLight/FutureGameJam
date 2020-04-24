@@ -45,7 +45,7 @@ public class GameEngine : MonoBehaviour
         if (ctr == 20) {
             stateManager.setState(GameState.PLAYER1TURN);
         }
-        if (ctr > 50 && ctr%60 == 0) {
+        if (ctr > 50 && ctr%250 == 0) {
             stateManager.update();
         }
         ctr++;
