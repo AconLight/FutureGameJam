@@ -13,6 +13,11 @@ public class AttackEffect : Effect
         
     }
 
+    public override void perform() {
+        base.perform();
+        // play sound
+    }
+
     protected override void performOne(GridElement gridElement, int value) {
         if (gridElement.unit != null && unitBase.unitCounters["isEnemy"] != gridElement.unit.GetComponent<UnitBase>().unitCounters["isEnemy"]) {
             gridElement.unit.GetComponent<UnitBase>().unitCounters["hp"] -= value;

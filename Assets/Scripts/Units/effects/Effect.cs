@@ -12,7 +12,7 @@ public abstract class Effect
         this.unitBase = unitBase;
     }
 
-    public void perform() {
+    public virtual void perform() {
         GridElement gridElement = unitBase.transform.parent.GetComponent<GridElement>();
         for(int x = 0; x < Zone.size; x++) {
             for(int z = 0; z < Zone.size; z++) {
@@ -25,7 +25,7 @@ public abstract class Effect
     }
     protected abstract void performOne(GridElement gridElement, int value);
 
-    public void compute() {
+    public virtual void compute() {
         GridElement gridElement = unitBase.transform.parent.GetComponent<GridElement>();
         for(int x = 0; x < Zone.size; x++) {
             for(int z = 0; z < Zone.size; z++) {
