@@ -15,7 +15,7 @@ public class AttackEffect : Effect
 
     public override void perform() {
         base.perform();
-        // play sound
+        base.unitBase.audioMenager.GetComponent<AudioMenager>().playAttack();
     }
 
     protected override void performOne(GridElement gridElement, int value) {
