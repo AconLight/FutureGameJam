@@ -25,7 +25,7 @@ public class GridElement : MonoBehaviour
     public void spawnUnit(GameObject unitPrefab) {
         //UnityEngine.Debug.Log("grid element size: " + unitPrefab.GetComponent<UnitBase>().afterEffects.Count);
         this.unit = unitPrefab;
-        this.unit.transform.position = new Vector3(transform.position.x,transform.position.y, transform.position.z);
+        this.unit.transform.position = new Vector3(transform.position.x - 0.1f,transform.position.y, transform.position.z + 0.1f);
         this.unit.transform.SetParent(this.transform);
         //UnityEngine.Debug.Log("grid element unit size: " + unit.GetComponent<UnitBase>().afterEffects.Count);
     }
