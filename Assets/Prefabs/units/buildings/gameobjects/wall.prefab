@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6069082076921879971
+--- !u!1001 &527422483204828855
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 7133544350437758839, guid: 3f12133bda6c5c1458885f07527a74fa,
         type: 3}
       propertyPath: m_Name
-      value: basicBuilding
+      value: wall
       objectReference: {fileID: 0}
     - target: {fileID: 7123896695755327790, guid: 3f12133bda6c5c1458885f07527a74fa,
         type: 3}
@@ -67,5 +67,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7382260874125840752, guid: 3f12133bda6c5c1458885f07527a74fa,
+        type: 3}
+      propertyPath: animationObject
+      value: 
+      objectReference: {fileID: 3682951984049974871, guid: d0e4a79848b654943adfbb8e73cb6c42,
+        type: 3}
+    - target: {fileID: 7382260874125840752, guid: 3f12133bda6c5c1458885f07527a74fa,
+        type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6a43dde3dc4fc874db176e229efbadeb,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f12133bda6c5c1458885f07527a74fa, type: 3}
