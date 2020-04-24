@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BuildingsFactory: MonoBehaviour
 {
-    public GameObject basicBuildingPrefab, bishopPrefab;
+    public GameObject basicBuildingPrefab, bishopPrefab, sniperTowerExploAmmo, turtle, mortar, wall, sniperTower;
     public GameObject card;
     //public GameObject basicBuilding;
     void Start() {
@@ -33,6 +33,36 @@ public class BuildingsFactory: MonoBehaviour
         //Debug.Log("load size: " + ret.GetComponent<UnitBase>().afterEffects.Count);
         return ret;
     }
+    public GameObject getTurtle() {
+        GameObject ret = Instantiate(turtle, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+        Turtle(ret.GetComponent<UnitBase>());
+        //Debug.Log("load size: " + ret.GetComponent<UnitBase>().afterEffects.Count);
+        return ret;
+    }
+    public GameObject getMortar() {
+        GameObject ret = Instantiate(mortar, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+        Mortar(ret.GetComponent<UnitBase>());
+        //Debug.Log("load size: " + ret.GetComponent<UnitBase>().afterEffects.Count);
+        return ret;
+    }
+    public GameObject getSniperTower() {
+        GameObject ret = Instantiate(sniperTower, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+        SniperTower(ret.GetComponent<UnitBase>());
+        //Debug.Log("load size: " + ret.GetComponent<UnitBase>().afterEffects.Count);
+        return ret;
+    }
+    public GameObject getSniperTowerExploAmmo() {
+        GameObject ret = Instantiate(sniperTowerExploAmmo, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+        SniperTowerExploAmmo(ret.GetComponent<UnitBase>());
+        //Debug.Log("load size: " + ret.GetComponent<UnitBase>().afterEffects.Count);
+        return ret;
+    }
+    public GameObject getWall() {
+        GameObject ret = Instantiate(wall, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+        Wall(ret.GetComponent<UnitBase>());
+        //Debug.Log("load size: " + ret.GetComponent<UnitBase>().afterEffects.Count);
+        return ret;
+    }
 
     private void addCardToHand(GameObject unit, float posX) {
         // Tu se dodałem tworzenie karty
@@ -43,12 +73,14 @@ public class BuildingsFactory: MonoBehaviour
 
     private List<GameObject> deck = new List<GameObject>();
     public void createDeck() {
-        deck.Add(getMain());
-        deck.Add(getBishop());
-        deck.Add(getBishop());
+        deck.Add(getWall());
+        deck.Add(getMortar());
+        deck.Add(getSniperTower());
+        deck.Add(getTurtle());
+        deck.Add(getSniperTowerExploAmmo());
     }
 
-    private int handSize = 3;
+    private int handSize = 5;
     public void createHand() {
         System.Random rand = new System.Random();
         for (int i = 0; i < handSize; i++) {
@@ -189,7 +221,21 @@ public class BuildingsFactory: MonoBehaviour
         };
         unit.afterEffects.Add(new AttackEffect(unit, new Zone(zone)));
     }
-
+    public static void Wall(UnitBase unit)
+    {
+        unit.unitCounters.Add("ap", 1);
+        unit.unitCounters.Add("apMax", 1);
+        unit.unitCounters.Add("iniciative", 1);
+        unit.unitCounters.Add("hp", 10);
+        unit.unitCounters.Add("speed", 2);
+        unit.unitCounters.Add("maxSpeed", 2);
+        unit.unitCounters.Add("isEnemy", 0);
+        unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
+        unit.unitDescription.setCardDescription("Sciana", "Zwykła ściana nic dodać nic ująć");
+        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1)));
+        unit.afterEffects.Add(new AttackEffect(unit, new Zone()));
+    }
 
 
 }

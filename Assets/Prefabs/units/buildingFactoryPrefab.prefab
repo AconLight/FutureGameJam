@@ -43,8 +43,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397ef8bfe20627d4280ab486bce50ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicBuildingPrefab: {fileID: 7133544350437758839, guid: 3f12133bda6c5c1458885f07527a74fa,
+  basicBuildingPrefab: {fileID: 270195288369563851, guid: a4ccfb2f6f49ab343b345661746f504a,
     type: 3}
   bishopPrefab: {fileID: 757871884016656850, guid: 3558e208a2ac1f44cbdf05d53e5e5bef,
+    type: 3}
+  sniperTowerExploAmmo: {fileID: 5399489060026879124, guid: 426265613e1a8cb41a79734ebaf24607,
+    type: 3}
+  turtle: {fileID: 7133544350437758839, guid: 3f12133bda6c5c1458885f07527a74fa, type: 3}
+  mortar: {fileID: 1562772946474009119, guid: 5d4ada8c34cc44745993b4c609942c57, type: 3}
+  wall: {fileID: 7326995123255654848, guid: 32c2291241fa6204994fd8e72ee1fda5, type: 3}
+  sniperTower: {fileID: 3947058954840312532, guid: 0fd6b15df52dfab4eb1ba2a7a37d79be,
     type: 3}
   card: {fileID: 8797268477134530620, guid: cdf0bb8aacdbbd24faf1ca232f984384, type: 3}
