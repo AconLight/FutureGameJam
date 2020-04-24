@@ -11,6 +11,13 @@ public class CardPlaceContent : MonoBehaviour
     public GameObject gridElement;
     public GameObject GameEngine;
 
+    public Text attackText; 
+    public Text influenceText; 
+    public Text moveText;
+
+    private static Color activeColor = new Color(0.196f,0.196f,0.196f,1);
+    private static Color disabledColor = Color.gray;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +37,9 @@ public class CardPlaceContent : MonoBehaviour
         this.cardContent = cardContent;
         this.unit = cardContent.GetComponent<CardContent>().getUnit();
 
-        var unitDescription = unit.GetComponent<UnitBase>().unitDescription;
+        var unitScript = unit.GetComponent<UnitBase>();
+
+        var unitDescription = unitScript.unitDescription;
 
         Text title = gameObject.GetComponentsInChildren<Text>()[0];
         title.text = unitDescription.cardName;
@@ -38,6 +47,42 @@ public class CardPlaceContent : MonoBehaviour
         Text description = gameObject.GetComponentsInChildren<Text>()[1];
         description.text = unitDescription.cardDescription;
 
+        var afterEffects = unitScript.afterEffects;
+        var beforeEffects = unitScript.beforeEffects;
+
+        bool attackSet = false;
+        bool influenceSet = false;
+        bool moveSet = false;
+
+        foreach (var ae in afterEffects)
+        {
+            if(ae.GetType() == typeof(AttackEffect)) {
+                attackText.color = activeColor;
+                attackSet = true;
+            }
+            if(ae.GetType() == typeof(MoveEffect)) {
+                moveText.color = activeColor;
+                moveSet = true;
+            }
+        }
+
+        foreach (var be in beforeEffects)
+        {
+            if(be.GetType() == typeof(InfluenceEffect)) {
+                influenceText.color = activeColor;
+                influenceSet = true;
+            }
+        }
+
+        attackText.text = "Attack";
+        if(!attackSet) attackText.color = disabledColor;
+        
+        influenceText.text = "Influence";
+        if(!influenceSet) influenceText.color = disabledColor;
+
+        moveText.text = "Move";
+        if(!moveSet) moveText.color = disabledColor;
+     
 
         RawImage sprite = gameObject.GetComponentsInChildren<RawImage>()[0];
         sprite.GetComponent<RawImage>().texture = unit.GetComponent<UnitBase>().sprite.texture;
