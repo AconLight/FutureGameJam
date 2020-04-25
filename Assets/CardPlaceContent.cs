@@ -34,6 +34,20 @@ public class CardPlaceContent : MonoBehaviour
 
     public void SetContent(GameObject cardContent)
     {
+        if (gridElement.GetComponent<GridElement>().unit != null && !gridElement.GetComponent<GridElement>().isPlaceholder) return;
+        
+        Debug.Log("influence: " + gridElement.GetComponent<GridElement>().earthCounters["influence"]);
+        Debug.Log("req influence: " + cardContent.GetComponent<CardContent>().getUnit().GetComponent<UnitBase>().unitCounters["reqInfluence"]);
+
+        if (gridElement.GetComponent<GridElement>().earthCounters["influence"] < cardContent.GetComponent<CardContent>().getUnit().GetComponent<UnitBase>().unitCounters["reqInfluence"]) {
+            return;
+        }
+
+        if (gridElement.GetComponent<GridElement>().isPlaceholder) {
+            this.unit.transform.SetParent(cardContent.transform);
+            this.unit.transform.position = new Vector3(-999999, 0, 0);
+        }
+        
         this.cardContent = cardContent;
         this.unit = cardContent.GetComponent<CardContent>().getUnit();
 
@@ -94,7 +108,7 @@ public class CardPlaceContent : MonoBehaviour
         sprite.GetComponent<RawImage>().texture = unit.GetComponent<UnitBase>().sprite.texture;
     }
 
-        public void SetByGridElement(GameObject elem)
+    public void SetByGridElement(GameObject elem)
     {
         this.unit = elem.GetComponent<GridElement>().unit;
 

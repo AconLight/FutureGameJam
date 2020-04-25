@@ -20,12 +20,19 @@ public class GridElement : MonoBehaviour
     public GameObject cube;
     // Start is called before the first frame update
 
+    // Animation garbage variables
+    private static float step = 0.05f;
+    private bool isGoingUp;
+    private float maxYPosition;
+    private float scale = 0;
+
     public void up(int i) {
-        transform.position = new Vector3(transform.position.x,0 + 0.3f*i, transform.position.z);
+        maxYPosition = 0.3f*i;
+        isGoingUp = true;
     }
 
     public void down() {
-        transform.position = new Vector3(transform.position.x,0, transform.position.z);
+        isGoingUp = false;
     }
 
     public GameObject cb;
@@ -42,8 +49,10 @@ public class GridElement : MonoBehaviour
     }
 
     public void spawnUnit(GameObject unitPrefab) {
+        scale = 0;
         //UnityEngine.Debug.Log("grid element size: " + unitPrefab.GetComponent<UnitBase>().afterEffects.Count);
         this.unit = unitPrefab;
+        this.unit.transform.localScale = new Vector3(scale,scale,scale);
         this.unit.transform.position = new Vector3(transform.position.x - 0.1f,transform.position.y, transform.position.z + 0.1f);
         this.unit.transform.SetParent(this.transform);
         unitPrefab.GetComponent<UnitBase>().audioMenager.GetComponent<AudioMenager>().playSpawn();
@@ -56,6 +65,24 @@ public class GridElement : MonoBehaviour
     {
         if (unit != null){
             //UnityEngine.Debug.Log("update count: " + unit.GetComponent<UnitBase>().afterEffects.Count);
+        }
+
+        if(isGoingUp) {
+            if(transform.position.y <= maxYPosition)
+            {
+                transform.position = new Vector3(transform.position.x,transform.position.y + maxYPosition * step , transform.position.z);
+            }
+        }
+        else
+        {
+            if(transform.position.y >=0)
+            {
+                 transform.position = new Vector3(transform.position.x,transform.position.y - maxYPosition * step , transform.position.z);
+            }
+        }
+        if (this.unit != null && scale <= 1) {
+            scale += step;
+            this.unit.transform.localScale = new Vector3(scale,2*scale,scale);
         }
     }
 

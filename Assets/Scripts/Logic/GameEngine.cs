@@ -47,7 +47,7 @@ public class GameEngine : MonoBehaviour
             buildingFactory.GetComponent<BuildingsFactory>().createHand();
         }
         if (ctr == 20) {
-            stateManager.setState(GameState.PLAYER1TURN);
+            stateManager.setState(GameState.BATTLETURN);
         }
         if (ctr > 50 && ctr%250 == 0) {
             stateManager.update();
