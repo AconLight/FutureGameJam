@@ -25,6 +25,7 @@ public class GridElement : MonoBehaviour
         transform.position = new Vector3(transform.position.x,0, transform.position.z);
     }
 
+    public GameObject cb;
     private float defY = -0.85f;
     void Start()
     {
@@ -32,9 +33,9 @@ public class GridElement : MonoBehaviour
         earthCounters = new Dictionary<string, int>();
         earthCounters.Add("influence", 0);
         grid = this.transform.parent.GetComponent<GridScript>();
-        GameObject cb = Instantiate(cube, new Vector3(transform.position.x, defY, transform.position.z), Quaternion.identity, transform) as GameObject;
+        cb = Instantiate(cube, new Vector3(transform.position.x, defY, transform.position.z), Quaternion.identity, transform) as GameObject;
         cb.GetComponent<Click>().canvas = FindObjectOfType<GameEngine>().GetComponent<GameEngine>().canvas;
-        //cb.GetComponent<MeshRenderer>().material = defaultMaterial;
+        cb.GetComponent<Renderer>().sharedMaterial = defaultMaterial;
     }
 
     public void spawnUnit(GameObject unitPrefab) {

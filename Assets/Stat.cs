@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,8 +22,12 @@ public class Stat : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         
     }
 
+    public Boolean isHandledEnter = false;
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (isHandledEnter) return;
+        isHandledExit = false;
+        isHandledEnter = true;
         //If your mouse hovers over the GameObject with the script attached, output this message
         statText.fontSize = 25;
         CardPlaceContent cpc = transform.parent.GetComponent<CardPlaceContent>();
@@ -30,16 +35,18 @@ public class Stat : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         Dictionary<GridElement, int> dic = effect.getAffected();
         List<GridElement> keys = new List<GridElement>(dic.Keys);
         foreach(GridElement ge in keys) {
-            Debug.Log("dupa");
-            Material[] array = new Material[1];
-            array[0] = effect.myMaterial;
-            ge.cube.GetComponent<Renderer>().materials = array;
+            Debug.Log(ge.cb.GetComponent<Renderer>().sharedMaterial.name);
+            ge.cb.GetComponent<Renderer>().sharedMaterial = effect.myMaterial;
             ge.up(dic[ge]);
         }
     }
 
+    public Boolean isHandledExit = true;
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (isHandledExit) return;
+        isHandledEnter = false;
+        isHandledExit = true;
         //The mouse is no longer hovering over the GameObject so output this message each frame
         statText.fontSize = 20;
         CardPlaceContent cpc = transform.parent.GetComponent<CardPlaceContent>();
@@ -47,9 +54,8 @@ public class Stat : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         Dictionary<GridElement, int> dic = effect.getAffected();
         List<GridElement> keys = new List<GridElement>(dic.Keys);
         foreach(GridElement ge in keys) {
-            Material[] array = new Material[1];
-            array[0] = ge.defaultMaterial;
-            ge.cube.GetComponent<Renderer>().materials = array;
+            Debug.Log(ge.cb.GetComponent<Renderer>().sharedMaterial.name);
+            ge.cb.GetComponent<Renderer>().sharedMaterial = ge.defaultMaterial;
             ge.down();
         }
     }
