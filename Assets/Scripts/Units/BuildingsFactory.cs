@@ -7,6 +7,8 @@ public class BuildingsFactory: MonoBehaviour
 {
     public GameObject basicBuildingPrefab, bishopPrefab, sniperTowerExploAmmo, turtle, mortar, wall, sniperTower;
     public GameObject card;
+
+    public GameObject materialHolder;
     //public GameObject basicBuilding;
     void Start() {
         //basicBuilding = Instantiate (basicBuildingPrefab, new Vector3(transform.position.x,transform.position.y, transform.position.z) , Quaternion.identity, this.transform);
@@ -90,7 +92,7 @@ public class BuildingsFactory: MonoBehaviour
         }
     }
 
-    public static void BasicBuilding(UnitBase unit) {
+    public void BasicBuilding(UnitBase unit) {
         //Debug.Log("building load");
         unit.unitCounters.Add("ap", 1);
         unit.unitCounters.Add("apMax", 1);
@@ -102,11 +104,11 @@ public class BuildingsFactory: MonoBehaviour
         unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
         unit.unitDescription.setCardDescription("Super Karciora", "Karciora zrodzona z głębi odchłani kibla publicznego");
-        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1)));
-        unit.afterEffects.Add(new AttackEffect(unit, Zone.frame(1)));
+        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1), materialHolder));
+        unit.afterEffects.Add(new AttackEffect(unit, Zone.frame(1), materialHolder));
     }
 
-    public static void Bishop(UnitBase unit) {
+    public void Bishop(UnitBase unit) {
         //Debug.Log("building load");
         unit.unitCounters.Add("ap", 1);
         unit.unitCounters.Add("apMax", 1);
@@ -118,10 +120,10 @@ public class BuildingsFactory: MonoBehaviour
         unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
         unit.unitDescription.setCardDescription("Średnia Karciora", "Karciora zrodzona z najtwardszych gołębi po tej stronie Retkini");
-        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1)));
-        unit.afterEffects.Add(new AttackEffect(unit, Zone.frame(1)));
+        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1), materialHolder));
+        unit.afterEffects.Add(new AttackEffect(unit, Zone.frame(1), materialHolder));
     }
-    public static void Turtle(UnitBase unit)
+    public void Turtle(UnitBase unit)
     {
         unit.unitCounters.Add("ap", 1);
         unit.unitCounters.Add("apMax", 1);
@@ -133,7 +135,7 @@ public class BuildingsFactory: MonoBehaviour
         unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
         unit.unitDescription.setCardDescription("Umocniony Budynek", "Stworzona do walki na krótkim dystansie");
-        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1)));
+        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1), materialHolder));
         int[,] zone = 
         {
             {0,0,0,0,0,0,0},
@@ -144,9 +146,9 @@ public class BuildingsFactory: MonoBehaviour
             {0,2,0,0,0,2,0},
             {0,0,0,0,0,0,0},
         };
-        unit.afterEffects.Add(new AttackEffect(unit, new Zone(zone)));
+        unit.afterEffects.Add(new AttackEffect(unit, new Zone(zone), materialHolder));
     }
-    public static void Mortar(UnitBase unit)
+    public void Mortar(UnitBase unit)
     {
         unit.unitCounters.Add("ap", 1);
         unit.unitCounters.Add("apMax", 1);
@@ -158,7 +160,7 @@ public class BuildingsFactory: MonoBehaviour
         unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
         unit.unitDescription.setCardDescription("Moździeż", "Nieskuteczna na bliskim dystanicie");
-        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1)));
+        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1), materialHolder));
         int[,] zone = 
         {
             {2,2,3,3,3,2,2},
@@ -169,9 +171,9 @@ public class BuildingsFactory: MonoBehaviour
             {2,3,0,0,0,3,2},
             {2,2,3,3,3,2,2},
         };
-        unit.afterEffects.Add(new AttackEffect(unit, new Zone(zone)));
+        unit.afterEffects.Add(new AttackEffect(unit, new Zone(zone), materialHolder));
     }
-    public static void SniperTower(UnitBase unit)
+    public void SniperTower(UnitBase unit)
     {
         unit.unitCounters.Add("ap", 1);
         unit.unitCounters.Add("apMax", 1);
@@ -183,7 +185,7 @@ public class BuildingsFactory: MonoBehaviour
         unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
         unit.unitDescription.setCardDescription("Strzelec wyborowy", "Sprzątnie zombiaka z odległości 3 klocków");
-        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1)));
+        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1), materialHolder));
         int[,] zone = 
         {
             {0,0,0,2,0,0,0},
@@ -194,9 +196,9 @@ public class BuildingsFactory: MonoBehaviour
             {0,0,0,2,0,0,0},
             {0,0,0,2,0,0,0},
         };
-        unit.afterEffects.Add(new AttackEffect(unit, new Zone(zone)));
+        unit.afterEffects.Add(new AttackEffect(unit, new Zone(zone), materialHolder));
     }
-    public static void SniperTowerExploAmmo(UnitBase unit)
+    public void SniperTowerExploAmmo(UnitBase unit)
     {
         unit.unitCounters.Add("ap", 1);
         unit.unitCounters.Add("apMax", 1);
@@ -208,7 +210,7 @@ public class BuildingsFactory: MonoBehaviour
         unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
         unit.unitDescription.setCardDescription("Strzelec wyborowy z amunicją wybuchową", "Zasięg niby taki sam ale obrażenia inne");
-        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1)));
+        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1), materialHolder));
         int[,] zone = 
         {
             {0,0,1,1,1,0,0},
@@ -219,9 +221,9 @@ public class BuildingsFactory: MonoBehaviour
             {0,0,0,1,0,0,0},
             {0,0,1,1,1,0,0},
         };
-        unit.afterEffects.Add(new AttackEffect(unit, new Zone(zone)));
+        unit.afterEffects.Add(new AttackEffect(unit, new Zone(zone), materialHolder));
     }
-    public static void Wall(UnitBase unit)
+    public void Wall(UnitBase unit)
     {
         unit.unitCounters.Add("ap", 1);
         unit.unitCounters.Add("apMax", 1);
@@ -233,8 +235,8 @@ public class BuildingsFactory: MonoBehaviour
         unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
         unit.unitDescription.setCardDescription("Sciana", "Zwykła ściana nic dodać nic ująć");
-        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1)));
-        unit.afterEffects.Add(new AttackEffect(unit, new Zone()));
+        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1), materialHolder));
+        unit.afterEffects.Add(new AttackEffect(unit, new Zone(), materialHolder));
     }
 
 

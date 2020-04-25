@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AttackEffect : Effect
 {
-    public AttackEffect(UnitBase unitBase, Zone zone): base(unitBase, zone) {
+    public AttackEffect(UnitBase unitBase, Zone zone, GameObject materialHolder): base(unitBase, zone, materialHolder) {
         name = "Attack";
         description = "Damages enemies by given value";
     }

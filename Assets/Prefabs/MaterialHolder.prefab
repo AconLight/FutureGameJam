@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2733823833753757337
+--- !u!1 &7840185566440682653
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2733823833753757319}
-  - component: {fileID: 2733823833753757318}
+  - component: {fileID: 4828003600335620952}
+  - component: {fileID: 6338907587366135587}
   m_Layer: 0
-  m_Name: GridElement
+  m_Name: MaterialHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2733823833753757319
+--- !u!4 &4828003600335620952
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2733823833753757337}
+  m_GameObject: {fileID: 7840185566440682653}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.5, z: 0.9}
+  m_LocalPosition: {x: -5, y: 4, z: 7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2733823833753757318
+--- !u!114 &6338907587366135587
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2733823833753757337}
+  m_GameObject: {fileID: 7840185566440682653}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdcb07cd03079a748a323cc8b6bc8c16, type: 3}
+  m_Script: {fileID: 11500000, guid: a3d51ea51bd12ce4594b7016507ad260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMaterial: {fileID: 2100000, guid: 03064d7ea2621f5489d1a18251f1f8e0, type: 2}
-  x: 0
-  z: 0
-  unit: {fileID: 0}
-  cube: {fileID: 8309962060789290597, guid: 16a0ec457a0a13941959cd345ed59256, type: 3}
+  attack: {fileID: 2100000, guid: 1f0e62e3bcefa2f429186fb1f3ce549e, type: 2}
+  influence: {fileID: 2100000, guid: 9b1c26d327a6fc14f8d1571a851a956c, type: 2}

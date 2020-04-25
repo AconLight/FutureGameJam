@@ -46,3 +46,5 @@ MonoBehaviour:
   basicEnemyPrefab: {fileID: 6421811375583619976, guid: a52520989ce7b10468ed30830c3271ff,
     type: 3}
   basicEnemy: {fileID: 0}
+  materialHolder: {fileID: 7840185566440682653, guid: 9b2ee34afd61af34ab341fee1f5910c4,
+    type: 3}

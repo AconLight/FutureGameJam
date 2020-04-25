@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class GridElement : MonoBehaviour
 {
+    public Material defaultMaterial;
     public Dictionary<string, int> earthCounters;
     public int x, z;
     private GridScript grid;

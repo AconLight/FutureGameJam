@@ -55,3 +55,5 @@ MonoBehaviour:
   sniperTower: {fileID: 3947058954840312532, guid: 0fd6b15df52dfab4eb1ba2a7a37d79be,
     type: 3}
   card: {fileID: 8797268477134530620, guid: cdf0bb8aacdbbd24faf1ca232f984384, type: 3}
+  materialHolder: {fileID: 7840185566440682653, guid: 9b2ee34afd61af34ab341fee1f5910c4,
+    type: 3}

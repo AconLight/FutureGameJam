@@ -7,6 +7,8 @@ public class EnemyFactory: MonoBehaviour
 {
     public GameObject basicEnemyPrefab;
     public GameObject basicEnemy;
+
+    public GameObject materialHolder;
     void Start() {
         //basicEnemy = Instantiate (basicEnemyPrefab, new Vector3(transform.position.x,transform.position.y, transform.position.z) , Quaternion.identity, this.transform);
     }
@@ -31,8 +33,8 @@ public class EnemyFactory: MonoBehaviour
         unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         unit.audioMenager.GetComponent<AudioMenager>().initAudio("enemy");
         unit.unitDescription.setCardDescription("Nieumarly alien", "Jeden z pierwszych odkrytych nieumarłych lecz nieżywych ocalałych");
-        unit.afterEffects.Add(new MoveEffect(unit, Zone.one()));
-        unit.afterEffects.Add(new AttackEffect(unit, Zone.frame(1)));
+        unit.afterEffects.Add(new MoveEffect(unit, Zone.one(), materialHolder));
+        unit.afterEffects.Add(new AttackEffect(unit, Zone.frame(1), materialHolder));
     }
 
     public List<GameObject> getWave(int level) {
