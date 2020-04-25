@@ -15,6 +15,15 @@ public class CardPlaceContent : MonoBehaviour
     public Text influenceText; 
     public Text moveText;
 
+    public Text influence;
+
+    public Text healthText;
+    public Text actionPointsText;
+    public Text inciativeText;
+    public Text requiredInfluenceText;
+    public Text speedText;
+    public Text maxSpeedText;
+
     private static Color activeColor = new Color(0.196f,0.196f,0.196f,1);
     private static Color disabledColor = Color.gray;
 
@@ -34,16 +43,18 @@ public class CardPlaceContent : MonoBehaviour
 
     public void SetContent(GameObject cardContent)
     {
-        if (gridElement.GetComponent<GridElement>().unit != null && !gridElement.GetComponent<GridElement>().isPlaceholder) return;
+        var gridScript = gridElement.GetComponent<GridElement>();
+
+        if (gridScript.unit != null && !gridScript.isPlaceholder) return;
         
-        Debug.Log("influence: " + gridElement.GetComponent<GridElement>().earthCounters["influence"]);
+        Debug.Log("influence: " + gridScript.earthCounters["influence"]);
         Debug.Log("req influence: " + cardContent.GetComponent<CardContent>().getUnit().GetComponent<UnitBase>().unitCounters["reqInfluence"]);
 
-        if (gridElement.GetComponent<GridElement>().earthCounters["influence"] < cardContent.GetComponent<CardContent>().getUnit().GetComponent<UnitBase>().unitCounters["reqInfluence"]) {
+        if (gridScript.earthCounters["influence"] < cardContent.GetComponent<CardContent>().getUnit().GetComponent<UnitBase>().unitCounters["reqInfluence"]) {
             return;
         }
 
-        if (gridElement.GetComponent<GridElement>().isPlaceholder) {
+        if (gridScript.isPlaceholder) {
             this.unit.transform.SetParent(cardContent.transform);
             this.unit.transform.position = new Vector3(-999999, 0, 0);
         }
@@ -52,7 +63,7 @@ public class CardPlaceContent : MonoBehaviour
         this.unit = cardContent.GetComponent<CardContent>().getUnit();
 
         GameEngine.GetComponent<GameEngine>().spawn(unit, gridElement);
-        gridElement.GetComponent<GridElement>().isPlaceholder = true;
+        gridScript.isPlaceholder = true;
 
         var unitScript = unit.GetComponent<UnitBase>();
 
@@ -102,10 +113,39 @@ public class CardPlaceContent : MonoBehaviour
 
         moveText.text = "Move";
         if(!moveSet) moveText.color = disabledColor;
+
+        influence.text = "Influence: " + gridScript.earthCounters["influence"];
+
+        if(unitScript) 
+        {
+            healthText.text = "Health: " + unitScript.unitCounters["hp"];
+            inciativeText.text = "Iniciative: " + unitScript.unitCounters["iniciative"];
+            requiredInfluenceText.text = "Req. influence: " + unitScript.unitCounters["reqInfluence"];
+            actionPointsText.text = "Action points: " + unitScript.unitCounters["ap"] + "/" + unitScript.unitCounters["apMax"];
+            speedText.text = "Speed: " + unitScript.unitCounters["speed"];
+            maxSpeedText.text = "Max speed: " + unitScript.unitCounters["maxSpeed"];
+        }
+        else
+        {
+            resetUnitStats();
+        }
+
+
+
+        
      
 
         RawImage sprite = gameObject.GetComponentsInChildren<RawImage>()[0];
         sprite.GetComponent<RawImage>().texture = unit.GetComponent<UnitBase>().sprite.texture;
+    }
+
+    public void resetUnitStats() {
+        healthText.text = "";
+        inciativeText.text = "";
+        requiredInfluenceText.text = "";
+        actionPointsText.text = "";
+        speedText.text = "";
+        maxSpeedText.text = "";
     }
 
     public void SetByGridElement(GameObject elem)
