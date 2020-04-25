@@ -97,6 +97,7 @@ public class BuildingsFactory: MonoBehaviour
         unit.unitCounters.Add("ap", 1);
         unit.unitCounters.Add("apMax", 1);
         unit.unitCounters.Add("iniciative", 1);
+        unit.unitCounters.Add("reqInfluence", 1);
         unit.unitCounters.Add("hp", 3);
         unit.unitCounters.Add("speed", 2);
         unit.unitCounters.Add("maxSpeed", 2);
@@ -113,6 +114,7 @@ public class BuildingsFactory: MonoBehaviour
         unit.unitCounters.Add("ap", 1);
         unit.unitCounters.Add("apMax", 1);
         unit.unitCounters.Add("iniciative", 1);
+        unit.unitCounters.Add("reqInfluence", 2);
         unit.unitCounters.Add("hp", 3);
         unit.unitCounters.Add("speed", 2);
         unit.unitCounters.Add("maxSpeed", 2);
@@ -128,6 +130,7 @@ public class BuildingsFactory: MonoBehaviour
         unit.unitCounters.Add("ap", 1);
         unit.unitCounters.Add("apMax", 1);
         unit.unitCounters.Add("iniciative", 1);
+        unit.unitCounters.Add("reqInfluence", 1);
         unit.unitCounters.Add("hp", 3);
         unit.unitCounters.Add("speed", 2);
         unit.unitCounters.Add("maxSpeed", 2);
@@ -153,6 +156,7 @@ public class BuildingsFactory: MonoBehaviour
         unit.unitCounters.Add("ap", 1);
         unit.unitCounters.Add("apMax", 1);
         unit.unitCounters.Add("iniciative", 1);
+        unit.unitCounters.Add("reqInfluence", 2);
         unit.unitCounters.Add("hp", 3);
         unit.unitCounters.Add("speed", 2);
         unit.unitCounters.Add("maxSpeed", 2);
@@ -178,6 +182,7 @@ public class BuildingsFactory: MonoBehaviour
         unit.unitCounters.Add("ap", 1);
         unit.unitCounters.Add("apMax", 1);
         unit.unitCounters.Add("iniciative", 1);
+        unit.unitCounters.Add("reqInfluence", 3);
         unit.unitCounters.Add("hp", 3);
         unit.unitCounters.Add("speed", 2);
         unit.unitCounters.Add("maxSpeed", 2);
@@ -203,6 +208,7 @@ public class BuildingsFactory: MonoBehaviour
         unit.unitCounters.Add("ap", 1);
         unit.unitCounters.Add("apMax", 1);
         unit.unitCounters.Add("iniciative", 1);
+        unit.unitCounters.Add("reqInfluence", 3);
         unit.unitCounters.Add("hp", 3);
         unit.unitCounters.Add("speed", 2);
         unit.unitCounters.Add("maxSpeed", 2);
@@ -228,6 +234,7 @@ public class BuildingsFactory: MonoBehaviour
         unit.unitCounters.Add("ap", 1);
         unit.unitCounters.Add("apMax", 1);
         unit.unitCounters.Add("iniciative", 1);
+        unit.unitCounters.Add("reqInfluence", 1);
         unit.unitCounters.Add("hp", 10);
         unit.unitCounters.Add("speed", 2);
         unit.unitCounters.Add("maxSpeed", 2);
@@ -235,7 +242,7 @@ public class BuildingsFactory: MonoBehaviour
         unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
         unit.unitDescription.setCardDescription("Sciana", "Zwykła ściana nic dodać nic ująć");
-        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1), materialHolder));
+        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(2), materialHolder));
         unit.afterEffects.Add(new AttackEffect(unit, new Zone(), materialHolder));
     }
 
