@@ -55,6 +55,7 @@ public class UnitBase : MonoBehaviour
     }
 
     public void destroyMe() {
+        transform.parent.GetComponent<GridElement>().unit = null;
         Destroy(gameObject);
     }
 }

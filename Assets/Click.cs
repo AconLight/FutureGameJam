@@ -20,6 +20,13 @@ public class Click : MonoBehaviour
     void OnMouseDown()
     {
         CardPlaceContent rc = canvas.GetComponentInChildren<CardPlaceContent>();
+        if (rc.unit != null && rc.gridElement.GetComponent<GridElement>().isPlaceholder) {
+            rc.unit.transform.SetParent(rc.cardContent.transform);
+            rc.unit.transform.position = new Vector3(-999999, 0, 0);
+            rc.unit = null;
+            rc.gridElement.GetComponent<GridElement>().unit = null;
+            rc.gridElement.GetComponent<GridElement>().isPlaceholder = false;
+        }
         if (rc.gridElement == transform.parent.gameObject) {
             rc.gridElement = null;
             rc.transform.position = new Vector3(-9999, rc.transform.position.y, rc.transform.position.z);

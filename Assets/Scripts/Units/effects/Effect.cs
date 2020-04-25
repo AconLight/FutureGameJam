@@ -8,20 +8,26 @@ public abstract class Effect
     public string name, description;
     protected Zone zone;
     protected UnitBase unitBase;
+
+    public Material myMaterial;
     public Effect(UnitBase unitBase, Zone zone, GameObject materialHolder) {
         this.zone = zone;
         this.unitBase = unitBase;
         this.materialHolder = materialHolder;
     }
 
-    public List<GridElement> getAffected() {
-        List<GridElement> res = new List<GridElement>();
+    public Dictionary<GridElement, int> getAffected() {
+        Dictionary<GridElement, int> res = new Dictionary<GridElement, int>();
+        if (unitBase == null) return res;
+        if (unitBase.transform == null) return res;
+        if (unitBase.transform.parent == null) return res;
+        if (unitBase.transform.parent.GetComponent<GridElement>() == null) return res;
         GridElement gridElement = unitBase.transform.parent.GetComponent<GridElement>();
         for(int x = 0; x < Zone.size; x++) {
             for(int z = 0; z < Zone.size; z++) {
                 GameObject myGridElementObject = gridElement.getByXZ(x-(Zone.size-1)/2, z-(Zone.size-1)/2);
                 if (myGridElementObject != null && zone.zoneValues[z,x] != 0) {
-                    res.Add(myGridElementObject.GetComponent<GridElement>());
+                    res.Add(myGridElementObject.GetComponent<GridElement>(), zone.zoneValues[z,x]);
                 }
             } 
         }

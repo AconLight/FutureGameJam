@@ -37,6 +37,9 @@ public class CardPlaceContent : MonoBehaviour
         this.cardContent = cardContent;
         this.unit = cardContent.GetComponent<CardContent>().getUnit();
 
+        GameEngine.GetComponent<GameEngine>().spawn(unit, gridElement);
+        gridElement.GetComponent<GridElement>().isPlaceholder = true;
+
         var unitScript = unit.GetComponent<UnitBase>();
 
         var unitDescription = unitScript.unitDescription;
@@ -59,10 +62,12 @@ public class CardPlaceContent : MonoBehaviour
             if(ae.GetType() == typeof(AttackEffect)) {
                 attackText.color = activeColor;
                 attackSet = true;
+                attackText.GetComponent<Stat>().effect = ae;
             }
             if(ae.GetType() == typeof(MoveEffect)) {
                 moveText.color = activeColor;
                 moveSet = true;
+                moveText.GetComponent<Stat>().effect = ae;
             }
         }
 
@@ -71,6 +76,7 @@ public class CardPlaceContent : MonoBehaviour
             if(be.GetType() == typeof(InfluenceEffect)) {
                 influenceText.color = activeColor;
                 influenceSet = true;
+                influenceText.GetComponent<Stat>().effect = be;
             }
         }
 
@@ -114,7 +120,7 @@ public class CardPlaceContent : MonoBehaviour
     }
 
     public void acceptCard() {
-        GameEngine.GetComponent<GameEngine>().spawn(unit, gridElement);
+        gridElement.GetComponent<GridElement>().isPlaceholder = false;
         GameEngine.GetComponent<GameEngine>().endTurn();
         cardContent.GetComponent<CardContent>().DestroyMe();
         transform.position = new Vector3(-9999, transform.position.y, transform.position.z);
