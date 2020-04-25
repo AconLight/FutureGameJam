@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,15 +14,19 @@ public class AttackEffect : Effect
     protected override void computeOne(GridElement gridElement, int value) {
         
     }
-
+    private Boolean hasAttacked = false;
     public override void perform() {
+        hasAttacked = false;
         base.perform();
-        base.unitBase.audioMenager.GetComponent<AudioMenager>().playAttack();
+        if (hasAttacked) {
+            base.unitBase.audioMenager.GetComponent<AudioMenager>().playAttack();
+        }
     }
 
     protected override void performOne(GridElement gridElement, int value) {
         if (gridElement.unit != null && unitBase.unitCounters["isEnemy"] != gridElement.unit.GetComponent<UnitBase>().unitCounters["isEnemy"]) {
             gridElement.unit.GetComponent<UnitBase>().unitCounters["hp"] -= value;
+            hasAttacked = true;
             //Debug.Log("attack");
             if (gridElement.unit.GetComponent<UnitBase>().unitCounters["hp"] <= 0) {
                 gridElement.unit.GetComponent<UnitBase>().destroyMe();

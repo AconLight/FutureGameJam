@@ -27,7 +27,7 @@ public class GridElement : MonoBehaviour
     private float scale = 0;
 
     public void up(int i) {
-        maxYPosition = 0.3f*i;
+        maxYPosition = 0.15f*i;
         isGoingUp = true;
     }
 
