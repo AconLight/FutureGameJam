@@ -9,9 +9,12 @@ public class GridElement : MonoBehaviour
     public Material defaultMaterial;
     public Dictionary<string, int> earthCounters;
     public int x, z;
-    private GridScript grid;
+    [HideInInspector]
+    public int gCost, hCost, fCost;
+    [HideInInspector]
+    public GridElement cameFromNode;
+    public GridScript grid {get;private set;}
     public GameObject unit;
-
     public GameObject cube;
     // Start is called before the first frame update
     void Start()
@@ -74,5 +77,19 @@ public class GridElement : MonoBehaviour
             }
         } 
         return null;
+    }
+    public GameObject getAbsoluteXZ(int x, int z)
+    {
+        List<List<GameObject>> temp = this.transform.parent.GetComponent<GridScript>().GridElements;
+        if (z < temp.Count && z >= 0) {
+            if (x < temp[z].Count && x >= 0) {
+                return this.transform.parent.GetComponent<GridScript>().GridElements[z][x];
+            }
+        } 
+        return null;
+    }
+    public void CalculateFCost()
+    {
+        fCost = gCost + hCost;
     }
 }
