@@ -43,7 +43,7 @@ public class Click : MonoBehaviour
             if(cube != null) cube.transform.localPosition = new Vector3(0,-1.7f,0);
             rc.gridElement = transform.parent.gameObject;
             cube = rc.gridElement.transform.GetChild(0);
-            if(cube != null) cube.transform.localPosition = new Vector3(0,-1.4f,0);
+            if(cube != null) cube.transform.localPosition = new Vector3(0,-1.65f,0);
             rc.SetByGridElement(transform.parent.gameObject);
             rc.transform.position = new Vector3(200, rc.transform.position.y, rc.transform.position.z);
         }
