@@ -32,6 +32,7 @@ public class Click : MonoBehaviour
             rc.transform.position = new Vector3(-9999, rc.transform.position.y, rc.transform.position.z);
         }
         else {
+            Debug.Log("chose grid elem");
             rc.gridElement = transform.parent.gameObject;
             rc.SetByGridElement(transform.parent.gameObject);
             rc.transform.position = new Vector3(200, rc.transform.position.y, rc.transform.position.z);

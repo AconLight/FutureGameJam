@@ -107,6 +107,46 @@ public class CardPlaceContent : MonoBehaviour
             Text description = gameObject.GetComponentsInChildren<Text>()[1];
             description.text = unitDescription.cardDescription;
 
+            var unitScript = unit.GetComponent<UnitBase>();
+             var afterEffects = unitScript.afterEffects;
+            var beforeEffects = unitScript.beforeEffects;
+
+            bool attackSet = false;
+            bool influenceSet = false;
+            bool moveSet = false;
+
+            foreach (var ae in afterEffects)
+            {
+                if(ae.GetType() == typeof(AttackEffect)) {
+                    attackText.color = activeColor;
+                    attackSet = true;
+                    attackText.GetComponent<Stat>().effect = ae;
+                }
+                if(ae.GetType() == typeof(MoveEffect)) {
+                    moveText.color = activeColor;
+                    moveSet = true;
+                    moveText.GetComponent<Stat>().effect = ae;
+                }
+            }
+
+            foreach (var be in beforeEffects)
+            {
+                if(be.GetType() == typeof(InfluenceEffect)) {
+                    influenceText.color = activeColor;
+                    influenceSet = true;
+                    influenceText.GetComponent<Stat>().effect = be;
+                }
+            }
+
+            attackText.text = "Attack";
+            if(!attackSet) attackText.color = disabledColor;
+            
+            influenceText.text = "Influence";
+            if(!influenceSet) influenceText.color = disabledColor;
+
+            moveText.text = "Move";
+            if(!moveSet) moveText.color = disabledColor;
+
             RawImage sprite = gameObject.GetComponentsInChildren<RawImage>()[0];
             sprite.GetComponent<RawImage>().texture = unit.GetComponent<UnitBase>().sprite.texture;
         } else {
@@ -114,6 +154,9 @@ public class CardPlaceContent : MonoBehaviour
             Text description = gameObject.GetComponentsInChildren<Text>()[1];
             title.text = "Drag a card here";
             description.text = "";
+            attackText.GetComponent<Stat>().effect = null;
+            influenceText.GetComponent<Stat>().effect = null;
+            moveText.GetComponent<Stat>().effect = null;
             RawImage sprite = gameObject.GetComponentsInChildren<RawImage>()[0];
             sprite.GetComponent<RawImage>().texture = missingSprite.texture;
         }
