@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System;
+using System.Threading;
 using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using UnityEngine;
 
 public class GridElement : MonoBehaviour
 {
+    public Boolean isPlaceholder = false;
     public Material defaultMaterial;
     public Dictionary<string, int> earthCounters;
     public int x, z;
@@ -14,13 +16,25 @@ public class GridElement : MonoBehaviour
 
     public GameObject cube;
     // Start is called before the first frame update
+
+    public void up(int i) {
+        transform.position = new Vector3(transform.position.x,0 + 0.3f*i, transform.position.z);
+    }
+
+    public void down() {
+        transform.position = new Vector3(transform.position.x,0, transform.position.z);
+    }
+
+    private float defY = -0.85f;
     void Start()
     {
+        //defY = transform.position.y-0.85f;
         earthCounters = new Dictionary<string, int>();
         earthCounters.Add("influence", 0);
         grid = this.transform.parent.GetComponent<GridScript>();
-        GameObject cb = Instantiate(cube, new Vector3(transform.position.x,transform.position.y-0.85f, transform.position.z), Quaternion.identity, transform) as GameObject;
+        GameObject cb = Instantiate(cube, new Vector3(transform.position.x, defY, transform.position.z), Quaternion.identity, transform) as GameObject;
         cb.GetComponent<Click>().canvas = FindObjectOfType<GameEngine>().GetComponent<GameEngine>().canvas;
+        //cb.GetComponent<MeshRenderer>().material = defaultMaterial;
     }
 
     public void spawnUnit(GameObject unitPrefab) {

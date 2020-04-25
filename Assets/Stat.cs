@@ -26,12 +26,31 @@ public class Stat : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         //If your mouse hovers over the GameObject with the script attached, output this message
         statText.fontSize = 25;
         CardPlaceContent cpc = transform.parent.GetComponent<CardPlaceContent>();
-        //if (cpc.gridElement.GetComponent<GridElement>().unit)
+        if (effect == null) return;
+        Dictionary<GridElement, int> dic = effect.getAffected();
+        List<GridElement> keys = new List<GridElement>(dic.Keys);
+        foreach(GridElement ge in keys) {
+            Debug.Log("dupa");
+            Material[] array = new Material[1];
+            array[0] = effect.myMaterial;
+            ge.cube.GetComponent<Renderer>().materials = array;
+            ge.up(dic[ge]);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         //The mouse is no longer hovering over the GameObject so output this message each frame
         statText.fontSize = 20;
+        CardPlaceContent cpc = transform.parent.GetComponent<CardPlaceContent>();
+        if (effect == null) return;
+        Dictionary<GridElement, int> dic = effect.getAffected();
+        List<GridElement> keys = new List<GridElement>(dic.Keys);
+        foreach(GridElement ge in keys) {
+            Material[] array = new Material[1];
+            array[0] = ge.defaultMaterial;
+            ge.cube.GetComponent<Renderer>().materials = array;
+            ge.down();
+        }
     }
 }
