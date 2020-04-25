@@ -142,7 +142,7 @@ public class MoveEffect : Effect
         }
         path.Reverse();
         if (path.Count > 1) {
-            int [] move = {Mathf.Abs(path[0].x - path[1].x), Mathf.Abs(path[0].z - path[1].z)};
+            int [] move = {(path[1].x - path[0].x), (path[1].z - path[0].z)};
             return move;
         } else {
             int [] move = {0,0};
@@ -182,6 +182,9 @@ public class MoveEffect : Effect
                 {
                     return x;
                 }
+            }
+            if (possibleGoals.Count == 0) {
+                return goal;
             }
             int index = Random.Range(0, possibleGoals.Count);
             return setGoal(possibleGoals[index]);

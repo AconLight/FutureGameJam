@@ -48,7 +48,7 @@ public class GameEngine : MonoBehaviour
         if (ctr == 20) {
             stateManager.setState(GameState.BATTLETURN);
         }
-        if (ctr > 50 && ctr%250 == 0) {
+        if (ctr > 50 && ctr%25 == 0) {
             stateManager.update();
         }
         ctr++;
