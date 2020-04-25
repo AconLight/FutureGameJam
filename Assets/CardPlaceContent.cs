@@ -34,7 +34,13 @@ public class CardPlaceContent : MonoBehaviour
 
     public void SetContent(GameObject cardContent)
     {
-        if (gridElement.GetComponent<GridElement>().unit != null) return;
+        if (gridElement.GetComponent<GridElement>().unit != null && !gridElement.GetComponent<GridElement>().isPlaceholder) return;
+        
+        if (gridElement.GetComponent<GridElement>().isPlaceholder) {
+            this.unit.transform.SetParent(cardContent.transform);
+            this.unit.transform.position = new Vector3(-999999, 0, 0);
+        }
+        
         this.cardContent = cardContent;
         this.unit = cardContent.GetComponent<CardContent>().getUnit();
 

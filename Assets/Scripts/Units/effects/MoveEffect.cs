@@ -14,6 +14,7 @@ public class MoveEffect : Effect
         //UnityEngine.Debug.Log("move: try");
         if (value != 1) return;
         //UnityEngine.Debug.Log("move: compute");
+        Debug.Log("move compute one");
         GameObject temp = gridElement.getAbsoluteXZ(0,0);
         GridElement goalPos = isGridElement(temp);
         int x;
