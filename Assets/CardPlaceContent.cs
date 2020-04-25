@@ -34,6 +34,7 @@ public class CardPlaceContent : MonoBehaviour
 
     public void SetContent(GameObject cardContent)
     {
+        if (gridElement.GetComponent<GridElement>().unit != null) return;
         this.cardContent = cardContent;
         this.unit = cardContent.GetComponent<CardContent>().getUnit();
 
@@ -94,7 +95,7 @@ public class CardPlaceContent : MonoBehaviour
         sprite.GetComponent<RawImage>().texture = unit.GetComponent<UnitBase>().sprite.texture;
     }
 
-        public void SetByGridElement(GameObject elem)
+    public void SetByGridElement(GameObject elem)
     {
         this.unit = elem.GetComponent<GridElement>().unit;
 
