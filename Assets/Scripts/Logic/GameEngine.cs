@@ -12,6 +12,8 @@ public class GameEngine : MonoBehaviour
     public GameObject buildingFactoryPrefab;
     public GameObject audioMenagerPrefab;
     private GameObject audioMenager;
+    public GameObject StoryPrefab;
+    private GameObject story;
     private GameObject enemyFactory, buildingFactory;
     private GameObject gridManager; 
 
@@ -28,6 +30,7 @@ public class GameEngine : MonoBehaviour
         enemyFactory = Instantiate(enemyFactoryPrefab, new Vector3(-9999999, 0, 0), Quaternion.identity);
         buildingFactory = Instantiate(buildingFactoryPrefab, new Vector3(-9999999, 0, 0), Quaternion.identity);
         audioMenager = Instantiate(audioMenagerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        story = Instantiate(StoryPrefab, new Vector3(0, 0, 0), Quaternion.identity);
     }
 
     int ctr = 0;
@@ -35,6 +38,7 @@ public class GameEngine : MonoBehaviour
         if(ctr == 5)
         {
            audioMenager.GetComponent<AudioMenager>().initAudio("menu");
+            story.GetComponent<Story>().dispalyPart(1);
         }
         if (ctr == 10) {
             spawnMain();
