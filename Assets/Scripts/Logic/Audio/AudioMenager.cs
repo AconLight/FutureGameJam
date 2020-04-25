@@ -52,7 +52,7 @@ public class AudioMenager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        AudioListener.volume = 0.2f;
     }
 
     // Update is called once per frame
@@ -81,7 +81,6 @@ public class AudioMenager : MonoBehaviour
     void menu()
     {
         bgMusic = Instantiate(_bgMusic);
-        bgMusic.volume = 0.2F;
         bgMusic.Play();
         
     }
