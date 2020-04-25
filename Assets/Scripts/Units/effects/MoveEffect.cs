@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System.Collections.ObjectModel;
+using System.Security.Cryptography.X509Certificates;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,11 +16,10 @@ public class MoveEffect : Effect
         if (value != 1) return;
         //UnityEngine.Debug.Log("move: compute");
         Debug.Log("move compute one");
-        GameObject temp = gridElement.getAbsoluteXZ(0,2);
+        GameObject temp = gridElement.getAbsoluteXZ(0,5);
         GridElement goalPos = isGridElement(temp);
-        if (goalPos != null) {
-            Debug.Log("goalPos");
-        }
+        goalPos = setGoal(goalPos);
+        Debug.Log("Goalpos (" + goalPos.x +"," + goalPos.z+")");
         int x;
         int z;
         if(goalPos != null){
@@ -86,7 +86,7 @@ public class MoveEffect : Effect
             GridElement currentGridElement = GetLowestFCost(openedList);
             if (currentGridElement == endPos)
             {
-                return CalcPath(endPos, startPos);
+                return CalcPath(endPos);
             }
             openedList.Remove(currentGridElement);
             closedList.Add(currentGridElement);
@@ -109,7 +109,8 @@ public class MoveEffect : Effect
                 }
             }
         }
-        return null;
+        int [] move = {0,0};
+        return move;
     }
     private int ManhattanDistance(GridElement startNode, GridElement endNode)
     {
@@ -129,7 +130,7 @@ public class MoveEffect : Effect
         }
         return lcn;
     }
-    private int[] CalcPath(GridElement endNode, GridElement startNode)
+    private int[] CalcPath(GridElement endNode)
     {
         List<GridElement> path = new List<GridElement>();
         path.Add(endNode);
@@ -141,22 +142,50 @@ public class MoveEffect : Effect
         }
         path.Reverse();
         if (path.Count > 1) {
-            int [] move = {Mathf.Abs(startNode.x - path[1].x), Mathf.Abs(startNode.z - path[1].z)};
+            int [] move = {Mathf.Abs(path[0].x - path[1].x), Mathf.Abs(path[0].z - path[1].z)};
             return move;
         } else {
-            int [] move = {Mathf.Abs(startNode.x - path[0].x), Mathf.Abs(startNode.z - path[0].z)};
+            int [] move = {0,0};
             return move;
         }
     }
     private List<GridElement> getNeighbours(GridElement node)
     {
         List<GridElement> nList = new List<GridElement>();
-        nList.Add(isGridElement(node.getDown()));
-        nList.Add(isGridElement(node.getUp()));
-        nList.Add(isGridElement(node.getLeft()));
-        nList.Add(isGridElement(node.getRight()));
+        if(node.getDown())
+        {
+            nList.Add(isGridElement(node.getDown()).isPassable());
+        }
+        if(node.getUp())
+        {
+            nList.Add(isGridElement(node.getUp()).isPassable());
+        }
+        if(node.getLeft())
+        {
+            nList.Add(isGridElement(node.getLeft()).isPassable());
+        }
+        if(node.getRight())
+        {
+            nList.Add(isGridElement(node.getRight()).isPassable());
+        }
         nList.RemoveAll(Node => Node == null);
         return nList;
-
+    }
+    private GridElement setGoal(GridElement goal)
+    {
+        if(goal.isPassable() == null)
+        {
+            var possibleGoals = getNeighbours(goal);
+            foreach(var x in possibleGoals)
+            {
+                if(x.isPassable() != null)
+                {
+                    return x;
+                }
+            }
+            int index = Random.Range(0, possibleGoals.Count);
+            return setGoal(possibleGoals[index]);
+        }
+        return goal;
     }
 }

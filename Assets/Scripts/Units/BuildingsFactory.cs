@@ -80,9 +80,12 @@ public class BuildingsFactory: MonoBehaviour
         deck.Add(getSniperTower());
         deck.Add(getTurtle());
         deck.Add(getSniperTowerExploAmmo());
+        deck.Add(getWall());
+        deck.Add(getWall());
+        deck.Add(getWall());
     }
 
-    private int handSize = 5;
+    private int handSize = 8;
     public void createHand() {
         System.Random rand = new System.Random();
         for (int i = 0; i < handSize; i++) {

@@ -134,4 +134,14 @@ public class GridElement : MonoBehaviour
     {
         fCost = gCost + hCost;
     }
+    public GridElement isPassable()
+    {
+        if(unit != null)
+        {
+            return null;
+        }else
+        {
+            return this;
+        }
+    }
 }
