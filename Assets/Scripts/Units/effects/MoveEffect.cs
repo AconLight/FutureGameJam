@@ -94,8 +94,11 @@ public class MoveEffect : Effect
             foreach(var Node in getNeighbours(currentGridElement))
             {
                 if(closedList.Contains(Node)) continue;
-
-                int tempGCost = currentGridElement.gCost + ManhattanDistance(currentGridElement, Node);
+                int hujCost = 0;
+                if (Node.unit) {
+                    hujCost = Node.unit.GetComponent<UnitBase>().unitCounters["hp"] / 3;
+                }
+                int tempGCost = currentGridElement.gCost + ManhattanDistance(currentGridElement, Node) + hujCost;
                 if(tempGCost < Node.gCost)
                 {
                     Node.cameFromNode = currentGridElement;
@@ -154,19 +157,19 @@ public class MoveEffect : Effect
         List<GridElement> nList = new List<GridElement>();
         if(node.getDown())
         {
-            nList.Add(isGridElement(node.getDown()).isPassable());
+            nList.Add(isGridElement(node.getDown()));
         }
         if(node.getUp())
         {
-            nList.Add(isGridElement(node.getUp()).isPassable());
+            nList.Add(isGridElement(node.getUp()));
         }
         if(node.getLeft())
         {
-            nList.Add(isGridElement(node.getLeft()).isPassable());
+            nList.Add(isGridElement(node.getLeft()));
         }
         if(node.getRight())
         {
-            nList.Add(isGridElement(node.getRight()).isPassable());
+            nList.Add(isGridElement(node.getRight()));
         }
         nList.RemoveAll(Node => Node == null);
         return nList;
