@@ -177,6 +177,7 @@ public class CardPlaceContent : MonoBehaviour
     }
 
     public void acceptCard() {
+        gridElement.GetComponent<GridElement>().cb.transform.localPosition = new Vector3(0,-1.7f,0);
         gridElement.GetComponent<GridElement>().isPlaceholder = false;
         GameEngine.GetComponent<GameEngine>().endTurn();
         cardContent.GetComponent<CardContent>().DestroyMe();
