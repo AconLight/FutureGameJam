@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
 public class Stat : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public Text statText;
+
+    public Effect effect;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,8 @@ public class Stat : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         //If your mouse hovers over the GameObject with the script attached, output this message
         statText.fontSize = 25;
+        CardPlaceContent cpc = transform.parent.GetComponent<CardPlaceContent>();
+        //if (cpc.gridElement.GetComponent<GridElement>().unit)
     }
 
     public void OnPointerExit(PointerEventData eventData)
