@@ -17,12 +17,17 @@ public class MoveEffect : Effect
         Debug.Log("move compute one");
         GameObject temp = gridElement.getAbsoluteXZ(0,0);
         GridElement goalPos = isGridElement(temp);
+        if (goalPos != null) {
+            Debug.Log("goalPos");
+        }
         int x;
         int z;
-        if(goalPos){
+        if(goalPos != null){
             var move = Astar(gridElement, goalPos);
             x = move[0];
             z = move[1];
+            Debug.Log("x: " + x);
+            Debug.Log("z: " + z);
         }else{
             x = 0;
             z = 0;
