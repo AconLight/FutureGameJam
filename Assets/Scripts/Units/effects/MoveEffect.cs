@@ -15,7 +15,7 @@ public class MoveEffect : Effect
         if (value != 1) return;
         //UnityEngine.Debug.Log("move: compute");
         Debug.Log("move compute one");
-        GameObject temp = gridElement.getAbsoluteXZ(0,0);
+        GameObject temp = gridElement.getAbsoluteXZ(0,2);
         GridElement goalPos = isGridElement(temp);
         if (goalPos != null) {
             Debug.Log("goalPos");
@@ -52,7 +52,7 @@ public class MoveEffect : Effect
     }
 
     private GridElement isGridElement(GameObject obj){
-        if(obj.GetComponent<GridElement>())
+        if(obj)
         {
             return obj.GetComponent<GridElement>();
         }else
@@ -140,8 +140,13 @@ public class MoveEffect : Effect
             currElem = currElem.cameFromNode;
         }
         path.Reverse();
-        int [] move = {Mathf.Abs(startNode.x - path[0].x), Mathf.Abs(startNode.z - path[0].z)};
-        return move;
+        if (path.Count > 1) {
+            int [] move = {Mathf.Abs(startNode.x - path[1].x), Mathf.Abs(startNode.z - path[1].z)};
+            return move;
+        } else {
+            int [] move = {Mathf.Abs(startNode.x - path[0].x), Mathf.Abs(startNode.z - path[0].z)};
+            return move;
+        }
     }
     private List<GridElement> getNeighbours(GridElement node)
     {
