@@ -39,9 +39,12 @@ public class Click : MonoBehaviour
         }
         else {
             Debug.Log("chose grid elem");
+            
+
             if(rc.gridElement != null) cube = rc.gridElement.transform.GetChild(0);
             if(cube != null) cube.transform.localPosition = new Vector3(0,-1.7f,0);
             rc.gridElement = transform.parent.gameObject;
+            rc.influence.text = "Influence: " + rc.gridElement.GetComponent<GridElement>().earthCounters["influence"];
             cube = rc.gridElement.transform.GetChild(0);
             if(cube != null) cube.transform.localPosition = new Vector3(0,-1.65f,0);
             rc.SetByGridElement(transform.parent.gameObject);

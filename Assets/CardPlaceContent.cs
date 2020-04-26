@@ -115,7 +115,7 @@ public class CardPlaceContent : MonoBehaviour
         moveText.text = "Move";
         if(!moveSet) moveText.color = disabledColor;
 
-        influence.text = "Influence: " + gridScript.earthCounters["influence"];
+
 
         if(unitScript) 
         {
