@@ -48,8 +48,9 @@ public class GameEngine : MonoBehaviour
         if (ctr == 20) {
             stateManager.setState(GameState.BATTLETURN);
         }
-        if (ctr > 50 && ctr%25 == 0) {
-            stateManager.update();
+        if (ctr >= 200 && ctr%200 == 0) {
+            stateManager.update(ctr);
+            ctr-= 80;
         }
         ctr++;
     }
@@ -70,7 +71,7 @@ public class GameEngine : MonoBehaviour
         }
     }
 
-    public Boolean performAfterEffects() {
+    public Boolean performAfterEffects(int ctr) {
         //Debug.Log("perform after effects");
         Boolean isEnd = true;
         foreach(GameObject unit in allUnits) {

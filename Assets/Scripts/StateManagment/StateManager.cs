@@ -7,14 +7,14 @@ using UnityEngine;
 public enum GameState { PLAYER1TURN, PLAYER2TURN, BATTLETURN, LOST }
 public class StateManager
 {
-    GameState gameState;
+    public GameState gameState;
     GameEngine gameEngine;
     public StateManager(GameEngine gameEngine) {
         this.gameState = GameState.PLAYER2TURN;
         this.gameEngine = gameEngine;
     }
 
-    public void update() {
+    public void update(int ctr) {
         switch(this.gameState) {
             case GameState.PLAYER1TURN: {
 
@@ -25,13 +25,15 @@ public class StateManager
                 break;
             }
             case GameState.BATTLETURN: {
+                Debug.Log("ctr%50");
                 gameEngine.spawnOne();
                 gameEngine.detectUnits();
                 gameEngine.performBeforeEffects();
                 gameEngine.sortUnits();
-                if (gameEngine.performAfterEffects()) {
+                if (gameEngine.performAfterEffects(ctr-1)) {
                     setState(GameState.PLAYER1TURN);
                 }
+                
                 break;
             }
         }
