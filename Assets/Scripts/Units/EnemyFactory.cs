@@ -105,19 +105,19 @@ public class EnemyFactory: MonoBehaviour
             case 0: {
                 switch (waveId) {
                     case 0: {
-                        var tempWave = makeWave(2,0,0,0,wave);
+                        var tempWave = makeWave(1,0,0,0,wave);
                         break;
                     }
                     case 1: {
-                        var tempWave = makeWave(5,0,0,0,wave);
+                        var tempWave = makeWave(1,0,0,0,wave);
                         break;
                     }
                     case 2: {
-                        var tempWave = makeWave(3,1,0,0,wave);
+                        var tempWave = makeWave(2,1,0,0,wave);
                         break;
                     }
                     case 3: {
-                        var tempWave = makeWave(5,2,0,0,wave);
+                        var tempWave = makeWave(2,1,0,0,wave);
                         break;
                     }
                 }
@@ -126,11 +126,11 @@ public class EnemyFactory: MonoBehaviour
             case 1: {
                 switch (waveId) {
                     case 0: {
-                        var tempWave = makeWave(5,0,0,0,wave);
+                        var tempWave = makeWave(2,0,0,0,wave);
                         break;
                     }
                     case 1: {
-                        var tempWave = makeWave(5,1,0,0,wave);
+                        var tempWave = makeWave(2,1,0,0,wave);
                         break;
                     }
                     case 2: {
@@ -138,7 +138,7 @@ public class EnemyFactory: MonoBehaviour
                         break;
                     }
                     case 3: {
-                        var tempWave = makeWave(5,2,1,0,wave);
+                        var tempWave = makeWave(3,2,1,0,wave);
                         break;
                     }
                 }
@@ -147,15 +147,15 @@ public class EnemyFactory: MonoBehaviour
             case 2: {
                 switch (waveId) {
                     case 0: {
-                        var tempWave = makeWave(5,3,2,0,wave);
+                        var tempWave = makeWave(2,2,1,0,wave);
                         break;
                     }
                     case 1: {
-                        var tempWave = makeWave(5,3,2,0,wave);
+                        var tempWave = makeWave(2,3,2,0,wave);
                         break;
                     }
                     case 2: {
-                        var tempWave = makeWave(6,3,2,0,wave);
+                        var tempWave = makeWave(2,3,2,0,wave);
                         break;
                     }
                     case 3: {
