@@ -39,7 +39,7 @@ public class MoveEffect : Effect
             GridElement oldGridElement = unitBase.transform.parent.gameObject.GetComponent<GridElement>();
             unitBase.transform.SetParent(gridElementObject.transform);
             gridElementObject.GetComponent<GridElement>().unit = unitBase.gameObject;
-            unitBase.transform.position = gridElementObject.transform.position;
+            unitBase.transform.position = new Vector3(gridElementObject.transform.position.x, gridElementObject.transform.position.y - 0.5f, gridElementObject.transform.position.z);
             oldGridElement.unit = null;
             // TODO animation goes brrrrrr
         } else {
