@@ -32,7 +32,12 @@ public class StateManager
                 gameEngine.performBeforeEffects();
                 gameEngine.sortUnits();
                 if (gameEngine.performAfterEffects(ctr-1)) {
-                    setState(GameState.PLAYER1TURN);
+                    if (!gameEngine.hasAnyEnemies && gameEngine.getWaves() == 5 && gameEngine.main || gameEngine.getWaves() == 2) {
+                        gameEngine.setMissionId(gameEngine.getMissionId()+1);
+                        gameEngine.resetCtr();
+                    } else {
+                        setState(GameState.PLAYER1TURN);
+                    }
                 }
                 
                 break;

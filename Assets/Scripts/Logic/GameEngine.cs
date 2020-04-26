@@ -13,7 +13,7 @@ public class GameEngine : MonoBehaviour
     public GameObject audioMenagerPrefab;
     private GameObject audioMenager;
     public GameObject StoryPrefab;
-    private GameObject story;
+    public GameObject story;
     private GameObject enemyFactory, buildingFactory;
     private GameObject gridManager; 
 
@@ -30,11 +30,22 @@ public class GameEngine : MonoBehaviour
         enemyFactory = Instantiate(enemyFactoryPrefab, new Vector3(-9999999, 0, 0), Quaternion.identity);
         buildingFactory = Instantiate(buildingFactoryPrefab, new Vector3(-9999999, 0, 0), Quaternion.identity);
         audioMenager = Instantiate(audioMenagerPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        //story = Instantiate(StoryPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        story = Instantiate(StoryPrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+        
     }
 
     int ctr = 0;
+
+    public void resetCtr() {
+        ctr = 0;
+    }
     void Update() {
+
+        if (ctr == 0) {
+            story.GetComponent<Story>().dispalyPart(missionId+1);
+            ctr++;
+        }
+
         if(ctr == 5)
         {
            audioMenager.GetComponent<AudioMenager>().initAudio("menu");
@@ -47,12 +58,16 @@ public class GameEngine : MonoBehaviour
         }
         if (ctr == 20) {
             stateManager.setState(GameState.BATTLETURN);
+            Debug.Log("battle");
         }
         if (ctr >= 200 && ctr%200 == 0) {
             stateManager.update(ctr);
             ctr-= 80;
         }
-        ctr++;
+        if (!story.GetComponent<Story>().isDisplayed) {
+            Debug.Log("ctr:" + (ctr+1));
+            ctr++;
+        }
     }
 
     public void endTurn() {
@@ -87,9 +102,16 @@ public class GameEngine : MonoBehaviour
         return isEnd;
     }
 
+    private void GameOver() {
+
+    }
+    
+    public Boolean hasAnyEnemies = true;
     public void detectUnits()
     {
         //Debug.Log("detectUnits");
+        Boolean hasEnemies = false;
+        Boolean hasMain = false;
         allUnits.Clear();
         foreach( var x in gridManager.GetComponent<GridScript>().GridElements)
         {
@@ -102,11 +124,20 @@ public class GameEngine : MonoBehaviour
                 }
                 if(gridElement.unit != null)
                 {
-                    
+                    if (gridElement.unit == main) {
+                        hasMain = true;
+                    }
+                    if (gridElement.unit.GetComponent<UnitBase>().unitCounters["isEnemy"] == 1) {
+                        hasEnemies = true;
+                    }
                     allUnits.Add(gridElement.unit);
                     
                     //Debug.Log("detedted one, after effects size: " + gridElement.unit.GetComponent<UnitBase>().afterEffects.Count);
                 }
+            }
+            hasAnyEnemies = hasEnemies;
+            if (!hasMain) {
+                GameOver();
             }
         }
         //Debug.Log(allUnits.Count);
@@ -132,13 +163,33 @@ public class GameEngine : MonoBehaviour
 
     int waves = 0;
     int missionId = 0;
+
+    public int getWaves() {
+        return waves;
+    }
+
+    public void setWaves(int waves) {
+        this.waves = waves;
+    }
+
+    public int getMissionId() {
+        return missionId;
+    }
+
+    public void setMissionId(int missionId) {
+        this.missionId = missionId;
+    }
+
+
     public void spawnNextWave() {
         nextWave.AddRange(enemyFactory.GetComponent<EnemyFactory>().getWave(waves, missionId));
         waves++;
     }
 
+    public GameObject main;
     public void spawnMain() {
-        gridManager.GetComponent<GridScript>().spawnMain(buildingFactory.GetComponent<BuildingsFactory>().getMain());
+        main = buildingFactory.GetComponent<BuildingsFactory>().getMain();
+        gridManager.GetComponent<GridScript>().spawnMain(main);
     }
 
     public void spawn(GameObject unit, GameObject gridElement) {

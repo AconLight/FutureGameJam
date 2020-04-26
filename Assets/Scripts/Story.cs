@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,7 +21,6 @@ public class Story : MonoBehaviour
         parts.Add(part3);
         parts.Add(part4);
 
-
     }
 
     // Update is called once per frame
@@ -29,10 +29,17 @@ public class Story : MonoBehaviour
         
     }
 
+    public Boolean isDisplayed = false;
+
+    public void setNotDisplayed() {
+        isDisplayed = false;
+        gameObject.SetActive(false);
+    }
     public void dispalyPart(int n)
     {
+        gameObject.SetActive(true);
+        isDisplayed = true;
         part = Instantiate(parts[n]);
-
         Text title = gameObject.GetComponentsInChildren<Text>()[0];
         title.text = "Episode " + n;
 

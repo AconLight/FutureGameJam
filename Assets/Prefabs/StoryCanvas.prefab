@@ -116,9 +116,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2236904757354092986}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 2618794977025668283}
+        m_MethodName: setNotDisplayed
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -404,6 +404,7 @@ MonoBehaviour:
   part2: {fileID: 4900000, guid: c18a69d2adbf0c04a890f9e9a08ab38d, type: 3}
   part3: {fileID: 4900000, guid: 1392b37fc95639745bcd208efce66420, type: 3}
   part4: {fileID: 4900000, guid: ed562abf3f556fd479bf20045ccdac27, type: 3}
+  isDisplayed: 0
 --- !u!1 &2236904757566190637
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,7 +545,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.31161857, g: 0.17021182, b: 0.4811321, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.43529412}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
