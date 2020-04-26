@@ -105,7 +105,7 @@ public class EnemyFactory: MonoBehaviour
             case 0: {
                 switch (waveId) {
                     case 0: {
-                        for (int i = 0; i < 3; i++) {
+                        for (int i = 0; i < 5; i++) {
                             GameObject obj = Instantiate(basicEnemyPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
                             BasicEnemy(obj.GetComponent<UnitBase>());
                             wave.Add(obj);
@@ -113,15 +113,55 @@ public class EnemyFactory: MonoBehaviour
                         break;
                     }
                     case 1: {
-                        
+                        for (int i = 0; i < 7; i++) {
+                            GameObject temp = Instantiate(basicEnemyPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+                            BasicEnemy(temp.GetComponent<UnitBase>());
+                            wave.Add(temp);
+                        }
+                        GameObject obj = Instantiate(ZombieBerserPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+                            BerserkEnemy(obj.GetComponent<UnitBase>());
+                            wave.Add(obj);
                         break;
                     }
                     case 2: {
-                        
+                        for (int i = 0; i < 7; i++) {
+                            GameObject temp = Instantiate(basicEnemyPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+                            BasicEnemy(temp.GetComponent<UnitBase>());
+                            wave.Add(temp);
+                        }
+                        for (int i = 0; i < 2; i++) {
+                            GameObject temp = Instantiate(ZombieBerserPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+                            BerserkEnemy(temp.GetComponent<UnitBase>());
+                            wave.Add(temp);
+                        }
+                        for (int i = 0; i < 1; i++) {
+                            GameObject temp = Instantiate(GolompPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+                            GolompEnemy(temp.GetComponent<UnitBase>());
+                            wave.Add(temp);
+                        }
                         break;
                     }
                     case 3: {
-                        
+                        for (int i = 0; i < 2; i++) {
+                            GameObject temp = Instantiate(basicEnemyPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+                            BasicEnemy(temp.GetComponent<UnitBase>());
+                            wave.Add(temp);
+                        }
+                        for (int i = 0; i < 3; i++) {
+                            GameObject temp = Instantiate(ZombieBerserPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+                            BerserkEnemy(temp.GetComponent<UnitBase>());
+                            wave.Add(temp);
+                        }
+                        for (int i = 0; i < 3; i++) {
+                            GameObject temp = Instantiate(GolompPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+                            GolompEnemy(temp.GetComponent<UnitBase>());
+                            wave.Add(temp);
+                        }
+                        for (int i = 0; i < 1; i++) {
+                            GameObject temp = Instantiate(ZombieBossPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+                            BossEnemy(temp.GetComponent<UnitBase>());
+                            wave.Add(temp);
+                        }
                         break;
                     }
                 }
