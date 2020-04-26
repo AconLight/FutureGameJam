@@ -47,6 +47,8 @@ public class CardContent : MonoBehaviour
         description.text = ""; //unitDescription.cardDescription;
 
         Image image = this.GetComponent<Image>();
+        Text influence = gameObject.GetComponentsInChildren<Text>()[2];
+        influence.text =  "Req. influence: " + unit.GetComponent<UnitBase>().unitCounters["reqInfluence"]; //unitDescription.cardDescription;
 
         if(unitDescription.cardName.Equals("Ściana"))
         {

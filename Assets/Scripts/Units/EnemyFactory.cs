@@ -105,73 +105,114 @@ public class EnemyFactory: MonoBehaviour
             case 0: {
                 switch (waveId) {
                     case 0: {
-                        for (int i = 0; i < 5; i++) {
-                            GameObject obj = Instantiate(basicEnemyPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
-                            BasicEnemy(obj.GetComponent<UnitBase>());
-                            wave.Add(obj);
-                        }
+                        var tempWave = makeWave(1,0,0,0,wave);
                         break;
                     }
                     case 1: {
-                        for (int i = 0; i < 7; i++) {
-                            GameObject temp = Instantiate(basicEnemyPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
-                            BasicEnemy(temp.GetComponent<UnitBase>());
-                            wave.Add(temp);
-                        }
-                        GameObject obj = Instantiate(ZombieBerserPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
-                            BerserkEnemy(obj.GetComponent<UnitBase>());
-                            wave.Add(obj);
+                        var tempWave = makeWave(1,0,0,0,wave);
                         break;
                     }
                     case 2: {
-                        for (int i = 0; i < 7; i++) {
-                            GameObject temp = Instantiate(basicEnemyPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
-                            BasicEnemy(temp.GetComponent<UnitBase>());
-                            wave.Add(temp);
-                        }
-                        for (int i = 0; i < 2; i++) {
-                            GameObject temp = Instantiate(ZombieBerserPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
-                            BerserkEnemy(temp.GetComponent<UnitBase>());
-                            wave.Add(temp);
-                        }
-                        for (int i = 0; i < 1; i++) {
-                            GameObject temp = Instantiate(GolompPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
-                            GolompEnemy(temp.GetComponent<UnitBase>());
-                            wave.Add(temp);
-                        }
+                        var tempWave = makeWave(2,1,0,0,wave);
                         break;
                     }
                     case 3: {
-                        for (int i = 0; i < 2; i++) {
-                            GameObject temp = Instantiate(basicEnemyPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
-                            BasicEnemy(temp.GetComponent<UnitBase>());
-                            wave.Add(temp);
-                        }
-                        for (int i = 0; i < 3; i++) {
-                            GameObject temp = Instantiate(ZombieBerserPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
-                            BerserkEnemy(temp.GetComponent<UnitBase>());
-                            wave.Add(temp);
-                        }
-                        for (int i = 0; i < 3; i++) {
-                            GameObject temp = Instantiate(GolompPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
-                            GolompEnemy(temp.GetComponent<UnitBase>());
-                            wave.Add(temp);
-                        }
-                        for (int i = 0; i < 1; i++) {
-                            GameObject temp = Instantiate(ZombieBossPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
-                            BossEnemy(temp.GetComponent<UnitBase>());
-                            wave.Add(temp);
-                        }
+                        var tempWave = makeWave(2,1,0,0,wave);
                         break;
                     }
                 }
                 break;
             }
-
-            
+            case 1: {
+                switch (waveId) {
+                    case 0: {
+                        var tempWave = makeWave(2,0,0,0,wave);
+                        break;
+                    }
+                    case 1: {
+                        var tempWave = makeWave(2,1,0,0,wave);
+                        break;
+                    }
+                    case 2: {
+                        var tempWave = makeWave(3,1,1,0,wave);
+                        break;
+                    }
+                    case 3: {
+                        var tempWave = makeWave(3,2,1,0,wave);
+                        break;
+                    }
+                }
+                break;
+            }
+            case 2: {
+                switch (waveId) {
+                    case 0: {
+                        var tempWave = makeWave(2,2,1,0,wave);
+                        break;
+                    }
+                    case 1: {
+                        var tempWave = makeWave(2,3,2,0,wave);
+                        break;
+                    }
+                    case 2: {
+                        var tempWave = makeWave(2,3,2,0,wave);
+                        break;
+                    }
+                    case 3: {
+                        var tempWave = makeWave(3,3,3,1,wave);
+                        break;
+                    }
+                }
+                break;
+            }
+            case 3: {
+                switch (waveId) {
+                    case 0: {
+                        var tempWave = makeWave(5,2,1,0,wave);
+                        break;
+                    }
+                    case 1: {
+                        var tempWave = makeWave(5,3,2,0,wave);
+                        break;
+                    }
+                    case 2: {
+                        var tempWave = makeWave(5,4,3,1,wave);
+                        break;
+                    }
+                    case 3: {
+                        var tempWave = makeWave(5,4,2,2,wave);
+                        break;
+                    }
+                }
+                break;
+            }
         }
-
-        
         return wave;
     }
+
+    public List<GameObject> makeWave(int zomie, int bers, int golomp, int boss, List<GameObject> wave){
+    for (int i = 0; i < zomie; i++) {
+            GameObject temp = Instantiate(basicEnemyPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+            BasicEnemy(temp.GetComponent<UnitBase>());
+            wave.Add(temp);
+    }
+    for (int i = 0; i < bers; i++) {
+        GameObject temp = Instantiate(ZombieBerserPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+        BerserkEnemy(temp.GetComponent<UnitBase>());
+        wave.Add(temp);
+    }
+    for (int i = 0; i < golomp; i++) {
+        GameObject temp = Instantiate(GolompPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+        GolompEnemy(temp.GetComponent<UnitBase>());
+        wave.Add(temp);
+    }
+    for (int i = 0; i < boss; i++) {
+        GameObject temp = Instantiate(ZombieBossPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+        BossEnemy(temp.GetComponent<UnitBase>());
+        wave.Add(temp);
+    }
+    return wave;
 }
+
+}
+
