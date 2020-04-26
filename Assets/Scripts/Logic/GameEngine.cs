@@ -186,6 +186,7 @@ public class GameEngine : MonoBehaviour
 
 
     public void spawnNextWave() {
+        Debug.Log("w: " + waves + " m: " + missionId);
         nextWave.AddRange(enemyFactory.GetComponent<EnemyFactory>().getWave(waves, missionId));
         waves++;
     }

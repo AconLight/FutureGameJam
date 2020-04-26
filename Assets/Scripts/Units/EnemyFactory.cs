@@ -100,7 +100,7 @@ public class EnemyFactory: MonoBehaviour
 
     public List<GameObject> getWave(int waveId, int missionId) {
         List<GameObject> wave = new List<GameObject>();
-
+        Debug.Log(missionId);
         switch (missionId) {
             case 0: {
                 switch (waveId) {

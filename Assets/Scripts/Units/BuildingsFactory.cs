@@ -77,21 +77,16 @@ public class BuildingsFactory: MonoBehaviour
     public void createDeck() {
         for(int i = 0; i < 20; i++) {
             deck.Add(getWall());
-            deck.Add(getMortar());
-            deck.Add(getSniperTower());
-            deck.Add(getTurtle());
-            deck.Add(getSniperTowerExploAmmo());
-            deck.Add(getWall());
             deck.Add(getWall());
             deck.Add(getWall());
             deck.Add(getWall());
             deck.Add(getMortar());
+            deck.Add(getMortar());
+            deck.Add(getSniperTower());
+            deck.Add(getSniperTower());
             deck.Add(getSniperTower());
             deck.Add(getTurtle());
             deck.Add(getSniperTowerExploAmmo());
-            deck.Add(getWall());
-            deck.Add(getWall());
-            deck.Add(getWall());
         }
     }
 

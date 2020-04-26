@@ -38,6 +38,7 @@ public class StateManager
                             cc.DestroyMe();
                         }
                         gameEngine.setMissionId(gameEngine.getMissionId()+1);
+                        gameEngine.setWaves(0);
                         gameEngine.resetCtr();
                     } else {
                         setState(GameState.PLAYER1TURN);
