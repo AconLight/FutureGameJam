@@ -39,6 +39,9 @@ public class CardContent : MonoBehaviour
         Text description = gameObject.GetComponentsInChildren<Text>()[1];
         description.text = ""; //unitDescription.cardDescription;
 
+        Text influence = gameObject.GetComponentsInChildren<Text>()[2];
+        influence.text =  "Req. influence: " + unit.GetComponent<UnitBase>().unitCounters["reqInfluence"]; //unitDescription.cardDescription;
+
 
         RawImage sprite = gameObject.GetComponentsInChildren<RawImage>()[0];
         sprite.GetComponent<RawImage>().texture = unit.GetComponent<UnitBase>().sprite.texture;
