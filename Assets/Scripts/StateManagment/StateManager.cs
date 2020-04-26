@@ -32,7 +32,7 @@ public class StateManager
                 gameEngine.performBeforeEffects();
                 gameEngine.sortUnits();
                 if (gameEngine.performAfterEffects(ctr-1)) {
-                    if (!gameEngine.hasAnyEnemies && gameEngine.getWaves() == 5 && gameEngine.main || gameEngine.getWaves() == 2) {
+                    if (!gameEngine.hasAnyEnemies && gameEngine.getWaves() == 5 && gameEngine.main) {
                         gameEngine.gridManager.GetComponent<GridScript>().clear();
                         foreach (CardContent cc in gameEngine.canvas.GetComponentsInChildren<CardContent>()) {
                             cc.DestroyMe();

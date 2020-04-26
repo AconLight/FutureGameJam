@@ -100,12 +100,37 @@ public class EnemyFactory: MonoBehaviour
 
     public List<GameObject> getWave(int waveId, int missionId) {
         List<GameObject> wave = new List<GameObject>();
-        for (int i = 0; i < 3; i++) {
-            GameObject obj = Instantiate(basicEnemyPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
-            BasicEnemy(obj.GetComponent<UnitBase>());
-            wave.Add(obj);
-            //Debug.Log(obj.GetComponent<UnitBase>().afterEffects.Count);
+
+        switch (missionId) {
+            case 0: {
+                switch (waveId) {
+                    case 0: {
+                        for (int i = 0; i < 3; i++) {
+                            GameObject obj = Instantiate(basicEnemyPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
+                            BasicEnemy(obj.GetComponent<UnitBase>());
+                            wave.Add(obj);
+                        }
+                        break;
+                    }
+                    case 1: {
+                        
+                        break;
+                    }
+                    case 2: {
+                        
+                        break;
+                    }
+                    case 3: {
+                        
+                        break;
+                    }
+                }
+                break;
+            }
+
+            
         }
+
         
         return wave;
     }
