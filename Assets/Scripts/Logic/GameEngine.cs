@@ -34,6 +34,7 @@ public class GameEngine : MonoBehaviour
     }
 
     int ctr = 0;
+    System.Random rand = new System.Random();
     void Update() {
         if(ctr == 5)
         {
@@ -101,6 +102,7 @@ public class GameEngine : MonoBehaviour
                 }
                 if(gridElement.unit != null)
                 {
+                    
                     allUnits.Add(gridElement.unit);
                     
                     //Debug.Log("detedted one, after effects size: " + gridElement.unit.GetComponent<UnitBase>().afterEffects.Count);
@@ -118,8 +120,9 @@ public class GameEngine : MonoBehaviour
         );
     }
 
+    public int spawnId = 0;
     public Boolean spawnOne() {
-        if (nextWave.Count > 0 && gridManager.GetComponent<GridScript>().spawnEnemy(nextWave[0])) {
+        if (nextWave.Count > 0 && gridManager.GetComponent<GridScript>().spawnEnemy(nextWave[0], spawnId)) {
             nextWave.RemoveAt(0);
             //Debug.Log("spawnOne");
             return true;
@@ -127,8 +130,10 @@ public class GameEngine : MonoBehaviour
         return false;
     }
 
+    int waves = 0;
     public void spawnNextWave() {
-        nextWave.AddRange(enemyFactory.GetComponent<EnemyFactory>().getWave(0));
+        nextWave.AddRange(enemyFactory.GetComponent<EnemyFactory>().getWave(waves));
+        waves++;
     }
 
     public void spawnMain() {

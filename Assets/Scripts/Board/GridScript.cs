@@ -8,7 +8,7 @@ public class GridScript : MonoBehaviour
     public GameObject gridElementPrefab;
     public static int size = 6;
 
-    public int spawnSpotX = 0, spawnSpotZ = 0;
+    public int[] spawnSpotX = new int[3] {0, size-1, size-1}, spawnSpotZ = new int[3] {0, 0, size-1};
     public int mainSpotX = 0, mainSpotZ = size-1;
     public List<List<GameObject>> GridElements;
     public GameObject unitPrefab;
@@ -30,9 +30,9 @@ public class GridScript : MonoBehaviour
         }
     }
 
-    public Boolean spawnEnemy(GameObject enemy) {
-        if (GridElements[spawnSpotZ][spawnSpotX].GetComponent<GridElement>().unit == null) {
-            GridElements[spawnSpotZ][spawnSpotX].GetComponent<GridElement>().spawnUnit(enemy);
+    public Boolean spawnEnemy(GameObject enemy, int spawnId) {
+        if (GridElements[spawnSpotZ[spawnId]][spawnSpotX[spawnId]].GetComponent<GridElement>().unit == null) {
+            GridElements[spawnSpotZ[spawnId]][spawnSpotX[spawnId]].GetComponent<GridElement>().spawnUnit(enemy);
             enemy.GetComponent<UnitBase>().audioMenager.GetComponent<AudioMenager>().playSpawn();
             return true;
         }

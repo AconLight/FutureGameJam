@@ -14,6 +14,8 @@ public class StateManager
         this.gameEngine = gameEngine;
     }
 
+    public int turns = 0;
+    System.Random rand = new System.Random();
     public void update(int ctr) {
         switch(this.gameState) {
             case GameState.PLAYER1TURN: {
@@ -52,6 +54,11 @@ public class StateManager
             }
             case GameState.BATTLETURN: {
                 gameEngine.startBattle();
+                turns++;
+                if (turns > 0 && turns % 4 == 0) {
+                    gameEngine.spawnId = rand.Next(0, 2);
+                    gameEngine.spawnNextWave();
+                }
                 break;
             }
         }
