@@ -34,7 +34,6 @@ public class GameEngine : MonoBehaviour
     }
 
     int ctr = 0;
-    System.Random rand = new System.Random();
     void Update() {
         if(ctr == 5)
         {

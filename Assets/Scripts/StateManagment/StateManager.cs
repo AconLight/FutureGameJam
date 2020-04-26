@@ -27,7 +27,6 @@ public class StateManager
                 break;
             }
             case GameState.BATTLETURN: {
-                Debug.Log("ctr%50");
                 gameEngine.spawnOne();
                 gameEngine.detectUnits();
                 gameEngine.performBeforeEffects();
