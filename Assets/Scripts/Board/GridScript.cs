@@ -48,6 +48,18 @@ public class GridScript : MonoBehaviour
         return false;
     }
 
+    public void clear() {
+        for (int z = -size/2; z < size/2; z++) {
+            List<GameObject> temp = new List<GameObject>();
+            for (int x = -size/2; x < size/2; x++) {
+                if (GridElements[z+size/2][x+size/2].GetComponent<GridElement>().unit) {
+                    GridElements[z+size/2][x+size/2].GetComponent<GridElement>().unit.GetComponent<UnitBase>().destroyMe();
+                    GridElements[z+size/2][x+size/2].GetComponent<GridElement>().unit = null;
+                }
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

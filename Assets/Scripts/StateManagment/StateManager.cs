@@ -33,6 +33,10 @@ public class StateManager
                 gameEngine.sortUnits();
                 if (gameEngine.performAfterEffects(ctr-1)) {
                     if (!gameEngine.hasAnyEnemies && gameEngine.getWaves() == 5 && gameEngine.main || gameEngine.getWaves() == 2) {
+                        gameEngine.gridManager.GetComponent<GridScript>().clear();
+                        foreach (CardContent cc in gameEngine.canvas.GetComponentsInChildren<CardContent>()) {
+                            cc.DestroyMe();
+                        }
                         gameEngine.setMissionId(gameEngine.getMissionId()+1);
                         gameEngine.resetCtr();
                     } else {
