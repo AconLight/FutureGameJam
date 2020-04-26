@@ -28,8 +28,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public void OnEndDrag(PointerEventData eventData)
     {
 
-        if (eventData.position.x > 150 && eventData.position.x < 250 &&
-            eventData.position.y > 850 && eventData.position.y < 950) {
+        if (eventData.position.x > 100 && eventData.position.x < 300 &&
+            eventData.position.y > 800 && eventData.position.y < 1000) {
                 transform.parent.GetComponentInChildren<CardPlaceContent>().SetContent(gameObject);
             }
 
