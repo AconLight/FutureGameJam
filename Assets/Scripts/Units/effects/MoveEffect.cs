@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Security.Cryptography.X509Certificates;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ public class MoveEffect : Effect
     public MoveEffect(UnitBase unitBase, Zone zone, GameObject materialHolder): base(unitBase, zone, materialHolder) {
         name = "Move";
         description = "Moves a unit toward its enemies";
+        UnityEngine.Random.InitState(2137);
     }
 
     protected override void computeOne(GridElement gridElement, int value) {
@@ -174,6 +176,8 @@ public class MoveEffect : Effect
         nList.RemoveAll(Node => Node == null);
         return nList;
     }
+
+    Boolean isGoalSet = false;
     private GridElement setGoal(GridElement goal)
     {
         if(goal.isPassable() == null)
@@ -189,7 +193,7 @@ public class MoveEffect : Effect
             if (possibleGoals.Count == 0) {
                 return goal;
             }
-            int index = Random.Range(0, possibleGoals.Count);
+            int index = UnityEngine.Random.Range(0, possibleGoals.Count);
             return setGoal(possibleGoals[index]);
         }
         return goal;
