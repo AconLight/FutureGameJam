@@ -300,7 +300,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 2a3ebd2e8521d1e4ca1131f045fbf8d9, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -333,3 +333,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53488de2dbc3a104fb5dcbb2e641bfad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mozdziez: {fileID: 8777686434975734452, guid: 6dd72bd600160e04a81ae0681940c7fb,
+    type: 3}
+  _sciana: {fileID: 4280635009731703563, guid: 8ef3638b45020074da9db4f2b6b91544, type: 3}
+  _granatnik: {fileID: 8825255503535814232, guid: 0647c2825933bbb4d94f1759aab84646,
+    type: 3}
+  _fort: {fileID: 5954520514446783904, guid: 7dce7db157b24e94dbf541146d054a76, type: 3}
+  _strzelec: {fileID: 2726787424855797925, guid: a6c68f0475122e54c9cb9477b5c37a93,
+    type: 3}
