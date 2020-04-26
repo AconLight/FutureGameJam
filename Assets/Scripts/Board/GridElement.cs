@@ -53,7 +53,7 @@ public class GridElement : MonoBehaviour
         //UnityEngine.Debug.Log("grid element size: " + unitPrefab.GetComponent<UnitBase>().afterEffects.Count);
         this.unit = unitPrefab;
         this.unit.transform.localScale = new Vector3(scale,scale,scale);
-        this.unit.transform.position = new Vector3(transform.position.x - 0.1f,transform.position.y, transform.position.z + 0.1f);
+        this.unit.transform.position = new Vector3(transform.position.x - 0.1f,transform.position.y - 0.5f, transform.position.z + 0.1f);
         this.unit.transform.SetParent(this.transform);
         unitPrefab.GetComponent<UnitBase>().audioMenager.GetComponent<AudioMenager>().playSpawn();
         //UnityEngine.Debug.Log("grid element unit size: " + unit.GetComponent<UnitBase>().afterEffects.Count);
