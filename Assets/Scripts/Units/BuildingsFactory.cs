@@ -253,7 +253,7 @@ public class BuildingsFactory: MonoBehaviour
         unit.unitCounters.Add("isEnemy", 0);
         unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
-        unit.unitDescription.setCardDescription("Sciana", "Zwykła ściana nic dodać nic ująć");
+        unit.unitDescription.setCardDescription("Ściana", "Zwykła ściana nic dodać nic ująć");
         unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(2), materialHolder));
         unit.afterEffects.Add(new AttackEffect(unit, new Zone(), materialHolder));
     }
