@@ -45,6 +45,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basicEnemyPrefab: {fileID: 6421811375583619976, guid: a52520989ce7b10468ed30830c3271ff,
     type: 3}
+  GolompPrefab: {fileID: 1287473164486126932, guid: 3030be51ac20e564f98ff05cf31ddac0,
+    type: 3}
+  ZombieBossPrefab: {fileID: 3726459122066684760, guid: 950412714e841cd42ba9894260a55e2b,
+    type: 3}
+  ZombieBerserPrefab: {fileID: 1782709269252091770, guid: 073cf9d43b6e40a48a972784494acfcd,
+    type: 3}
   basicEnemy: {fileID: 0}
   materialHolder: {fileID: 7840185566440682653, guid: 9b2ee34afd61af34ab341fee1f5910c4,
     type: 3}
