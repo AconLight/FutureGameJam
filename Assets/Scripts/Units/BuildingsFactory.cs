@@ -148,7 +148,7 @@ public class BuildingsFactory: MonoBehaviour
         unit.unitCounters.Add("ap", 1);
         unit.unitCounters.Add("apMax", 1);
         unit.unitCounters.Add("iniciative", 1);
-        unit.unitCounters.Add("reqInfluence", 1);
+        unit.unitCounters.Add("reqInfluence", 3);
         unit.unitCounters.Add("hp", 3);
         unit.unitCounters.Add("speed", 2);
         unit.unitCounters.Add("maxSpeed", 2);
@@ -159,13 +159,11 @@ public class BuildingsFactory: MonoBehaviour
         unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1), materialHolder));
         int[,] zone = 
         {
-            {0,0,0,0,0,0,0},
-            {0,2,0,0,0,2,0},
-            {0,0,2,1,2,0,0},
-            {0,0,1,0,1,0,0},
-            {0,0,2,1,2,0,0},
-            {0,2,0,0,0,2,0},
-            {0,0,0,0,0,0,0},
+            {1,0,0,0,1},
+            {0,2,1,2,0},
+            {0,1,0,1,0},
+            {0,2,1,2,0},
+            {1,0,0,0,1},
         };
         unit.afterEffects.Add(new AttackEffect(unit, new Zone(zone), materialHolder));
     }
@@ -182,16 +180,14 @@ public class BuildingsFactory: MonoBehaviour
         unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
         unit.unitDescription.setCardDescription("Moździeż", "Nieskuteczna na bliskim dystanicie");
-        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1), materialHolder));
+        unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(2), materialHolder));
         int[,] zone = 
         {
-            {2,2,3,3,3,2,2},
-            {2,3,0,0,0,3,2},
-            {3,0,0,0,0,0,3},
-            {3,0,0,0,0,0,3},
-            {3,0,0,0,0,0,3},
-            {2,3,0,0,0,3,2},
-            {2,2,3,3,3,2,2},
+            {1,2,2,2,1},
+            {2,0,0,0,2},
+            {2,0,0,0,2},
+            {2,0,0,0,2},
+            {1,2,2,2,1},
         };
         unit.afterEffects.Add(new AttackEffect(unit, new Zone(zone), materialHolder));
     }
@@ -200,7 +196,7 @@ public class BuildingsFactory: MonoBehaviour
         unit.unitCounters.Add("ap", 1);
         unit.unitCounters.Add("apMax", 1);
         unit.unitCounters.Add("iniciative", 1);
-        unit.unitCounters.Add("reqInfluence", 3);
+        unit.unitCounters.Add("reqInfluence", 1);
         unit.unitCounters.Add("hp", 3);
         unit.unitCounters.Add("speed", 2);
         unit.unitCounters.Add("maxSpeed", 2);
@@ -211,13 +207,11 @@ public class BuildingsFactory: MonoBehaviour
         unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1), materialHolder));
         int[,] zone = 
         {
-            {0,0,0,2,0,0,0},
-            {0,0,0,2,0,0,0},
-            {0,0,0,2,0,0,0},
-            {2,2,2,0,2,2,2},
-            {0,0,0,2,0,0,0},
-            {0,0,0,2,0,0,0},
-            {0,0,0,2,0,0,0},
+            {0,0,1,0,0},
+            {0,0,2,0,0},
+            {1,2,0,2,1},
+            {0,0,2,0,0},
+            {0,0,1,0,0},
         };
         unit.afterEffects.Add(new AttackEffect(unit, new Zone(zone), materialHolder));
     }
@@ -237,13 +231,11 @@ public class BuildingsFactory: MonoBehaviour
         unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1), materialHolder));
         int[,] zone = 
         {
-            {0,0,1,1,1,0,0},
-            {0,0,0,1,0,0,0},
-            {1,0,0,2,0,0,1},
-            {1,1,2,0,2,1,1},
-            {1,0,0,2,0,0,1},
-            {0,0,0,1,0,0,0},
-            {0,0,1,1,1,0,0},
+            {0,1,1,1,0},
+            {1,0,1,0,1},
+            {1,1,0,1,1},
+            {1,0,1,0,1},
+            {0,1,1,1,0},
         };
         unit.afterEffects.Add(new AttackEffect(unit, new Zone(zone), materialHolder));
     }
