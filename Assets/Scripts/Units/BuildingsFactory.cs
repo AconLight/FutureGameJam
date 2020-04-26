@@ -75,22 +75,24 @@ public class BuildingsFactory: MonoBehaviour
 
     private List<GameObject> deck = new List<GameObject>();
     public void createDeck() {
-        deck.Add(getWall());
-        deck.Add(getMortar());
-        deck.Add(getSniperTower());
-        deck.Add(getTurtle());
-        deck.Add(getSniperTowerExploAmmo());
-        deck.Add(getWall());
-        deck.Add(getWall());
-        deck.Add(getWall());
-        deck.Add(getWall());
-        deck.Add(getMortar());
-        deck.Add(getSniperTower());
-        deck.Add(getTurtle());
-        deck.Add(getSniperTowerExploAmmo());
-        deck.Add(getWall());
-        deck.Add(getWall());
-        deck.Add(getWall());
+        for(int i = 0; i < 20; i++) {
+            deck.Add(getWall());
+            deck.Add(getMortar());
+            deck.Add(getSniperTower());
+            deck.Add(getTurtle());
+            deck.Add(getSniperTowerExploAmmo());
+            deck.Add(getWall());
+            deck.Add(getWall());
+            deck.Add(getWall());
+            deck.Add(getWall());
+            deck.Add(getMortar());
+            deck.Add(getSniperTower());
+            deck.Add(getTurtle());
+            deck.Add(getSniperTowerExploAmmo());
+            deck.Add(getWall());
+            deck.Add(getWall());
+            deck.Add(getWall());
+        }
     }
 
     private int handSize = 5;
