@@ -84,6 +84,47 @@ public class GridElement : MonoBehaviour
             scale += step;
             this.unit.transform.localScale = new Vector3(scale,2*scale,scale);
         }
+        if (this.unit && isAttacking) {
+            scale += attackAnimV*0.1f;
+            attackAnimV -= 0.1f;
+            
+            if (scale <= 1 && attackAnimV < 0) {
+                scale = 1;
+                isAttacking = false;
+            }
+
+            this.unit.transform.localScale = new Vector3(scale,2*scale,scale);
+        }
+
+        if (this.unit && isGettingDamage) {
+            gettingDamageAnimP += gettingDamageAnimV*0.1f;
+            gettingDamageAnimV -= 0.1f;
+            
+            if (gettingDamageAnimP <= 0 && gettingDamageAnimV < 0) {
+                gettingDamageAnimP = 0;
+                isGettingDamage = false;
+            }
+
+            transform.position = new Vector3(transform.position.x, gettingDamageAnimP, transform.position.z);
+
+        }
+
+
+    }
+
+    Boolean isAttacking = false;
+    float attackAnimV = 0;
+    public void attack() {
+        isAttacking = true;
+        attackAnimV = 0.5f;
+    }
+
+    Boolean isGettingDamage = false;
+    float gettingDamageAnimV = 0;
+    float gettingDamageAnimP = 0;
+    public void getDamage(int value) {
+        isGettingDamage = true;
+        gettingDamageAnimV = 0.5f*value;
     }
 
     public GameObject getLeft() {

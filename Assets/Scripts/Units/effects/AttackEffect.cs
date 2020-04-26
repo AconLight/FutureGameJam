@@ -19,6 +19,7 @@ public class AttackEffect : Effect
         hasAttacked = false;
         base.perform();
         if (hasAttacked) {
+            base.unitBase.transform.parent.gameObject.GetComponent<GridElement>().attack();
             base.unitBase.audioMenager.GetComponent<AudioMenager>().playAttack();
         }
     }
@@ -27,6 +28,7 @@ public class AttackEffect : Effect
         if (gridElement.unit != null && unitBase.unitCounters["isEnemy"] != gridElement.unit.GetComponent<UnitBase>().unitCounters["isEnemy"]) {
             gridElement.unit.GetComponent<UnitBase>().unitCounters["hp"] -= value;
             hasAttacked = true;
+            gridElement.getDamage(value);
             //Debug.Log("attack");
             if (gridElement.unit.GetComponent<UnitBase>().unitCounters["hp"] <= 0) {
                 gridElement.unit.GetComponent<UnitBase>().destroyMe();
