@@ -37,7 +37,7 @@ public class EnemyFactory: MonoBehaviour
         unit.afterEffects.Add(new AttackEffect(unit, Zone.frame(1), materialHolder));
     }
 
-    public List<GameObject> getWave(int level) {
+    public List<GameObject> getWave(int waveId, int missionId) {
         List<GameObject> wave = new List<GameObject>();
         for (int i = 0; i < 3; i++) {
             GameObject obj = Instantiate(basicEnemyPrefab, new Vector3(-99999, 0, 0), Quaternion.identity) as GameObject;
