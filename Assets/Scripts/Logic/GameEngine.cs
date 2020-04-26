@@ -15,7 +15,7 @@ public class GameEngine : MonoBehaviour
     public GameObject StoryPrefab;
     public GameObject story;
     private GameObject enemyFactory, buildingFactory;
-    private GameObject gridManager; 
+    public GameObject gridManager; 
 
     public StateManager stateManager;
     private List<GameObject> allUnits;
@@ -68,6 +68,10 @@ public class GameEngine : MonoBehaviour
             Debug.Log("ctr:" + (ctr+1));
             ctr++;
         }
+        if (gridManager.GetComponent<GridScript>().GridElements[5][0].GetComponent<GridElement>().unit == null && ctr > 10) {
+            GameOver();
+            Debug.Log("not main");
+        }
     }
 
     public void endTurn() {
@@ -77,7 +81,9 @@ public class GameEngine : MonoBehaviour
 
     public void startBattle() {
         foreach(GameObject unit in allUnits) {
-            unit.GetComponent<UnitBase>().unitCounters["ap"] = unit.GetComponent<UnitBase>().unitCounters["apMax"];
+            if (unit) {
+                unit.GetComponent<UnitBase>().unitCounters["ap"] = unit.GetComponent<UnitBase>().unitCounters["apMax"];
+            }
         }
     }
 
@@ -103,7 +109,12 @@ public class GameEngine : MonoBehaviour
     }
 
     private void GameOver() {
-
+        gridManager.GetComponent<GridScript>().clear();
+        foreach (CardContent cc in canvas.GetComponentsInChildren<CardContent>()) {
+            cc.DestroyMe();
+        }
+        setMissionId(0);
+        resetCtr();
     }
     
     public Boolean hasAnyEnemies = true;
@@ -111,7 +122,6 @@ public class GameEngine : MonoBehaviour
     {
         //Debug.Log("detectUnits");
         Boolean hasEnemies = false;
-        Boolean hasMain = false;
         allUnits.Clear();
         foreach( var x in gridManager.GetComponent<GridScript>().GridElements)
         {
@@ -124,9 +134,6 @@ public class GameEngine : MonoBehaviour
                 }
                 if(gridElement.unit != null)
                 {
-                    if (gridElement.unit == main) {
-                        hasMain = true;
-                    }
                     if (gridElement.unit.GetComponent<UnitBase>().unitCounters["isEnemy"] == 1) {
                         hasEnemies = true;
                     }
@@ -136,9 +143,6 @@ public class GameEngine : MonoBehaviour
                 }
             }
             hasAnyEnemies = hasEnemies;
-            if (!hasMain) {
-                GameOver();
-            }
         }
         //Debug.Log(allUnits.Count);
 
