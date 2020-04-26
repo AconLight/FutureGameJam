@@ -17,7 +17,7 @@ public class GameEngine : MonoBehaviour
     private GameObject enemyFactory, buildingFactory;
     private GameObject gridManager; 
 
-    private StateManager stateManager;
+    public StateManager stateManager;
     private List<GameObject> allUnits;
     private List<GameObject> nextWave = new List<GameObject>();
     private int counter;
@@ -56,6 +56,7 @@ public class GameEngine : MonoBehaviour
     }
 
     public void endTurn() {
+        buildingFactory.GetComponent<BuildingsFactory>().fillHand();
         stateManager.setState(GameState.BATTLETURN);
     }
 
@@ -130,8 +131,9 @@ public class GameEngine : MonoBehaviour
     }
 
     int waves = 0;
+    int missionId = 0;
     public void spawnNextWave() {
-        nextWave.AddRange(enemyFactory.GetComponent<EnemyFactory>().getWave(waves));
+        nextWave.AddRange(enemyFactory.GetComponent<EnemyFactory>().getWave(waves, missionId));
         waves++;
     }
 

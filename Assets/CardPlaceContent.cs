@@ -46,6 +46,7 @@ public class CardPlaceContent : MonoBehaviour
         var gridScript = gridElement.GetComponent<GridElement>();
 
         if (gridScript.unit != null && !gridScript.isPlaceholder) return;
+        if (GameEngine.GetComponent<GameEngine>().stateManager.gameState == GameState.BATTLETURN) return;
         
         Debug.Log("influence: " + gridScript.earthCounters["influence"]);
         Debug.Log("req influence: " + cardContent.GetComponent<CardContent>().getUnit().GetComponent<UnitBase>().unitCounters["reqInfluence"]);
@@ -220,6 +221,14 @@ public class CardPlaceContent : MonoBehaviour
         gridElement.GetComponent<GridElement>().cb.transform.localPosition = new Vector3(0,-1.7f,0);
         gridElement.GetComponent<GridElement>().isPlaceholder = false;
         GameEngine.GetComponent<GameEngine>().endTurn();
+        int i = 0;
+        foreach(CardContent cc in transform.parent.gameObject.GetComponentsInChildren<CardContent>()) {
+            Debug.Log("moved");
+            if (cc.gameObject != cardContent) {
+                cc.transform.position = new Vector2(100 + i*200, 100);
+                i++;
+            }
+        }
         cardContent.GetComponent<CardContent>().DestroyMe();
         transform.position = new Vector3(-9999, transform.position.y, transform.position.z);
         cardContent = null;

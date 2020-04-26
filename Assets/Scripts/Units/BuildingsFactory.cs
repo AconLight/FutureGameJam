@@ -85,7 +85,7 @@ public class BuildingsFactory: MonoBehaviour
         deck.Add(getWall());
     }
 
-    private int handSize = 8;
+    private int handSize = 5;
     public void createHand() {
         System.Random rand = new System.Random();
         for (int i = 0; i < handSize; i++) {
@@ -93,6 +93,13 @@ public class BuildingsFactory: MonoBehaviour
             addCardToHand(deck[id], i*200);
             deck.RemoveAt(id);
         }
+    }
+
+    public void fillHand() {
+        System.Random rand = new System.Random();
+        int id = rand.Next(deck.Count);
+        addCardToHand(deck[id], (handSize-1)*200);
+        deck.RemoveAt(id);
     }
 
     public void BasicBuilding(UnitBase unit) {
