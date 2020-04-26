@@ -22,7 +22,7 @@ public class Click : MonoBehaviour
     void OnMouseDown()
     {
         CardPlaceContent rc = canvas.GetComponentInChildren<CardPlaceContent>();
-        if (rc.unit != null && rc.gridElement.GetComponent<GridElement>().isPlaceholder) {
+        if (rc.unit != null && rc.gridElement != null && rc.gridElement.GetComponent<GridElement>().isPlaceholder) {
             rc.unit.transform.SetParent(rc.cardContent.transform);
             rc.unit.transform.position = new Vector3(-999999, 0, 0);
             rc.unit = null;
