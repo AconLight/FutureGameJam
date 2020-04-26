@@ -155,7 +155,7 @@ public class BuildingsFactory: MonoBehaviour
         unit.unitCounters.Add("isEnemy", 0);
         unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
-        unit.unitDescription.setCardDescription("Umocniony Budynek", "Stworzona do walki na krótkim dystansie");
+        unit.unitDescription.setCardDescription("Bunkier", "Stworzona do walki na krótkim dystansie");
         unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1), materialHolder));
         int[,] zone = 
         {
@@ -203,7 +203,7 @@ public class BuildingsFactory: MonoBehaviour
         unit.unitCounters.Add("isEnemy", 0);
         unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
-        unit.unitDescription.setCardDescription("Strzelec wyborowy", "Sprzątnie zombiaka z odległości 3 klocków");
+        unit.unitDescription.setCardDescription("Strzelec", "Sprzątnie zombiaka z odległości 3 klocków");
         unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1), materialHolder));
         int[,] zone = 
         {
@@ -227,7 +227,7 @@ public class BuildingsFactory: MonoBehaviour
         unit.unitCounters.Add("isEnemy", 0);
         unit.audioMenager = Instantiate(unit._audioMenager, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
         unit.audioMenager.GetComponent<AudioMenager>().initAudio("building");
-        unit.unitDescription.setCardDescription("Strzelec wyborowy z amunicją wybuchową", "Zasięg niby taki sam ale obrażenia inne");
+        unit.unitDescription.setCardDescription("Fort", "Zasięg niby taki sam ale obrażenia inne");
         unit.beforeEffects.Add(new InfluenceEffect(unit, Zone.frame(1), materialHolder));
         int[,] zone = 
         {
